@@ -16,87 +16,89 @@ font-family:Arial,sans-serif;
 body{
 background:#000;
 color:#fff;
+overflow-y:scroll;
+scroll-snap-type:y mandatory;
 }
 
-header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:15px;
-text-align:center;
-font-size:24px;
-font-weight:bold;
-background:rgba(0,0,0,.8);
-z-index:100;
-}
-
-.feed{
-margin-top:70px;
-}
-
-.video-card{
+.page{
 height:100vh;
+width:100%;
 position:relative;
 scroll-snap-align:start;
+overflow:hidden;
 }
 
-.feed{
-scroll-snap-type:y mandatory;
-overflow-y:scroll;
-height:100vh;
-}
-
-video{
+.page video{
 width:100%;
 height:100%;
 object-fit:cover;
 }
 
-.info{
+.overlay{
 position:absolute;
-bottom:100px;
-left:15px;
+bottom:80px;
+left:20px;
+z-index:10;
 }
 
-.info h2{
+.overlay h1{
+font-size:32px;
+margin-bottom:8px;
+}
+
+.overlay h2{
 font-size:22px;
+color:#00ff99;
+margin-bottom:10px;
 }
 
-.price{
-color:#00ff88;
-font-size:20px;
-margin:8px 0;
+.overlay p{
+font-size:18px;
+margin-bottom:15px;
 }
 
 .btn{
 display:inline-block;
-padding:12px 22px;
+padding:14px 28px;
 background:#25D366;
 color:white;
 text-decoration:none;
-border-radius:30px;
+border-radius:50px;
 font-weight:bold;
+font-size:18px;
+}
+
+.right{
+position:absolute;
+right:15px;
+bottom:100px;
+display:flex;
+flex-direction:column;
+gap:20px;
+font-size:35px;
+text-align:center;
+}
+
+.right div{
+background:rgba(0,0,0,.45);
+padding:10px;
+border-radius:50%;
 }
 </style>
-
 </head>
 
 <body>
 
-<header>🐠 AQUATIC PARADISE</header>
+<div class="page">
 
-<div class="feed">
-
-<div class="video-card">
-
-<video controls autoplay muted loop>
-<source src="video1.mp4" type="video/mp4">
+<video autoplay muted playsinline>
+<source src="InShot_20260604_211622270.mp4" type="video/mp4">
 </video>
 
-<div class="info">
-<h2>Tiger Cobra Guppy</h2>
-<div class="price">৳350 / Pair</div>
+<div class="overlay">
+<h1>🐅 Tiger Cobra Guppy</h1>
+<h2>৳350 / Pair</h2>
+<p>Premium Quality Available</p>
 
 <a class="btn"
 href="https://wa.me/8801606597522">
@@ -105,9 +107,58 @@ Order on WhatsApp
 
 </div>
 
+<div class="right">
+<div>❤️</div>
+<div>💬</div>
+<div>📤</div>
 </div>
 
 </div>
+<div class="page">
+
+<video muted loop playsinline>
+<source src="InShot_20260604_210654716.mp4" type="video/mp4">
+</video>
+
+<div class="overlay">
+<h1>🐅 Tiger Cobra Guppy</h1>
+<h2>৳350 / Pair</h2>
+<p>Healthy & Active Fish</p>
+</div>
+
+</div>
+
+<div class="page">
+
+<video muted loop playsinline>
+<source src="InShot_20260604_210050619.mp4" type="video/mp4">
+</video>
+
+<div class="overlay">
+<h1>🐅 Tiger Cobra Guppy</h1>
+<h2>৳350 / Pair</h2>
+<p>Available Now</p>
+</div>
+
+</div>
+<script>
+const videos = document.querySelectorAll("video");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target;
+    if (entry.isIntersecting) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+}, {
+  threshold: 0.7
+});
+
+videos.forEach(video => observer.observe(video));
+</script>
 
 </body>
 </html>
