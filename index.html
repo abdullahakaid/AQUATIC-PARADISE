@@ -1,79 +1,485 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization Meta Tags for Google Search -->
+    <title>AQUATIC PARADISE - Premium Tiger Cobra Guppy Store Bangladesh</title>
+    <meta name="description" content="Welcome to Aquatic Paradise. Buy premium grade Tiger Cobra Guppy at wholesale & retail price in Bangladesh. Healthy home bred fancy guppy collection.">
+    <meta name="keywords" content="Aquatic Paradise, Tiger Cobra Guppy, Guppy fish price in Bangladesh, Premium Guppy BD, Buy Guppy Online, Fancy Guppy Bangladesh">
+    <meta name="author" content="Aquatic Paradise">
+    
+    <!-- Open Graph for Facebook/Social Sharing -->
+    <meta property="og:title" content="AQUATIC PARADISE - Premium Guppy Store">
+    <meta property="og:description" content="Get exotic and premium grade Tiger Cobra Guppy for 350 BDT per pair. Order via WhatsApp!">
+    <meta property="og:type" content="website">
 
-<title>AQUATIC PARADISE - Tiger Cobra Guppy</title>
+    <style>
+        :root {
+            --primary: #fa8231;
+            --secondary: #2c3e50;
+            --dark: #1e272e;
+            --light: #f5f6fa;
+            --success: #2ecc71;
+        }
 
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#0b1220;
-color:white;
-text-align:center;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-header{
-background:#0f172a;
-padding:15px;
-font-size:22px;
-font-weight:bold;
-color:#38bdf8;
-}
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            padding-bottom: 60px;
+        }
 
-video{
-width:100%;
-max-height:60vh;
-object-fit:cover;
-}
+        /* Navbar & Header */
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+            position: relative;
+        }
 
-.card{
-background:#111827;
-margin:15px;
-padding:15px;
-border-radius:12px;
-}
+        header h1 {
+            font-size: 2.3rem;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
 
-.price{
-color:#22c55e;
-font-size:22px;
-font-weight:bold;
-}
+        header p {
+            font-size: 1rem;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
 
-.btn{
-display:inline-block;
-padding:12px 20px;
-background:#25D366;
-color:white;
-text-decoration:none;
-border-radius:8px;
-margin-top:10px;
-font-weight:bold;
-}
-</style>
+        /* Daraz Style Floating Cart Icon */
+        .cart-icon-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .cart-icon-container:hover {
+            transform: scale(1.05);
+        }
+        .cart-count {
+            background: white;
+            color: var(--primary);
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .badge {
+            background: var(--success);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .price span {
+            font-size: 1rem;
+            color: #7f8c8d;
+            font-weight: normal;
+        }
+
+        /* Quantity & Daraz style buying controls */
+        .qty-selector {
+            margin: 20px 0;
+            display: block;
+        }
+        .qty-label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .qty-btn {
+            background: #e0e0e0;
+            border: none;
+            padding: 8px 16px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .qty-input {
+            width: 60px;
+            text-align: center;
+            padding: 8px;
+            font-size: 1.1rem;
+            border: 1px solid #ccc;
+            margin: 0 5px;
+            border-radius: 4px;
+        }
+
+        .action-btns {
+            margin-top: 20px;
+        }
+
+        .btn-add-cart {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            transition: 0.2s;
+        }
+        .btn-add-cart:hover {
+            background: #d35400;
+        }
+
+        /* Video Showcase Section */
+        .video-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .video-section h3 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 10px;
+        }
+        .video-grid {
+            text-align: center;
+        }
+        .video-container {
+            margin-bottom: 25px;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Daraz Style Cart Sidebar */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 380px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 2000;
+            transition: 0.4s;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .cart-drawer.open {
+            right: 0;
+        }
+        .cart-header {
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .close-cart {
+            float: right;
+            cursor: pointer;
+            color: #ff4757;
+        }
+        .cart-item-details {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .checkout-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin-top: auto;
+        }
+
+        /* Comment Section */
+        .comment-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .comment-section h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        .comment-form input, .comment-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .comment-form button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .comments-list {
+            margin-top: 25px;
+        }
+        .comment-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--secondary);
+        }
+        .comment-author {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        .comment-text {
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--dark);
+            color: #aaa;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>🐟 AQUATIC PARADISE</header>
+    <!-- Floating Daraz Cart Counter -->
+    <div class="cart-icon-container" onclick="toggleCart(true)">
+        🛒 কার্ট (<span id="cart-counter">0</span>)
+    </div>
 
-<!-- ONLY TIGER COBRA VIDEO -->
-<video autoplay muted loop playsinline>
-<source src="InShot_20260604_211622270.mp4" type="video/mp4">
-</video>
+    <header>
+        <h1>AQUATIC PARADISE</h1>
+        <p>Here you can get exotic and premium grade Guppy</p>
+    </header>
 
-<div class="card">
-<h2>Tiger Cobra Guppy</h2>
-<p>Premium Quality Available</p>
-<div class="price">৳350 / Pair</div>
+    <div class="container">
+        <div class="main-layout">
+            
+            <!-- Product Section -->
+            <div class="product-card">
+                <span class="badge">অ্যাভেইলেবল / In Stock</span>
+                <h2 class="product-title">Tiger Cobra Guppy (প্রিমিয়াম গ্রেড জোড়া)</h2>
+                <div class="price">৳ ৩৫০ <span>/ Pair (প্রতি জোড়া)</span></div>
+                
+                <p style="color: #555; margin-bottom: 15px;">
+                    আমাদের নিজস্ব সেটআপে ব্রিড করা অত্যন্ত চঞ্চল ও আকর্ষণীয় জেব্রা/টাইগার প্যাটার্নের কোবরা গাপ্পি। সম্পূর্ণ হোম ব্রিডেড ও রোগমুক্ত।
+                </p>
 
-<a class="btn" href="https://wa.me/8801606597522">
-Order on WhatsApp
-</a>
+                <!-- Quantity Selector -->
+                <div class="qty-selector">
+                    <span class="qty-label">পরিমাণ নির্বাচন করুন (জোড়া):</span>
+                    <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                    <input type="number" id="quantity" class="qty-input" value="1" min="1" readonly>
+                    <button class="qty-btn" onclick="updateQty(1)">+</button>
+                </div>
 
-</div>
+                <div class="action-btns">
+                    <button class="btn-add-cart" onclick="addToCart()">🛒 Add to Cart / কার্টে রাখুন</button>
+                </div>
+            </div>
 
+            <!-- Video Section -->
+            <div class="video-section">
+                <h3>Our Live Tank Videos (মাছের লাইভ ভিডিও কালেকশন)</h3>
+                <p style="margin-bottom: 15px; color:#666;">মাছের লাইভ কালার এবং চঞ্চলতা দেখতে নিচের ভিডিওগুলো প্লে করুন:</p>
+                
+                <div class="video-grid">
+                    <div class="video-container">
+                        <video controls>
+                            <source src="InShot_20260604_210041180.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="InShot_20260604_210636746.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="InShot_20260604_211601053.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment Section -->
+            <div class="comment-section">
+                <h3>গ্রাহক মতামত ও কাস্টমার রিভিউ (Comments)</h3>
+                <div class="comment-form">
+                    <input type="text" id="reviewerName" placeholder="আপনার নাম লিখুন..." required>
+                    <textarea id="reviewerText" rows="3" placeholder="মাছ বা শপ সম্পর্কে আপনার মতামত লিখুন..." required></textarea>
+                    <button onclick="submitComment()">মতামত জমা দিন</button>
+                </div>
+                <div class="comments-list" id="commentsContainer">
+                    <div class="comment-card">
+                        <div class="comment-author">Tanvir Ahmed</div>
+                        <div class="comment-text">মাছগুলো অনেক বেশি একটিভ এবং কালার কোয়ালিটি জাস্ট অসাধারণ ছিল! ধন্যবাদ একুয়াটিক প্যারাডাইস।</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Sidebar Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            আপনার শপিং কার্ট 
+            <span class="close-cart" onclick="toggleCart(false)">❌ বন্ধ করুন</span>
+        </div>
+        <div id="cart-content-area">
+            <p style="color: #888; text-align: center; margin-top: 30px;">কার্টটি একদম খালি!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AQUATIC PARADISE. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let currentCart = { qty: 0, pricePerPair: 350 };
+
+        function updateQty(change) {
+            let qtyInput = document.getElementById('quantity');
+            let newVal = parseInt(qtyInput.value) + change;
+            if(newVal >= 1) {
+                qtyInput.value = newVal;
+            }
+        }
+
+        function addToCart() {
+            let selectedQty = parseInt(document.getElementById('quantity').value);
+            currentCart.qty = selectedQty;
+            document.getElementById('cart-counter').innerText = selectedQty;
+            
+            let totalCost = currentCart.qty * currentCart.pricePerPair;
+            let cartContent = `
+                <div class="cart-item-details">
+                    <strong>📦 পণ্য:</strong> Tiger Cobra Guppy<br>
+                    <strong>🔢 পরিমাণ:</strong> ${currentCart.qty} জোড়া (Pair)<br>
+                    <strong>💰 মোট মূল্য:</strong> ৳ ${totalCost} BDT
+                </div>
+                <a href="https://wa.me/8801606597522?text=Hello%20Aquatic%20Paradise,%20I%20want%20to%20order%20${currentCart.qty}%20pair(s)%20of%20Tiger%20Cobra%20Guppy.%20Total%20Amount:%20${totalCost}%20BDT." 
+                   class="checkout-btn" target="_blank">
+                   💬 WhatsApp-এ অর্ডার কনফার্ম করুন
+                </a>
+            `;
+            document.getElementById('cart-content-area').innerHTML = cartContent;
+            toggleCart(true);
+        }
+
+        function toggleCart(open) {
+            let drawer = document.getElementById('cartDrawer');
+            if(open) {
+                drawer.classList.add('open');
+            } else {
+                drawer.classList.remove('open');
+            }
+        }
+
+        function submitComment() {
+            let name = document.getElementById('reviewerName').value.trim();
+            let text = document.getElementById('reviewerText').value.trim();
+            
+            if(name === "" || text === "") {
+                alert("দয়া করে নাম এবং মন্তব্য দুটোই লিখুন।");
+                return;
+            }
+
+            let container = document.getElementById('commentsContainer');
+            let newComment = document.createElement('div');
+            newComment.className = 'comment-card';
+            newComment.innerHTML = `<div class="comment-author">${name}</div><div class="comment-text">${text}</div>`;
+            
+            container.insertBefore(newComment, container.firstChild);
+            document.getElementById('reviewerName').value = "";
+            document.getElementById('reviewerText').value = "";
+        }
+    </script>
 </body>
 </html>
