@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AQUATIC PARADISE - Premium Aquarium & Guppy Store</title>
+    <title>AQUATIC PARADISE - Tiger Cobra Guppy</title>
     
+    <!-- Link FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -51,12 +52,6 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
         .nav-logo h1 {
             font-size: 20px;
             font-weight: 800;
@@ -70,11 +65,11 @@
             gap: 20px;
             color: var(--dark-blue);
             font-size: 18px;
-            cursor: pointer;
         }
 
         .cart-wrapper {
             position: relative;
+            cursor: pointer;
         }
 
         .cart-badge {
@@ -99,7 +94,6 @@
         .search-container {
             max-width: 600px;
             margin: 0 auto;
-            position: relative;
             display: flex;
         }
 
@@ -119,53 +113,9 @@
             color: white;
             padding: 0 25px;
             border-radius: 0 8px 8px 0;
-            cursor: pointer;
         }
 
-        /* Circular Categories */
-        .category-section {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px 10px;
-            overflow-x: auto;
-            background: white;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .cat-item {
-            text-align: center;
-            cursor: pointer;
-            min-width: 80px;
-        }
-
-        .cat-circle {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background: #e2e8f0;
-            margin: 0 auto 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--dark-blue);
-            border: 2px solid transparent;
-            transition: 0.3s;
-        }
-
-        .cat-item:hover .cat-circle {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .cat-item span {
-            font-size: 12px;
-            font-weight: 600;
-            color: #475569;
-        }
-
-        /* Products Grid */
+        /* Main Content Grid */
         .main-container {
             max-width: 1100px;
             margin: 30px auto;
@@ -176,18 +126,15 @@
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
+        /* 2-Column Grid Layout matching 1000033134.jpg */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
         }
 
-        /* Zatiq Style Product Card */
         .product-card {
             background: white;
             border-radius: 12px;
@@ -195,18 +142,13 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
         }
 
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 125px; /* Aspect Ratio Card Box */
+            padding-top: 125px;
             background: #000;
         }
 
@@ -217,6 +159,26 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .card-reactions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: white;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .react-btn {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .card-body {
@@ -242,37 +204,12 @@
             min-height: 40px;
         }
 
-        /* Reactions underneath the video inside card */
-        .card-reactions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px 10px;
-            background: white;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .react-btn {
-            background: none;
-            border: none;
-            color: #64748b;
-            font-size: 13px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .react-btn:hover {
-            color: red;
-        }
-
-        /* Quantity Incrementor Controls inside Card */
+        /* Quantity Incrementor Controls */
         .qty-controls {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             gap: 10px;
         }
 
@@ -293,7 +230,7 @@
             text-align: center;
         }
 
-        /* Daraz / Zatiq Buttons Style */
+        /* Action Buttons */
         .btn-action-wrapper {
             display: flex;
             flex-direction: column;
@@ -315,11 +252,6 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            transition: 0.2s;
-        }
-
-        .btn-add-cart:hover {
-            background: #f8fafc;
         }
 
         .btn-buy-now {
@@ -338,11 +270,7 @@
             gap: 8px;
         }
 
-        .btn-buy-now:hover {
-            opacity: 0.9;
-        }
-
-        /* Premium Owner-Only Review Input section */
+        /* Notice Board Section */
         .owner-post-section {
             background: white;
             border: 1px solid var(--border-color);
@@ -370,7 +298,7 @@
             border-left: 4px solid var(--primary);
         }
 
-        /* Sticky Footer Social & Policy Section */
+        /* Footer Section */
         footer {
             background: white;
             border-top: 1px solid var(--border-color);
@@ -396,7 +324,6 @@
             justify-content: center;
             color: var(--dark-blue);
             text-decoration: none;
-            font-size: 18px;
         }
 
         .footer-policies {
@@ -413,11 +340,7 @@
             font-size: 13px;
         }
 
-        .footer-policies a:hover {
-            color: var(--primary);
-        }
-
-        /* Floating Absolute Chat Icons */
+        /* Floating Chat Icons */
         .floating-chats {
             position: fixed;
             bottom: 20px;
@@ -439,11 +362,6 @@
             font-size: 24px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .chat-icon:hover {
-            transform: scale(1.1);
         }
 
         .whatsapp-float { background-color: #25D366; }
@@ -451,81 +369,58 @@
 
         @media (max-width: 500px) {
             .product-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 items per row on mobile just like screenshots */
+                grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
-            .product-card {
-                border-radius: 8px;
-            }
-            .card-body {
-                padding: 10px;
-            }
-            .product-price {
-                font-size: 15px;
-            }
-            .product-title {
-                font-size: 12px;
-                margin-bottom: 10px;
-                min-height: 34px;
-            }
-            .btn-add-cart, .btn-buy-now {
-                font-size: 11px;
-                padding: 8px;
-            }
+            .product-card { border-radius: 8px; }
+            .card-body { padding: 10px; }
+            .product-price { font-size: 15px; }
+            .product-title { font-size: 12px; min-height: 34px; margin-bottom: 10px; }
+            .btn-add-cart, .btn-buy-now { font-size: 11px; padding: 8px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Bar -->
     <div class="top-announcement">
-        Professional aquarium cleaning and setup services for homes and offices. We provide...
+        Professional aquarium cleaning and setup services for homes and offices.
     </div>
 
+    <!-- Header Navbar -->
     <div class="navbar">
         <div class="nav-logo">
-            <h1 style="text-transform: uppercase;">AQUATIC PARADISE</h1>
+            <h1>AQUATIC PARADISE</h1>
         </div>
         <div class="nav-icons">
             <i class="fa-regular fa-envelope"></i>
             <i class="fa-solid fa-phone"></i>
             <span style="font-size: 14px; font-weight: 600;">EN</span>
-            <div class="cart-wrapper" onclick="alert('আপনার কার্ট লোড হচ্ছে...')">
+            <div class="cart-wrapper" onclick="alert('আপনার কার্ট ওপেন হচ্ছে...')">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-badge" id="global-cart-count">0</span>
             </div>
         </div>
     </div>
 
+    <!-- Search Section -->
     <div class="search-section">
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search your desired product">
+            <input type="text" class="search-input" placeholder="Search for Tiger Cobra Guppy...">
             <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>
 
-    <div class="category-section">
-        <div class="cat-item">
-            <div class="cat-circle"><i class="fa-solid fa-fish-fins"></i></div>
-            <span>All Products</span>
-        </div>
-        <div class="cat-item">
-            <div class="cat-circle"><i class="fa-solid fa-water"></i></div>
-            <span>Saltwater</span>
-        </div>
-        <div class="cat-item">
-            <div class="cat-circle"><i class="fa-solid fa-seedling"></i></div>
-            <span>Freshwater</span>
-        </div>
-    </div>
-
+    <!-- Main Section -->
     <div class="main-container">
         <div class="section-title">
-            <span>All Products</span>
-            <span style="font-size: 14px; color: #64748b; font-weight: normal;">Sort by: Default <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i></span>
+            <span>Tiger Cobra Guppy Collection</span>
         </div>
 
+        <!-- 2-Column Responsive Grid with your 3 Videos -->
         <div class="product-grid">
             
+            <!-- Video 1 Card -->
             <div class="product-card">
                 <div class="video-wrapper">
                     <video controls playsinline preload="metadata">
@@ -534,11 +429,11 @@
                 </div>
                 <div class="card-reactions">
                     <button class="react-btn" onclick="addLike(this)"><i class="fa-regular fa-heart"></i> <span>0</span></button>
-                    <span style="font-size: 11px; color:#94a3b8;">Live Review</span>
+                    <span style="font-size: 11px; color:#94a3b8;">Live Stock ①</span>
                 </div>
                 <div class="card-body">
                     <div class="product-price">Tk 350</div>
-                    <div class="product-title">Tiger Cobra Guppy - Premium Home Bred Show Quality Pair</div>
+                    <div class="product-title">Tiger Cobra Guppy - Premium Active Male/Female Pair</div>
                     
                     <div class="qty-controls">
                         <button class="qty-btn" onclick="changeQuantity('qty-1', -1)">-</button>
@@ -548,11 +443,12 @@
 
                     <div class="btn-action-wrapper">
                         <button class="btn-add-cart" onclick="updateCartCounter('qty-1')"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
-                        <button class="btn-buy-now" onclick="buyNowWhatsApp('Tiger Cobra Guppy', 350, 'qty-1')"><i class="fa-solid fa-bolt"></i> Buy now</button>
+                        <button class="btn-buy-now" onclick="buyNowWhatsApp('Tiger Cobra Guppy (Stock 1)', 350, 'qty-1')"><i class="fa-solid fa-bolt"></i> Buy now</button>
                     </div>
                 </div>
             </div>
 
+            <!-- Video 2 Card -->
             <div class="product-card">
                 <div class="video-wrapper">
                     <video controls playsinline preload="metadata">
@@ -561,11 +457,11 @@
                 </div>
                 <div class="card-reactions">
                     <button class="react-btn" onclick="addLike(this)"><i class="fa-regular fa-heart"></i> <span>0</span></button>
-                    <span style="font-size: 11px; color:#94a3b8;">Live Review</span>
+                    <span style="font-size: 11px; color:#94a3b8;">Live Stock ②</span>
                 </div>
                 <div class="card-body">
-                    <div class="product-price">Tk 450</div>
-                    <div class="product-title">Red Metal Lace Guppy - Exotic Line Breeding Healthy Stock</div>
+                    <div class="product-price">Tk 350</div>
+                    <div class="product-title">Tiger Cobra Guppy - High Quality Pattern Tank Bred</div>
                     
                     <div class="qty-controls">
                         <button class="qty-btn" onclick="changeQuantity('qty-2', -1)">-</button>
@@ -575,11 +471,12 @@
 
                     <div class="btn-action-wrapper">
                         <button class="btn-add-cart" onclick="updateCartCounter('qty-2')"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
-                        <button class="btn-buy-now" onclick="buyNowWhatsApp('Red Metal Lace Guppy', 450, 'qty-2')"><i class="fa-solid fa-bolt"></i> Buy now</button>
+                        <button class="btn-buy-now" onclick="buyNowWhatsApp('Tiger Cobra Guppy (Stock 2)', 350, 'qty-2')"><i class="fa-solid fa-bolt"></i> Buy now</button>
                     </div>
                 </div>
             </div>
 
+            <!-- Video 3 Card -->
             <div class="product-card">
                 <div class="video-wrapper">
                     <video controls playsinline preload="metadata">
@@ -588,11 +485,11 @@
                 </div>
                 <div class="card-reactions">
                     <button class="react-btn" onclick="addLike(this)"><i class="fa-regular fa-heart"></i> <span>0</span></button>
-                    <span style="font-size: 11px; color:#94a3b8;">Live Review</span>
+                    <span style="font-size: 11px; color:#94a3b8;">Live Stock ③</span>
                 </div>
                 <div class="card-body">
-                    <div class="product-price">Tk 120</div>
-                    <div class="product-title">Anubias Barteri Var. Nana - Low Light Live Aquatic Plant Bunch</div>
+                    <div class="product-price">Tk 350</div>
+                    <div class="product-title">Tiger Cobra Guppy - Healthy Colony Fancy Selection</div>
                     
                     <div class="qty-controls">
                         <button class="qty-btn" onclick="changeQuantity('qty-3', -1)">-</button>
@@ -602,18 +499,19 @@
 
                     <div class="btn-action-wrapper">
                         <button class="btn-add-cart" onclick="updateCartCounter('qty-3')"><i class="fa-solid fa-cart-plus"></i> Add to cart</button>
-                        <button class="btn-buy-now" onclick="buyNowWhatsApp('Anubias Barteri Plant', 120, 'qty-3')"><i class="fa-solid fa-bolt"></i> Buy now</button>
+                        <button class="btn-buy-now" onclick="buyNowWhatsApp('Tiger Cobra Guppy (Stock 3)', 350, 'qty-3')"><i class="fa-solid fa-bolt"></i> Buy now</button>
                     </div>
                 </div>
             </div>
 
         </div>
 
+        <!-- Owner Update Section -->
         <div class="owner-post-section">
             <span class="owner-badge"><i class="fa-solid fa-circle-check"></i> OWNER UPDATE</span>
             <h3 style="font-size: 16px; margin-bottom: 8px; color: var(--dark-blue);">Welcome to Aquatic Paradise Notice Board</h3>
             <p style="font-size: 13px; color:#475569; line-height: 1.5;">
-                আমাদের সকল প্রিমিয়াম গাপ্পি ও অ্যাকুয়াটিক প্ল্যান্টস সরাসরি আমাদের ইনডোর ব্রিডিং ফার্ম থেকে হোম-ব্রিড করা হয়। যেকোনো প্রশ্ন থাকলে নিচের ফ্লোটিং মেসেঞ্জার বা হোয়াটসঅ্যাপে আমাদের নক দিন। নতুন স্টক (Red Metal Lace) সাইটে যুক্ত করা হয়েছে!
+                আমাদের বর্তমান স্টকে শুধুমাত্র চমৎকার কোয়ালিটির <b>Tiger Cobra Guppy</b> অ্যাভেইলেবল আছে। উপরে দেওয়া ৩টি ভিডিওতেই আমাদের লাইভ স্টকের মাছগুলো দেখানো হয়েছে। আপনার পছন্দের পরিমানে সিলেক্ট করে সরাসরি অর্ডার করতে 'Buy Now' বাটনে ক্লিক করুন।
             </p>
             <div class="comment-display-box">
                 <strong style="font-size: 12px; color: var(--primary);">Official Store Status:</strong>
@@ -622,6 +520,7 @@
         </div>
     </div>
 
+    <!-- Footer Links -->
     <footer>
         <div class="nav-logo" style="justify-content: center; margin-bottom: 20px;">
             <h2 style="font-size: 18px; font-weight: bold;">AQUATIC PARADISE</h2>
@@ -639,6 +538,7 @@
         <p style="font-size: 12px; color: #94a3b8; margin-top: 10px;">&copy; 2026 AQUATIC PARADISE. Built to Scale Perfectly.</p>
     </footer>
 
+    <!-- Fixed Floating Icons -->
     <div class="floating-chats">
         <a href="https://wa.me/8801606597522" class="chat-icon whatsapp-float" target="_blank">
             <i class="fa-brands fa-whatsapp"></i>
@@ -648,6 +548,7 @@
         </a>
     </div>
 
+    <!-- Scripts -->
     <script>
         let totalCartCount = 0;
 
@@ -655,9 +556,7 @@
             let el = document.getElementById(id);
             let currentVal = parseInt(el.innerText);
             let newVal = currentVal + change;
-            if (newVal >= 1) {
-                el.innerText = newVal;
-            }
+            if (newVal >= 1) { el.innerText = newVal; }
         }
 
         function updateCartCounter(id) {
@@ -670,17 +569,14 @@
         function buyNowWhatsApp(productName, price, qtyId) {
             let selectedQty = parseInt(document.getElementById(qtyId).innerText);
             let totalCost = price * selectedQty;
-            let message = `Hello Aquatic Paradise, I want to buy:\n\n📦 Product: ${productName}\n🔢 Quantity: ${selectedQty} Pair(s)/Bunch\n💰 Total Price: ${totalCost} Tk\n\nPlease process my order!`;
-            
-            let encryptedUrl = "https://wa.me/8801606597522?text=" + encodeURIComponent(message);
-            window.open(encryptedUrl, '_blank');
+            let message = `Hello Aquatic Paradise, I want to buy:\n\n📦 Product: ${productName}\n🔢 Quantity: ${selectedQty} Pair(s)\n💰 Total Price: ${totalCost} Tk\n\nPlease process my order!`;
+            window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(message), '_blank');
         }
 
         function addLike(btn) {
             let countSpan = btn.querySelector('span');
             let currentLikes = parseInt(countSpan.innerText);
             let icon = btn.querySelector('i');
-            
             countSpan.innerText = currentLikes + 1;
             icon.classList.remove('fa-regular');
             icon.classList.add('fa-solid');
