@@ -4,120 +4,195 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AQUATIC PARADISE - Premium Guppy Fish Bangladesh</title>
+<title>AQUATIC PARADISE - Premium Aquarium Fish Bangladesh</title>
 
-<meta name="description" content="AQUATIC PARADISE - Premium Guppy Fish Shop in Bangladesh. Tiger Cobra Guppy, healthy fish, fast delivery. Order on WhatsApp.">
-<meta name="keywords" content="guppy fish bd, aquarium fish, aquatic paradise, tiger cobra guppy, fish shop bangladesh">
-
-<!-- Google verification (paste your code here later) -->
-<!-- <meta name="google-site-verification" content="YOUR_CODE_HERE"> -->
+<meta name="description" content="Buy premium aquarium fish in Bangladesh. Guppy, Betta, Molly, Platy and more. Fast delivery & WhatsApp order.">
+<meta name="keywords" content="aquarium fish bd, guppy fish, betta fish, aquatic paradise, fish shop bangladesh">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b1220;
-  color: white;
+body{
+margin:0;
+font-family:Arial;
+background:#0b1220;
+color:white;
 }
 
-header {
-  background: #0f172a;
-  padding: 15px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  color: #38bdf8;
+header{
+background:#0f172a;
+padding:15px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+color:#38bdf8;
 }
 
-.container {
-  padding: 20px;
-  text-align: center;
+.container{
+padding:15px;
 }
 
-video {
-  width: 95%;
-  max-width: 500px;
-  border-radius: 12px;
-  margin-top: 15px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;
 }
 
-h1 {
-  margin: 10px 0;
-  color: #38bdf8;
+.card{
+background:#111827;
+border-radius:12px;
+padding:10px;
+text-align:center;
 }
 
-.price {
-  font-size: 24px;
-  margin: 15px 0;
-  color: #22c55e;
-  font-weight: bold;
+.card img{
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:10px;
 }
 
-.card {
-  background: #111827;
-  padding: 15px;
-  margin-top: 20px;
-  border-radius: 12px;
+.price{
+color:#22c55e;
+font-weight:bold;
+margin:5px 0;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 20px;
-  background: #25D366;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
+.btn{
+display:inline-block;
+padding:8px 12px;
+background:#25D366;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:12px;
+margin-top:5px;
 }
 
-.btn:hover {
-  background: #1da851;
+.actions{
+display:flex;
+justify-content:space-between;
+margin-top:8px;
+font-size:14px;
+cursor:pointer;
 }
 
-footer {
-  margin-top: 30px;
-  padding: 15px;
-  text-align: center;
-  font-size: 12px;
-  color: #94a3b8;
+.commentBox{
+margin-top:20px;
+background:#111827;
+padding:10px;
+border-radius:10px;
+}
+
+input{
+width:80%;
+padding:8px;
+border-radius:6px;
+border:none;
+}
+
+button{
+padding:8px;
+border:none;
+background:#38bdf8;
+color:black;
+border-radius:6px;
+cursor:pointer;
+}
+
+.comment{
+font-size:13px;
+margin-top:5px;
+color:#cbd5e1;
 }
 </style>
-
 </head>
 
 <body>
 
-<header>
-🐟 AQUATIC PARADISE
-</header>
+<header>🐟 AQUATIC PARADISE</header>
 
 <div class="container">
 
-<h1>Premium Guppy Fish Shop</h1>
-<p>Healthy & High Quality Aquarium Fish in Bangladesh</p>
+<h2>Premium Fish Collection</h2>
 
-<!-- VIDEO -->
-<video controls autoplay muted loop>
-  <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
-  Your browser does not support video.
-</video>
+<div class="grid">
 
+<!-- PRODUCT 1 -->
 <div class="card">
-  <h2>Tiger Cobra Guppy</h2>
-  <p>Premium Quality • Healthy Fish • Fast Delivery</p>
-  <div class="price">৳350 / Pair</div>
+<img src="https://i.imgur.com/5b6X7XK.jpg">
+<h4>Guppy Fish</h4>
+<div class="price">৳350 / Pair</div>
 
-  <a class="btn" href="https://wa.me/8801606597522" target="_blank">
-    🟢 Order on WhatsApp
-  </a>
+<a class="btn" href="https://wa.me/8801606597522">Order</a>
+
+<div class="actions">
+<div onclick="like(this)">❤️ <span>0</span></div>
+<div onclick="alert('Use comment box below')">💬</div>
+</div>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="card">
+<img src="https://i.imgur.com/2QZQZQZ.jpg">
+<h4>Betta Fish</h4>
+<div class="price">৳500</div>
+
+<a class="btn" href="https://wa.me/8801606597522">Order</a>
+
+<div class="actions">
+<div onclick="like(this)">❤️ <span>0</span></div>
+<div onclick="alert('Use comment box below')">💬</div>
+</div>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="card">
+<img src="https://i.imgur.com/3R3R3R3.jpg">
+<h4>Molly Fish</h4>
+<div class="price">৳300</div>
+
+<a class="btn" href="https://wa.me/8801606597522">Order</a>
+
+<div class="actions">
+<div onclick="like(this)">❤️ <span>0</span></div>
+<div onclick="alert('Use comment box below')">💬</div>
+</div>
 </div>
 
 </div>
 
-<footer>
-© 2026 AQUATIC PARADISE | All Rights Reserved
-</footer>
+<!-- COMMENT SECTION -->
+<div class="commentBox">
+<h3>Live Comments</h3>
+
+<input id="cInput" placeholder="Write comment...">
+<button onclick="addComment()">Post</button>
+
+<div id="comments"></div>
+</div>
+
+</div>
+
+<script>
+
+// LIKE SYSTEM
+function like(el){
+let span = el.querySelector("span");
+span.innerText = parseInt(span.innerText) + 1;
+}
+
+// COMMENT SYSTEM
+function addComment(){
+let input = document.getElementById("cInput");
+if(input.value.trim() !== ""){
+let div = document.createElement("div");
+div.className = "comment";
+div.innerText = "💬 " + input.value;
+document.getElementById("comments").appendChild(div);
+input.value = "";
+}
+}
+
+</script>
 
 </body>
 </html>
