@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AQUATIC PARADISE - Fish Shop</title>
+<title>AQUATIC PARADISE - Tiger Cobra Guppy</title>
 
 <style>
 body{
@@ -12,105 +12,45 @@ margin:0;
 font-family:Arial;
 background:#0b1220;
 color:white;
+text-align:center;
 }
 
 header{
 background:#0f172a;
 padding:15px;
-text-align:center;
 font-size:22px;
 font-weight:bold;
 color:#38bdf8;
 }
 
-/* VIDEO */
-.hero video{
+video{
 width:100%;
-height:220px;
+max-height:60vh;
 object-fit:cover;
-}
-
-/* PRODUCTS */
-.container{padding:15px;}
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:12px;
 }
 
 .card{
 background:#111827;
-padding:10px;
+margin:15px;
+padding:15px;
 border-radius:12px;
-text-align:center;
-}
-
-.card img{
-width:100%;
-height:120px;
-object-fit:cover;
-border-radius:10px;
 }
 
 .price{
 color:#22c55e;
+font-size:22px;
 font-weight:bold;
 }
 
 .btn{
 display:inline-block;
-padding:8px;
+padding:12px 20px;
 background:#25D366;
 color:white;
-border-radius:8px;
 text-decoration:none;
-margin-top:5px;
-font-size:12px;
-}
-
-.cartBar{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#111827;
-padding:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.cartBtn{
-background:#38bdf8;
-padding:8px 12px;
-border:none;
 border-radius:8px;
-cursor:pointer;
-}
-
-/* CART MODAL */
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-}
-
-.modalContent{
-background:#111827;
-margin:10% auto;
-padding:15px;
-width:90%;
-border-radius:10px;
-}
-
-.close{
-float:right;
-cursor:pointer;
-font-size:20px;
+margin-top:10px;
+font-weight:bold;
 }
 </style>
 </head>
@@ -119,99 +59,21 @@ font-size:20px;
 
 <header>🐟 AQUATIC PARADISE</header>
 
-<div class="hero">
+<!-- ONLY TIGER COBRA VIDEO -->
 <video autoplay muted loop playsinline>
-<source src="InShot_20260604_211622270.mp4">
+<source src="InShot_20260604_211622270.mp4" type="video/mp4">
 </video>
-</div>
-
-<div class="container">
-<h2>Fish Collection</h2>
-
-<div class="grid">
 
 <div class="card">
-<img src="https://i.imgur.com/5b6X7XK.jpg">
-<h4>Guppy Fish</h4>
-<p class="price">৳350 / Pair</p>
-<button class="btn" onclick="addToCart('Guppy Fish',350)">Add to Cart</button>
-</div>
+<h2>Tiger Cobra Guppy</h2>
+<p>Premium Quality Available</p>
+<div class="price">৳350 / Pair</div>
 
-<div class="card">
-<img src="https://i.imgur.com/2QZQZQZ.jpg">
-<h4>Betta Fish</h4>
-<p class="price">৳350 / Pair</p>
-<button class="btn" onclick="addToCart('Betta Fish',350)">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="https://i.imgur.com/3R3R3R3.jpg">
-<h4>Molly Fish</h4>
-<p class="price">৳350 / Pair</p>
-<button class="btn" onclick="addToCart('Molly Fish',350)">Add to Cart</button>
-</div>
+<a class="btn" href="https://wa.me/8801606597522">
+Order on WhatsApp
+</a>
 
 </div>
-</div>
-
-<!-- CART BAR -->
-<div class="cartBar">
-<div>Cart: <span id="count">0</span> items</div>
-<button class="cartBtn" onclick="openCart()">View Cart</button>
-</div>
-
-<!-- CART MODAL -->
-<div id="modal" class="modal">
-<div class="modalContent">
-<span class="close" onclick="closeCart()">✖</span>
-<h3>Your Cart</h3>
-
-<div id="cartItems"></div>
-
-<br>
-<button class="btn" style="font-size:14px;" onclick="checkout()">
-Checkout on WhatsApp
-</button>
-
-</div>
-</div>
-
-<script>
-
-let cart = [];
-
-function addToCart(name,price){
-cart.push({name,price});
-document.getElementById("count").innerText = cart.length;
-alert(name+" added to cart");
-}
-
-function openCart(){
-document.getElementById("modal").style.display="block";
-
-let html="";
-cart.forEach((item,i)=>{
-html += `<p>${item.name} - ৳${item.price}</p>`;
-});
-
-document.getElementById("cartItems").innerHTML = html;
-}
-
-function closeCart(){
-document.getElementById("modal").style.display="none";
-}
-
-function checkout(){
-
-let msg="Aquatic Paradise Order:%0A";
-cart.forEach(i=>{
-msg += i.name+" - "+i.price+" BDT%0A";
-});
-
-window.open("https://wa.me/8801606597522?text="+msg,"_blank");
-}
-
-</script>
 
 </body>
 </html>
