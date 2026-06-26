@@ -4,10 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AQUATIC PARADISE - Premium Aquarium Fish Bangladesh</title>
-
-<meta name="description" content="Buy premium aquarium fish in Bangladesh. Guppy, Betta, Molly, Platy and more. Fast delivery & WhatsApp order.">
-<meta name="keywords" content="aquarium fish bd, guppy fish, betta fish, aquatic paradise, fish shop bangladesh">
+<title>AQUATIC PARADISE - Fish Shop</title>
 
 <style>
 body{
@@ -26,10 +23,15 @@ font-weight:bold;
 color:#38bdf8;
 }
 
-.container{
-padding:15px;
+/* VIDEO */
+.hero video{
+width:100%;
+height:220px;
+object-fit:cover;
 }
 
+/* PRODUCTS */
+.container{padding:15px;}
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -38,8 +40,8 @@ gap:12px;
 
 .card{
 background:#111827;
-border-radius:12px;
 padding:10px;
+border-radius:12px;
 text-align:center;
 }
 
@@ -53,55 +55,62 @@ border-radius:10px;
 .price{
 color:#22c55e;
 font-weight:bold;
-margin:5px 0;
 }
 
 .btn{
 display:inline-block;
-padding:8px 12px;
+padding:8px;
 background:#25D366;
 color:white;
-text-decoration:none;
 border-radius:8px;
-font-size:12px;
+text-decoration:none;
 margin-top:5px;
+font-size:12px;
 }
 
-.actions{
+.cartBar{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#111827;
+padding:10px;
 display:flex;
 justify-content:space-between;
-margin-top:8px;
-font-size:14px;
+align-items:center;
+}
+
+.cartBtn{
+background:#38bdf8;
+padding:8px 12px;
+border:none;
+border-radius:8px;
 cursor:pointer;
 }
 
-.commentBox{
-margin-top:20px;
+/* CART MODAL */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+}
+
+.modalContent{
 background:#111827;
-padding:10px;
+margin:10% auto;
+padding:15px;
+width:90%;
 border-radius:10px;
 }
 
-input{
-width:80%;
-padding:8px;
-border-radius:6px;
-border:none;
-}
-
-button{
-padding:8px;
-border:none;
-background:#38bdf8;
-color:black;
-border-radius:6px;
+.close{
+float:right;
 cursor:pointer;
-}
-
-.comment{
-font-size:13px;
-margin-top:5px;
-color:#cbd5e1;
+font-size:20px;
 }
 </style>
 </head>
@@ -110,86 +119,96 @@ color:#cbd5e1;
 
 <header>🐟 AQUATIC PARADISE</header>
 
-<div class="container">
+<div class="hero">
+<video autoplay muted loop playsinline>
+<source src="InShot_20260604_211622270.mp4">
+</video>
+</div>
 
-<h2>Premium Fish Collection</h2>
+<div class="container">
+<h2>Fish Collection</h2>
 
 <div class="grid">
 
-<!-- PRODUCT 1 -->
 <div class="card">
 <img src="https://i.imgur.com/5b6X7XK.jpg">
 <h4>Guppy Fish</h4>
-<div class="price">৳350 / Pair</div>
-
-<a class="btn" href="https://wa.me/8801606597522">Order</a>
-
-<div class="actions">
-<div onclick="like(this)">❤️ <span>0</span></div>
-<div onclick="alert('Use comment box below')">💬</div>
-</div>
+<p class="price">৳350 / Pair</p>
+<button class="btn" onclick="addToCart('Guppy Fish',350)">Add to Cart</button>
 </div>
 
-<!-- PRODUCT 2 -->
 <div class="card">
 <img src="https://i.imgur.com/2QZQZQZ.jpg">
 <h4>Betta Fish</h4>
-<div class="price">৳500</div>
-
-<a class="btn" href="https://wa.me/8801606597522">Order</a>
-
-<div class="actions">
-<div onclick="like(this)">❤️ <span>0</span></div>
-<div onclick="alert('Use comment box below')">💬</div>
-</div>
+<p class="price">৳350 / Pair</p>
+<button class="btn" onclick="addToCart('Betta Fish',350)">Add to Cart</button>
 </div>
 
-<!-- PRODUCT 3 -->
 <div class="card">
 <img src="https://i.imgur.com/3R3R3R3.jpg">
 <h4>Molly Fish</h4>
-<div class="price">৳300</div>
-
-<a class="btn" href="https://wa.me/8801606597522">Order</a>
-
-<div class="actions">
-<div onclick="like(this)">❤️ <span>0</span></div>
-<div onclick="alert('Use comment box below')">💬</div>
-</div>
+<p class="price">৳350 / Pair</p>
+<button class="btn" onclick="addToCart('Molly Fish',350)">Add to Cart</button>
 </div>
 
 </div>
-
-<!-- COMMENT SECTION -->
-<div class="commentBox">
-<h3>Live Comments</h3>
-
-<input id="cInput" placeholder="Write comment...">
-<button onclick="addComment()">Post</button>
-
-<div id="comments"></div>
 </div>
 
+<!-- CART BAR -->
+<div class="cartBar">
+<div>Cart: <span id="count">0</span> items</div>
+<button class="cartBtn" onclick="openCart()">View Cart</button>
+</div>
+
+<!-- CART MODAL -->
+<div id="modal" class="modal">
+<div class="modalContent">
+<span class="close" onclick="closeCart()">✖</span>
+<h3>Your Cart</h3>
+
+<div id="cartItems"></div>
+
+<br>
+<button class="btn" style="font-size:14px;" onclick="checkout()">
+Checkout on WhatsApp
+</button>
+
+</div>
 </div>
 
 <script>
 
-// LIKE SYSTEM
-function like(el){
-let span = el.querySelector("span");
-span.innerText = parseInt(span.innerText) + 1;
+let cart = [];
+
+function addToCart(name,price){
+cart.push({name,price});
+document.getElementById("count").innerText = cart.length;
+alert(name+" added to cart");
 }
 
-// COMMENT SYSTEM
-function addComment(){
-let input = document.getElementById("cInput");
-if(input.value.trim() !== ""){
-let div = document.createElement("div");
-div.className = "comment";
-div.innerText = "💬 " + input.value;
-document.getElementById("comments").appendChild(div);
-input.value = "";
+function openCart(){
+document.getElementById("modal").style.display="block";
+
+let html="";
+cart.forEach((item,i)=>{
+html += `<p>${item.name} - ৳${item.price}</p>`;
+});
+
+document.getElementById("cartItems").innerHTML = html;
 }
+
+function closeCart(){
+document.getElementById("modal").style.display="none";
+}
+
+function checkout(){
+
+let msg="Aquatic Paradise Order:%0A";
+cart.forEach(i=>{
+msg += i.name+" - "+i.price+" BDT%0A";
+});
+
+window.open("https://wa.me/8801606597522?text="+msg,"_blank");
 }
 
 </script>
