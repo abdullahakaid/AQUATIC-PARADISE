@@ -323,31 +323,50 @@
         .info-item:not(:last-child) { border-bottom: 1px solid #334155; }
         .info-item i { font-size: 16px; color: var(--accent); }
 
-        /* Reviews Section */
+        /* Real Review Submission Button Section */
         .reviews-section {
             background: var(--card-dark);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
             border: 1px solid #334155;
+            text-align: center;
         }
 
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .review-title {
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-text);
+        }
+
+        .review-desc {
+            font-size: 13px;
+            color: var(--secondary-text);
             margin-bottom: 15px;
+            line-height: 1.4;
         }
 
-        .stars-summary { color: var(--star-color); font-size: 14px; }
-
-        .review-msg {
-            background: #0f172a;
-            padding: 12px;
+        .btn-submit-review {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 10px 20px;
             border-radius: 8px;
             font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s all ease-in-out;
+        }
+
+        .btn-submit-review:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
         }
 
         /* Real Cart Slide Panel */
@@ -457,10 +476,9 @@
     <!-- Main Content Box -->
     <div class="main-container">
 
-        <!-- Combined Media Block (Only Your 3 Pure Videos) -->
+        <!-- Combined Media Block -->
         <div class="media-slider-box" id="product-gallery">
             <div class="slider-wrapper">
-                <!-- Only Your 3 Pure Videos Inside Slider -->
                 <div class="slide-item active"><video src="InShot_20260604_211622270.mp4" controls playsinline></video></div>
                 <div class="slide-item"><video src="InShot_20260604_210654716.mp4" controls playsinline></video></div>
                 <div class="slide-item"><video src="InShot_20260604_210050619.mp4" controls playsinline></video></div>
@@ -513,18 +531,13 @@
             </div>
         </div>
 
-        <!-- Ratings & Customer Reviews Section -->
+        <!-- WhatsApp Review Section (100% Real Feedback) -->
         <div class="reviews-section">
-            <div class="review-header">
-                <h3 style="font-size: 15px;">Customer Reviews & Rating</h3>
-                <div class="stars-summary">★★★★★ 4.9 (8)</div>
-            </div>
-            <div class="review-msg">
-                <strong>Sajib Ahmed:</strong> ভাই, টাইগার কোব্রা গাপ্পিগুলোর কালার প্যাটার্ন জাস্ট অসাধারণ ছিল। সব একদম অ্যাক্টিভ হেলদি মাছ।
-            </div>
-            <div class="review-msg">
-                <strong>Anik Rahman:</strong> গ্রেট প্যাকেজিং এবং অনটাইম রেসপন্স। রেকমেন্ডেড শপ!
-            </div>
+            <div class="review-title">Customer Feedback & Reviews</div>
+            <div class="review-desc">আপনার কোনো মতামত বা রিভিউ থাকলে সরাসরি আমাদের হোয়াটসঅ্যাপে পাঠিয়ে দিন। আপনার মূল্যবান রিভিউটি আমরা এই পেজে যুক্ত করে দেব!</div>
+            <button class="btn-submit-review" onclick="sendReviewViaWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Write a Review
+            </button>
         </div>
 
     </div>
@@ -682,6 +695,12 @@
             if(cart.length === 0) return alert("Add items to your cart first.");
             let item = cart[0];
             let message = `Hello Aquatic Paradise, I am checking out my cart:\n\n🛒 Order Details:\n- ${item.name} (x${item.qty})\n\n💵 Grand Total: ${item.total} Tk\n\nPlease finalize my delivery process.`;
+            window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(message), '_blank');
+        }
+
+        // WhatsApp Review Direct Messaging Logic
+        function sendReviewViaWhatsApp() {
+            let message = `Hello Aquatic Paradise,\n\nI want to share my honest feedback/review about your fish product:\n\n✍️ Review Message: `;
             window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(message), '_blank');
         }
 
