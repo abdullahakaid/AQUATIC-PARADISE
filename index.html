@@ -39,6 +39,28 @@
             color: var(--primary-text);
             padding-bottom: 80px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 2. DYNAMIC AMBIENT GLOW BACKDROP */
+        .ambient-glow-bg {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(9, 13, 22, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(40px);
+            pointer-events: none;
+            animation: pulseGlow 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+            100% { transform: translateX(-50%) scale(1.3); opacity: 0.9; }
         }
 
         /* Preloader / Skeleton Effect */
@@ -102,6 +124,7 @@
             color: var(--primary-text);
             font-size: 20px;
             cursor: pointer;
+            transition: transform 0.1s ease;
         }
 
         .badge {
@@ -168,7 +191,7 @@
             cursor: pointer;
             font-size: 13px;
             font-weight: 600;
-            transition: 0.3s;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .cat-btn.active {
@@ -203,13 +226,13 @@
             box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
         }
 
-        /* NEW Animated Glowing Border Logic Added Here Safely */
+        /* Animated Glowing Border Logic */
         .media-slider-box {
             position: relative;
             background: var(--card-dark);
             border-radius: 16px;
             margin-bottom: 20px;
-            padding: 2px; /* Border Thickness */
+            padding: 2px;
             background: linear-gradient(90deg, var(--accent), #1e293b, var(--accent));
             background-size: 200% 200%;
             animation: borderGlowFlow 4s linear infinite;
@@ -227,7 +250,7 @@
             height: 320px;
             display: flex;
             overflow: hidden;
-            border-radius: 14px; /* Inner Corner Curve */
+            border-radius: 14px;
         }
 
         /* Premium Glass Tag Overlay */
@@ -276,6 +299,7 @@
             border-radius: 50%;
             cursor: pointer;
             z-index: 10;
+            transition: transform 0.1s ease;
         }
         .prev-btn { left: 10px; }
         .next-btn { right: 10px; }
@@ -301,13 +325,38 @@
 
         .dot.active { background: var(--accent); width: 18px; border-radius: 3px; }
 
-        /* Product Main Info Card */
+        /* 1. PRODUCT CARD WITH 3D PARALLAX & METALLIC SHINE */
         .product-detail-card {
             background: var(--card-dark);
             border-radius: 16px;
             padding: 20px;
             margin-bottom: 20px;
             border: 1px solid #1e293b;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+        }
+
+        /* Metallic Metallic Shine Overlay effect */
+        .product-detail-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(
+                125deg,
+                rgba(255, 255, 255, 0) 30%,
+                rgba(255, 255, 255, 0.04) 40%,
+                rgba(255, 255, 255, 0.08) 50%,
+                rgba(255, 255, 255, 0.04) 60%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            transform: rotate(-45deg);
+            transition: none;
+            pointer-events: none;
+            z-index: 5;
         }
 
         .p-title-row {
@@ -315,6 +364,7 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 10px;
+            transform: translateZ(15px); /* 3D Depth Layer */
         }
 
         .p-title { font-size: 18px; font-weight: 700; line-height: 1.4; }
@@ -325,7 +375,7 @@
             color: var(--secondary-text);
             font-size: 22px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.2s ease;
         }
         .wishlist-btn.active { color: var(--heart-color); text-shadow: 0 0 10px var(--heart-color); }
 
@@ -335,6 +385,7 @@
             color: var(--accent);
             margin: 12px 0;
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+            transform: translateZ(25px); /* More depth for pricing */
         }
 
         /* Quantity Controls */
@@ -343,6 +394,7 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 20px;
+            transform: translateZ(10px);
         }
 
         .qty-control-box {
@@ -363,15 +415,18 @@
             font-weight: bold;
             font-size: 18px;
             cursor: pointer;
+            transition: background 0.1s;
         }
+        .qty-action-btn:active { background: #4b5563; }
 
         .qty-display { width: 40px; text-align: center; font-weight: 600; }
 
-        /* Action Buttons with iPhone Button Glow */
+        /* Action Buttons with 3. HAPTIC RIPPLE & BOUNCE EFFECTS */
         .action-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
+            transform: translateZ(20px);
         }
 
         .btn-main {
@@ -385,12 +440,32 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
+        }
+
+        /* Haptic active state down-scaling */
+        .btn-main:active, .slider-btn:active, .nav-btn:active, .cat-btn:active, .btn-write-review:active {
+            transform: scale(0.94);
+        }
+
+        /* Ripple wave container */
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect 0.5s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to { transform: scale(4); opacity: 0; }
         }
 
         .btn-cart-add { background: #1f2937; color: white; border: 1px solid #374151; }
         .btn-buy-whatsapp { background: #25D366; color: black; box-shadow: var(--btn-glow); }
-        .btn-buy-whatsapp:hover { transform: translateY(-2px); }
 
         /* Custom Info Cards */
         .info-card {
@@ -429,6 +504,8 @@
             background: #25D366; color: black; border: none; padding: 12px 20px;
             border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer;
             display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--btn-glow);
+            transition: transform 0.1s ease;
+            position: relative; overflow: hidden;
         }
 
         /* Live Floating WhatsApp Chat Widget */
@@ -447,6 +524,7 @@
             z-index: 999;
             cursor: pointer;
             animation: pulse 2s infinite;
+            transition: transform 0.1s ease;
         }
 
         @keyframes pulse {
@@ -455,6 +533,7 @@
             100% { transform: scale(1); }
         }
 
+        .whatsapp-floating-widget:active { transform: scale(0.9); }
         .whatsapp-floating-widget i { color: black; font-size: 28px; }
 
         /* Cart Slide Panel */
@@ -476,6 +555,7 @@
         .btn-checkout {
             width: 100%; background: var(--accent); color: var(--bg-dark); border: none;
             padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: var(--iphone-glow);
+            transition: transform 0.1s ease; position: relative; overflow: hidden;
         }
 
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; display: none; }
@@ -483,6 +563,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Ambient Dynamic Glow Backdrop Layer -->
+    <div class="ambient-glow-bg" id="dynamic-backdrop"></div>
 
     <!-- Smart Skeleton Loading Screen -->
     <div id="preloader">
@@ -496,8 +579,8 @@
             <h1>AQUATIC PARADISE</h1>
         </div>
         <div class="nav-actions">
-            <button class="nav-btn" onclick="toggleWishlistModal()"><i class="fa-regular fa-heart"></i><span class="badge" id="wish-badge">0</span></button>
-            <button class="nav-btn" onclick="toggleCart(true)"><i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-badge">0</span></button>
+            <button class="nav-btn haptic-target" onclick="toggleWishlistModal()"><i class="fa-regular fa-heart"></i><span class="badge" id="wish-badge">0</span></button>
+            <button class="nav-btn haptic-target" onclick="toggleCart(true)"><i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-badge">0</span></button>
         </div>
     </div>
 
@@ -511,10 +594,10 @@
 
     <!-- Categories Filters -->
     <div class="categories">
-        <button class="cat-btn active" onclick="switchCategory('all', this)">All Items</button>
-        <button class="cat-btn" onclick="switchCategory('guppy', this)">Guppy</button>
-        <button class="cat-btn" onclick="switchCategory('betta', this)">Betta</button>
-        <button class="cat-btn" onclick="switchCategory('accessories', this)">Accessories</button>
+        <button class="cat-btn active haptic-target" onclick="switchCategory('all', this)">All Items</button>
+        <button class="cat-btn haptic-target" onclick="switchCategory('guppy', this)">Guppy</button>
+        <button class="cat-btn haptic-target" onclick="switchCategory('betta', this)">Betta</button>
+        <button class="cat-btn haptic-target" onclick="switchCategory('accessories', this)">Accessories</button>
     </div>
 
     <!-- Main Content Box -->
@@ -526,7 +609,7 @@
             <span>Available inside Chattogram (CTG) City Only</span>
         </div>
 
-        <!-- Combined Media Block with NEW Premium Tag & Glow Effects -->
+        <!-- Combined Media Block with Premium Tag & Glow Effects -->
         <div class="media-slider-box" id="product-gallery">
             <div class="premium-tag">PREMIUM PAIR</div>
             <div class="slider-wrapper">
@@ -534,17 +617,17 @@
                 <div class="slide-item"><video src="InShot_20260604_210654716.mp4" controls playsinline></video></div>
                 <div class="slide-item"><video src="InShot_20260604_210050619.mp4" controls playsinline></video></div>
 
-                <button class="slider-btn prev-btn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="slider-btn next-btn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="slider-btn prev-btn haptic-target" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-btn next-btn haptic-target" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
             <div class="slider-dots" id="slider-dots-container"></div>
         </div>
 
-        <!-- Product Details Card -->
+        <!-- Product Details Card with 3D Effect Matrix -->
         <div class="product-detail-card" id="product-info" data-category="guppy" data-name="Tiger Cobra Guppy">
             <div class="p-title-row">
                 <div class="p-title" id="item-title">Tiger Cobra Guppy - Show Quality Handpicked Pair</div>
-                <button class="wishlist-btn" onclick="toggleFavorite()"><i class="fa-solid fa-heart"></i></button>
+                <button class="wishlist-btn haptic-target" onclick="toggleFavorite()"><i class="fa-solid fa-heart"></i></button>
             </div>
             
             <div class="p-price">Tk <span id="unit-price">350</span></div>
@@ -553,16 +636,16 @@
             <div class="qty-container">
                 <span style="font-size: 14px; color: var(--secondary-text);">Select Quantity:</span>
                 <div class="qty-control-box">
-                    <button class="qty-action-btn" onclick="updateQty(-1)">-</button>
+                    <button class="qty-action-btn haptic-target" onclick="updateQty(-1)">-</button>
                     <div class="qty-display" id="qty-val">1</div>
-                    <button class="qty-action-btn" onclick="updateQty(1)">+</button>
+                    <button class="qty-action-btn haptic-target" onclick="updateQty(1)">+</button>
                 </div>
             </div>
 
-            <!-- Advanced Actions -->
+            <!-- Advanced Actions with Haptic Setup -->
             <div class="action-grid">
-                <button class="btn-main btn-cart-add" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i> Add To Cart</button>
-                <button class="btn-main btn-buy-whatsapp" onclick="instantCheckout()"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                <button class="btn-main btn-cart-add haptic-target" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i> Add To Cart</button>
+                <button class="btn-main btn-buy-whatsapp haptic-target" onclick="instantCheckout()"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
             </div>
         </div>
 
@@ -582,7 +665,7 @@
         <div class="reviews-section">
             <div class="review-header-title">Customer Reviews & Feedback</div>
             <div class="review-subtitle">মাছগুলোর হেলথ ও কোয়ালিটি কেমন লেগেছে? সরাসরি আমাদের হোয়াটসঅ্যাপে রিভিউ শেয়ার করুন!</div>
-            <button class="btn-write-review" onclick="sendReviewViaWhatsApp()">
+            <button class="btn-write-review haptic-target" onclick="sendReviewViaWhatsApp()">
                 <i class="fa-brands fa-whatsapp"></i> Send Feedback
             </button>
         </div>
@@ -590,7 +673,7 @@
     </div>
 
     <!-- Live Floating WhatsApp Chat Widget -->
-    <div class="whatsapp-floating-widget" onclick="openFloatingChat()" title="Chat with us">
+    <div class="whatsapp-floating-widget haptic-target" onclick="openFloatingChat()" title="Chat with us">
         <i class="fa-brands fa-whatsapp"></i>
     </div>
 
@@ -599,7 +682,7 @@
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h3>Shopping Cart</h3>
-            <button class="nav-btn" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
+            <button class="nav-btn haptic-target" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="cart-items-wrapper" id="cart-items-container"></div>
         <div class="cart-footer">
@@ -607,11 +690,94 @@
                 <span>Total Amount:</span>
                 <span id="cart-total-display">Tk 0</span>
             </div>
-            <button class="btn-checkout" onclick="checkoutViaWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Proceed to Checkout</button>
+            <button class="btn-checkout haptic-target" onclick="checkoutViaWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Proceed to Checkout</button>
         </div>
     </div>
 
     <script>
+        // Real-time Procedural Soft Haptic Click Sound Synthesizer via Web Audio API
+        function playHapticSound() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                osc.type = 'sine';
+                // Premium ultra-short subtle pop frequency parameters
+                osc.frequency.setValueAtTime(140, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.04);
+                
+                gain.gain.setValueAtTime(0.08, ctx.currentTime); // Low volume to keep it soft
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+                
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                
+                osc.start();
+                osc.stop(ctx.currentTime + 0.04);
+            } catch (e) {
+                // Audio context block bypass if user hasn't interacted yet safely
+            }
+        }
+
+        // Apply Haptic Ripple Effects & Play Sound on click interaction
+        document.body.addEventListener('click', function(e) {
+            const targetButton = e.target.closest('.haptic-target, button, .qty-action-btn');
+            if (!targetButton) return;
+            
+            // Trigger the soft click sound
+            playHapticSound();
+
+            // Ripple Wave Logic
+            const circle = document.createElement('div');
+            circle.classList.add('ripple');
+            
+            const rect = targetButton.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            circle.style.width = circle.style.height = `${size}px`;
+            
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            circle.style.left = `${x}px`;
+            circle.style.top = `${y}px`;
+            
+            // Safely clean existing ripples to optimize memory
+            const prevRipple = targetButton.querySelector('.ripple');
+            if (prevRipple) prevRipple.remove();
+            
+            targetButton.appendChild(circle);
+        });
+
+        // 1. 3D Parallax & Metallic Shine Track Engine
+        const card = document.getElementById('product-info');
+        if(card) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                
+                // Tilt calculation limits
+                const tiltX = (yc - y) / 14;
+                const tiltY = (x - xc) / 14;
+                
+                card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                card.style.setProperty('--shine-pos-x', `${(x / rect.width) * 100}%`);
+                card.style.setProperty('--shine-pos-y', `${(y / rect.height) * 100}%`);
+                card.style.boxShadow = `${-tiltY * 1.5}px ${tiltX * 1.5}px 30px rgba(56, 189, 248, 0.2)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                card.style.boxShadow = 'none';
+            });
+        }
+
         // Smooth Preloader Fadeout
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
