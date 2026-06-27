@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AQUATIC PARADISE - Version 2.0</title>
+    <title>Tiger Cobra Guppy - Aquatic Paradise</title>
     
     <!-- SEO Optimization -->
-    <meta name="description" content="Buy premium show-quality Tiger Cobra Guppy, Betta and Aquarium accessories in Bangladesh. Order via WhatsApp.">
-    <meta name="keywords" content="Tiger Cobra Guppy, Betta Fish, Aquarium Accessories, Aquatic Paradise">
+    <meta name="description" content="Buy premium show-quality Tiger Cobra Guppy Pair online. Watch live stock video reviews and order instantly via WhatsApp.">
+    <meta name="keywords" content="Tiger Cobra Guppy, Premium Guppy Fish, Buy Guppy Bangladesh, Aquatic Paradise">
     
     <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -143,7 +143,7 @@
             border-color: var(--accent);
         }
 
-        /* Media Container (Video Auto Gallery & Image Gallery Combined) */
+        /* Media Container (Only Your 3 Pure Videos) */
         .main-container {
             max-width: 600px;
             margin: 0 auto;
@@ -175,7 +175,7 @@
 
         .slide-item.active { display: block; }
 
-        .slide-item video, .slide-item img {
+        .slide-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -442,7 +442,7 @@
     <div class="search-box">
         <div class="search-wrapper">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="search-input" placeholder="Search Tiger Cobra, Betta..." onkeyup="filterSearch()">
+            <input type="text" id="search-input" placeholder="Search Tiger Cobra..." onkeyup="filterSearch()">
         </div>
     </div>
 
@@ -457,20 +457,13 @@
     <!-- Main Content Box -->
     <div class="main-container">
 
-        <!-- Combined Media Block (Auto Video & 5-10 Image Gallery Container) -->
+        <!-- Combined Media Block (Only Your 3 Pure Videos) -->
         <div class="media-slider-box" id="product-gallery">
             <div class="slider-wrapper">
-                <!-- Video Slides -->
+                <!-- Only Your 3 Pure Videos Inside Slider -->
                 <div class="slide-item active"><video src="InShot_20260604_211622270.mp4" controls playsinline></video></div>
                 <div class="slide-item"><video src="InShot_20260604_210654716.mp4" controls playsinline></video></div>
                 <div class="slide-item"><video src="InShot_20260604_210050619.mp4" controls playsinline></video></div>
-                
-                <!-- 5-10 Fish Image Slides -->
-                <div class="slide-item"><img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=500" alt="Guppy 1"></div>
-                <div class="slide-item"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500" alt="Guppy 2"></div>
-                <div class="slide-item"><img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=500" alt="Guppy 3"></div>
-                <div class="slide-item"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500" alt="Guppy 4"></div>
-                <div class="slide-item"><img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=500" alt="Guppy 5"></div>
 
                 <button class="slider-btn prev-btn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
                 <button class="slider-btn next-btn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
