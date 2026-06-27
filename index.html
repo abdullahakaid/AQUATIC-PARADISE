@@ -6,21 +6,24 @@
     <title>Tiger Cobra Guppy - Aquatic Paradise</title>
     
     <!-- SEO Optimization -->
-    <meta name="description" content="Buy premium show-quality Tiger Cobra Guppy Pair online. Watch live stock video reviews and order instantly via WhatsApp.">
-    <meta name="keywords" content="Tiger Cobra Guppy, Premium Guppy Fish, Buy Guppy Bangladesh, Aquatic Paradise">
+    <meta name="description" content="Premium quality Tiger Cobra Guppy Pair in Chattogram. Order instantly via WhatsApp.">
+    <meta name="keywords" content="Tiger Cobra Guppy, Guppy Chattogram, Aquatic Paradise CTG">
     
     <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --card-dark: #1e293b;
+            --bg-dark: #090d16;
+            --card-dark: #111827;
             --accent: #38bdf8;
             --primary-text: #f8fafc;
             --secondary-text: #94a3b8;
             --star-color: #fbbf24;
             --heart-color: #f43f5e;
+            /* iPhone style Neon Glow */
+            --iphone-glow: 0 0 20px rgba(56, 189, 248, 0.25);
+            --btn-glow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
 
         * {
@@ -34,12 +37,39 @@
         body {
             background-color: var(--bg-dark);
             color: var(--primary-text);
-            padding-bottom: 60px;
+            padding-bottom: 80px;
+            overflow-x: hidden;
         }
 
-        /* Navbar */
+        /* Preloader / Skeleton Effect */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-dark);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #1e293b;
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            box-shadow: var(--iphone-glow);
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Navbar with iPhone Glow */
         .navbar {
-            background: var(--card-dark);
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
             padding: 15px;
             display: flex;
             justify-content: space-between;
@@ -47,7 +77,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid #1e293b;
+            box-shadow: var(--iphone-glow);
         }
 
         .logo h1 {
@@ -55,6 +86,7 @@
             font-weight: 800;
             color: var(--accent);
             letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         .nav-actions {
@@ -91,25 +123,26 @@
             margin: 0 auto;
         }
 
-        .search-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
         .search-wrapper input {
             width: 100%;
             padding: 12px 15px 12px 45px;
-            border-radius: 8px;
-            border: 1px solid #334155;
+            border-radius: 25px;
+            border: 1px solid #1e293b;
             background: var(--card-dark);
             color: white;
             outline: none;
+            transition: 0.3s;
+        }
+
+        .search-wrapper input:focus {
+            border-color: var(--accent);
+            box-shadow: var(--iphone-glow);
         }
 
         .search-wrapper i {
             position: absolute;
-            left: 15px;
+            margin-top: 14px;
+            margin-left: 18px;
             color: var(--secondary-text);
         }
 
@@ -128,34 +161,56 @@
         .cat-btn {
             background: var(--card-dark);
             color: var(--secondary-text);
-            border: 1px solid #334155;
+            border: 1px solid #1e293b;
             padding: 8px 16px;
             border-radius: 20px;
             white-space: nowrap;
             cursor: pointer;
             font-size: 13px;
             font-weight: 600;
+            transition: 0.3s;
         }
 
         .cat-btn.active {
             background: var(--accent);
             color: var(--bg-dark);
             border-color: var(--accent);
+            box-shadow: var(--iphone-glow);
         }
 
-        /* Media Container (Only Your 3 Pure Videos) */
+        /* Main Container */
         .main-container {
             max-width: 600px;
             margin: 0 auto;
             padding: 0 15px;
         }
 
+        /* Location Alert Badge (CTG Highlight) */
+        .loc-badge {
+            background: rgba(244, 63, 94, 0.1);
+            border: 1px solid var(--heart-color);
+            color: #fda4af;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
+        }
+
+        /* Media Slider with Glowing Border */
         .media-slider-box {
             background: var(--card-dark);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             margin-bottom: 20px;
-            border: 1px solid #334155;
+            border: 1px solid #1e293b;
+            box-shadow: var(--iphone-glow);
         }
 
         .slider-wrapper {
@@ -181,12 +236,11 @@
             object-fit: cover;
         }
 
-        /* Slider Controls */
         .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             color: white;
             border: none;
             width: 35px;
@@ -202,27 +256,28 @@
             display: flex;
             justify-content: center;
             gap: 6px;
-            padding: 10px 0;
-            background: #111827;
+            padding: 12px 0;
+            background: #0b0f19;
         }
 
         .dot {
-            width: 8px;
-            height: 8px;
-            background: #4b5563;
+            width: 6px;
+            height: 6px;
+            background: #334155;
             border-radius: 50%;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        .dot.active { background: var(--accent); }
+        .dot.active { background: var(--accent); width: 18px; border-radius: 3px; }
 
         /* Product Main Info Card */
         .product-detail-card {
             background: var(--card-dark);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid #334155;
+            border: 1px solid #1e293b;
         }
 
         .p-title-row {
@@ -240,17 +295,19 @@
             color: var(--secondary-text);
             font-size: 22px;
             cursor: pointer;
+            transition: 0.3s;
         }
-        .wishlist-btn.active { color: var(--heart-color); }
+        .wishlist-btn.active { color: var(--heart-color); text-shadow: 0 0 10px var(--heart-color); }
 
         .p-price {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 800;
             color: var(--accent);
             margin: 12px 0;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
 
-        /* Quantity Incrementor Controls */
+        /* Quantity Controls */
         .qty-container {
             display: flex;
             align-items: center;
@@ -261,26 +318,26 @@
         .qty-control-box {
             display: flex;
             align-items: center;
-            background: #1e293b;
-            border: 1px solid #475569;
-            border-radius: 6px;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
             overflow: hidden;
         }
 
         .qty-action-btn {
-            background: #334155;
+            background: #374151;
             color: white;
             border: none;
-            width: 35px;
-            height: 35px;
+            width: 38px;
+            height: 38px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
         }
 
         .qty-display { width: 40px; text-align: center; font-weight: 600; }
 
-        /* Action Buttons */
+        /* Action Buttons with iPhone Button Glow */
         .action-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -289,7 +346,7 @@
 
         .btn-main {
             padding: 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 700;
             font-size: 14px;
             cursor: pointer;
@@ -298,153 +355,110 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            transition: 0.3s;
         }
 
-        .btn-cart-add { background: #334155; color: white; border: 1px solid #475569; }
-        .btn-buy-whatsapp { background: #25D366; color: black; }
+        .btn-cart-add { background: #1f2937; color: white; border: 1px solid #374151; }
+        .btn-buy-whatsapp { background: #25D366; color: black; box-shadow: var(--btn-glow); }
+        .btn-buy-whatsapp:hover { transform: translateY(-2px); }
 
-        /* Shipping & Payments */
+        /* Custom Info Cards */
         .info-card {
             background: var(--card-dark);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 15px;
             margin-bottom: 20px;
-            border: 1px solid #334155;
+            border: 1px solid #1e293b;
         }
 
         .info-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 0;
+            padding: 12px 0;
             font-size: 13px;
         }
 
-        .info-item:not(:last-child) { border-bottom: 1px solid #334155; }
+        .info-item:not(:last-child) { border-bottom: 1px solid #1e293b; }
         .info-item i { font-size: 16px; color: var(--accent); }
 
-        /* Real Review Submission Button Section */
+        /* Real WhatsApp Support Section */
         .reviews-section {
             background: var(--card-dark);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid #334155;
+            border: 1px solid #1e293b;
             text-align: center;
         }
 
-        .review-title {
-            font-size: 15px;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--primary-text);
+        .review-header-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+        .review-subtitle { font-size: 12px; color: var(--secondary-text); margin-bottom: 15px; line-height: 1.4; }
+
+        .btn-write-review {
+            background: #25D366; color: black; border: none; padding: 12px 20px;
+            border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--btn-glow);
         }
 
-        .review-desc {
-            font-size: 13px;
-            color: var(--secondary-text);
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .btn-submit-review {
-            display: inline-flex;
-            align-items: center;
+        /* Live Floating WhatsApp Chat Widget */
+        .whatsapp-floating-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
             justify-content: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5), var(--iphone-glow);
+            z-index: 999;
             cursor: pointer;
-            width: 100%;
-            transition: 0.2s all ease-in-out;
+            animation: pulse 2s infinite;
         }
 
-        .btn-submit-review:hover {
-            background: var(--accent);
-            color: var(--bg-dark);
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
         }
 
-        /* Real Cart Slide Panel */
+        .whatsapp-floating-widget i { color: black; font-size: 28px; }
+
+        /* Cart Slide Panel */
         .cart-sidebar {
             position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 400px;
-            height: 100%;
-            background: var(--card-dark);
-            z-index: 2000;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.5);
-            transition: 0.3s right ease-in-out;
-            display: flex;
-            flex-direction: column;
+            top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%;
+            background: var(--card-dark); z-index: 2000;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.7);
+            transition: 0.3s right ease-in-out; display: flex; flex-direction: column;
         }
 
         .cart-sidebar.open { right: 0; }
-
-        .cart-header {
-            padding: 20px;
-            border-bottom: 1px solid #334155;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-items-wrapper {
-            flex-grow: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .cart-item-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #334155;
-        }
-
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #334155;
-            background: #111827;
-        }
-
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 700;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
+        .cart-header { padding: 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
+        .cart-items-wrapper { flex-grow: 1; padding: 20px; overflow-y: auto; }
+        .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #1e293b; }
+        .cart-footer { padding: 20px; border-top: 1px solid #1e293b; background: #0b0f19; }
+        .total-row { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 15px; font-size: 16px; }
 
         .btn-checkout {
-            width: 100%;
-            background: var(--accent);
-            color: var(--bg-dark);
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
+            width: 100%; background: var(--accent); color: var(--bg-dark); border: none;
+            padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: var(--iphone-glow);
         }
 
-        .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 1500;
-            display: none;
-        }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; display: none; }
         .overlay.open { display: block; }
     </style>
 </head>
 <body>
+
+    <!-- Smart Skeleton Loading Screen -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <p style="color: var(--secondary-text); margin-top: 15px; font-size: 13px; font-weight: 600;">Loading Luxury Experience...</p>
+    </div>
 
     <!-- Header Navbar -->
     <div class="navbar">
@@ -476,6 +490,12 @@
     <!-- Main Content Box -->
     <div class="main-container">
 
+        <!-- Location Alert (CTG Highlight Only) -->
+        <div class="loc-badge">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Available inside Chattogram (CTG) City Only</span>
+        </div>
+
         <!-- Combined Media Block -->
         <div class="media-slider-box" id="product-gallery">
             <div class="slider-wrapper">
@@ -498,7 +518,7 @@
             
             <div class="p-price">Tk <span id="unit-price">350</span></div>
 
-            <!-- Quantity Incrementor and Real-Time Price Counter -->
+            <!-- Quantity Incrementor -->
             <div class="qty-container">
                 <span style="font-size: 14px; color: var(--secondary-text);">Select Quantity:</span>
                 <div class="qty-control-box">
@@ -515,31 +535,32 @@
             </div>
         </div>
 
-        <!-- Shipping & Payment Methods Info Details -->
+        <!-- Payment Info (Nagad & COD Only) -->
         <div class="info-card">
             <div class="info-item">
-                <i class="fa-solid fa-truck-fast"></i>
-                <div><b>Delivery Info:</b> Inside Area Only. (Standard Charges Apply)</div>
-            </div>
-            <div class="info-item">
-                <i class="fa-solid fa-credit-card"></i>
-                <div><b>Payment Methods:</b> Cash on Delivery, bKash, Nagad</div>
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <div><b>Payment Methods:</b> Cash on Delivery (COD) & Nagad Personal</div>
             </div>
             <div class="info-item" id="contact">
                 <i class="fa-solid fa-headset"></i>
-                <div><b>Contact:</b> WhatsApp Official Support (01606597522)</div>
+                <div><b>Location & Support:</b> Chattogram Base Shop (01606597522)</div>
             </div>
         </div>
 
-        <!-- WhatsApp Review Section (100% Real Feedback) -->
+        <!-- WhatsApp Review Section -->
         <div class="reviews-section">
-            <div class="review-title">Customer Feedback & Reviews</div>
-            <div class="review-desc">আপনার কোনো মতামত বা রিভিউ থাকলে সরাসরি আমাদের হোয়াটসঅ্যাপে পাঠিয়ে দিন। আপনার মূল্যবান রিভিউটি আমরা এই পেজে যুক্ত করে দেব!</div>
-            <button class="btn-submit-review" onclick="sendReviewViaWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> Write a Review
+            <div class="review-header-title">Customer Reviews & Feedback</div>
+            <div class="review-subtitle">মাছগুলোর হেলথ ও কোয়ালিটি কেমন লেগেছে? সরাসরি আমাদের হোয়াটসঅ্যাপে রিভিউ শেয়ার করুন!</div>
+            <button class="btn-write-review" onclick="sendReviewViaWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Send Feedback
             </button>
         </div>
 
+    </div>
+
+    <!-- Live Floating WhatsApp Chat Widget -->
+    <div class="whatsapp-floating-widget" onclick="openFloatingChat()" title="Chat with us">
+        <i class="fa-brands fa-whatsapp"></i>
     </div>
 
     <!-- Right Side Sliding Cart Panel View -->
@@ -549,9 +570,7 @@
             <h3>Shopping Cart</h3>
             <button class="nav-btn" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="cart-items-wrapper" id="cart-items-container">
-            <!-- Dynamic Cart Row Inserted via JS -->
-        </div>
+        <div class="cart-items-wrapper" id="cart-items-container"></div>
         <div class="cart-footer">
             <div class="total-row">
                 <span>Total Amount:</span>
@@ -562,12 +581,20 @@
     </div>
 
     <script>
+        // Smooth Preloader Fadeout
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 600);
+        });
+
         // Media Slider Control Scripts
         let currentSlideIdx = 0;
         const slides = document.querySelectorAll('.slide-item');
         const dotsContainer = document.getElementById('slider-dots-container');
 
-        // Create Dynamic slider Dots
         slides.forEach((_, idx) => {
             let dot = document.createElement('div');
             dot.className = `dot ${idx === 0 ? 'active' : ''}`;
@@ -580,13 +607,10 @@
         function showSlide(idx) {
             slides.forEach(s => s.classList.remove('active'));
             dots.forEach(d => d.classList.remove('active'));
-            
-            // Auto pause other videos inside slider if we skip slide
             slides.forEach(s => {
                 let vid = s.querySelector('video');
                 if(vid) vid.pause();
             });
-
             slides[idx].classList.add('active');
             dots[idx].classList.add('active');
         }
@@ -603,13 +627,12 @@
             showSlide(idx);
         }
 
-        // Cart Structure Management Logic
+        // Cart Management
         let currentQuantity = 1;
         const baseItemPrice = 350;
         let cart = [];
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || false;
 
-        // Init Wishlist State UI
         if(wishlist) {
             document.querySelector('.wishlist-btn').classList.add('active');
             document.getElementById('wish-badge').innerText = "1";
@@ -637,11 +660,7 @@
         }
 
         function toggleWishlistModal() {
-            if(wishlist) {
-                alert("Your saved wishlist item: Tiger Cobra Guppy Pair.");
-            } else {
-                alert("Your wishlist is empty!");
-            }
+            alert(wishlist ? "Your saved item: Tiger Cobra Guppy Pair (CTG Only)." : "Your wishlist is empty!");
         }
 
         function toggleCart(open) {
@@ -652,12 +671,12 @@
 
         function addToCart() {
             cart = [{
-                name: "Tiger Cobra Guppy Pair",
+                name: "Tiger Cobra Guppy Pair (CTG Stock)",
                 qty: currentQuantity,
                 total: baseItemPrice * currentQuantity
             }];
             document.getElementById('cart-badge').innerText = currentQuantity;
-            alert("Item successfully added to your real shopping cart!");
+            alert("Added to your shopping cart!");
             toggleCart(true);
         }
 
@@ -667,7 +686,7 @@
             container.innerHTML = "";
 
             if(cart.length === 0) {
-                container.innerHTML = "<p style='color: var(--secondary-text); text-align:center; margin-top:40px;'>Your cart is completely empty.</p>";
+                container.innerHTML = "<p style='color: var(--secondary-text); text-align:center; margin-top:40px;'>Cart is empty.</p>";
                 totalDisplay.innerText = "Tk 0";
                 return;
             }
@@ -687,42 +706,41 @@
         }
 
         function instantCheckout() {
-            let message = `Hello Aquatic Paradise, I want to instantly purchase:\n\n📦 Product: Tiger Cobra Guppy\n🔢 Quantity: ${currentQuantity} Pair(s)\n💰 Auto calculated Total: ${baseItemPrice * currentQuantity} Tk\n\nMethod: Cash On Delivery`;
+            let message = `Hello Aquatic Paradise, I want to purchase from Chattogram:\n\n📦 Product: Tiger Cobra Guppy\n🔢 Quantity: ${currentQuantity} Pair(s)\n💰 Total: ${baseItemPrice * currentQuantity} Tk\n\nPreferred Method: Cash On Delivery / Nagad`;
             window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(message), '_blank');
         }
 
         function checkoutViaWhatsApp() {
-            if(cart.length === 0) return alert("Add items to your cart first.");
+            if(cart.length === 0) return alert("Add items to cart first.");
             let item = cart[0];
-            let message = `Hello Aquatic Paradise, I am checking out my cart:\n\n🛒 Order Details:\n- ${item.name} (x${item.qty})\n\n💵 Grand Total: ${item.total} Tk\n\nPlease finalize my delivery process.`;
+            let message = `Hello Aquatic Paradise, Checking out my cart (Chattogram):\n\n🛒 Details:\n- ${item.name} (x${item.qty})\n\n💵 Grand Total: ${item.total} Tk`;
             window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(message), '_blank');
         }
 
-        // WhatsApp Review Direct Messaging Logic
+        function openFloatingChat() {
+            let msg = "Hello Aquatic Paradise, I have an inquiry about Tiger Cobra Guppy stock in CTG!";
+            window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(msg), '_blank');
+        }
+
         function sendReviewViaWhatsApp() {
-            let message = `Hello Aquatic Paradise,\n\nI want to share my honest feedback/review about your fish product:\n\n✍️ Review Message: `;
-            window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(message), '_blank');
+            let msg = `Hello Aquatic Paradise, Here is my feedback for Tiger Cobra Guppy:\n\n⭐ Rating:\n📝 Feedback: `;
+            window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(msg), '_blank');
         }
 
-        // Live Category Switcher Simulation
         function switchCategory(cat, btn) {
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
             const pCard = document.getElementById('product-info');
             const pGallery = document.getElementById('product-gallery');
             
             if(cat !== 'guppy' && cat !== 'all') {
-                pCard.style.opacity = "0.2";
-                pGallery.style.opacity = "0.2";
-                alert("This category item is currently Out of Stock! Showing Tiger Cobra only.");
+                pCard.style.opacity = "0.2"; pGallery.style.opacity = "0.2";
+                alert("This category item is Out of Stock! Only Tiger Cobra is available in Chattogram.");
             } else {
-                pCard.style.opacity = "1";
-                pGallery.style.opacity = "1";
+                pCard.style.opacity = "1"; pGallery.style.opacity = "1";
             }
         }
 
-        // Search Filter Engine
         function filterSearch() {
             let query = document.getElementById('search-input').value.toLowerCase();
             let name = document.getElementById('item-title').innerText.toLowerCase();
@@ -730,11 +748,9 @@
             const pGallery = document.getElementById('product-gallery');
 
             if(!name.includes(query)) {
-                pCard.style.display = "none";
-                pGallery.style.display = "none";
+                pCard.style.display = "none"; pGallery.style.display = "none";
             } else {
-                pCard.style.display = "block";
-                pGallery.style.display = "block";
+                pCard.style.display = "block"; pGallery.style.display = "block";
             }
         }
     </script>
