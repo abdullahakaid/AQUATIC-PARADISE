@@ -3,69 +3,728 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiger Cobra Guppy - Aquatic Paradise</title>
+    <title>AQUATIC PARADISE - Version 2.0</title>
+    
+    <!-- SEO Optimization -->
+    <meta name="description" content="Buy premium show-quality Tiger Cobra Guppy, Betta and Aquarium accessories in Bangladesh. Order via WhatsApp.">
+    <meta name="keywords" content="Tiger Cobra Guppy, Betta Fish, Aquarium Accessories, Aquatic Paradise">
+    
+    <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --primary: #ff5722; --dark: #1a1a1a; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; margin: 0; }
-        .container { max-width: 500px; margin: auto; background: #fff; min-height: 100vh; padding-bottom: 80px; }
-        
-        /* Premium Gallery */
-        .gallery { display: grid; grid-template-columns: 1fr; gap: 5px; padding: 10px; }
-        .gallery video { width: 100%; border-radius: 8px; background: #000; }
-        
-        .info { padding: 15px; }
-        .title { font-size: 20px; font-weight: bold; }
-        .price { color: var(--primary); font-size: 24px; font-weight: 800; margin: 10px 0; }
-        
-        /* Advanced Cart Controls */
-        .cart-box { display: flex; align-items: center; gap: 15px; padding: 15px; border-top: 1px solid #eee; }
-        .qty-input { width: 50px; text-align: center; border: 1px solid #ccc; padding: 5px; }
-        .btn-add { background: var(--primary); color: #fff; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; flex-grow: 1; }
 
-        /* Comment & Rating */
-        .section { padding: 15px; border-top: 10px solid #f4f4f4; }
-        .rating { color: #f39c12; font-size: 18px; margin-bottom: 10px; }
-        .comment { background: #f9f9f9; padding: 10px; border-radius: 5px; margin-bottom: 5px; font-size: 14px; }
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --accent: #38bdf8;
+            --primary-text: #f8fafc;
+            --secondary-text: #94a3b8;
+            --star-color: #fbbf24;
+            --heart-color: #f43f5e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--primary-text);
+            padding-bottom: 60px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--card-dark);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+
+        .logo h1 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .nav-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--primary-text);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background: var(--heart-color);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* Search Box */
+        .search-box {
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: var(--card-dark);
+            color: white;
+            outline: none;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 15px;
+            color: var(--secondary-text);
+        }
+
+        /* Categories Section */
+        .categories {
+            display: flex;
+            gap: 10px;
+            padding: 0 15px 15px 15px;
+            overflow-x: auto;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .categories::-webkit-scrollbar { display: none; }
+
+        .cat-btn {
+            background: var(--card-dark);
+            color: var(--secondary-text);
+            border: 1px solid #334155;
+            padding: 8px 16px;
+            border-radius: 20px;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .cat-btn.active {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-color: var(--accent);
+        }
+
+        /* Media Container (Video Auto Gallery & Image Gallery Combined) */
+        .main-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .media-slider-box {
+            background: var(--card-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .slide-item {
+            min-width: 100%;
+            height: 100%;
+            display: none;
+            background: #000;
+        }
+
+        .slide-item.active { display: block; }
+
+        .slide-item video, .slide-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Slider Controls */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 0;
+            background: #111827;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #4b5563;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active { background: var(--accent); }
+
+        /* Product Main Info Card */
+        .product-detail-card {
+            background: var(--card-dark);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+        }
+
+        .p-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .p-title { font-size: 18px; font-weight: 700; line-height: 1.4; }
+        
+        .wishlist-btn {
+            background: none;
+            border: none;
+            color: var(--secondary-text);
+            font-size: 22px;
+            cursor: pointer;
+        }
+        .wishlist-btn.active { color: var(--heart-color); }
+
+        .p-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 12px 0;
+        }
+
+        /* Quantity Incrementor Controls */
+        .qty-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .qty-control-box {
+            display: flex;
+            align-items: center;
+            background: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .qty-action-btn {
+            background: #334155;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .qty-display { width: 40px; text-align: center; font-weight: 600; }
+
+        /* Action Buttons */
+        .action-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn-main {
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-cart-add { background: #334155; color: white; border: 1px solid #475569; }
+        .btn-buy-whatsapp { background: #25D366; color: black; }
+
+        /* Shipping & Payments */
+        .info-card {
+            background: var(--card-dark);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 13px;
+        }
+
+        .info-item:not(:last-child) { border-bottom: 1px solid #334155; }
+        .info-item i { font-size: 16px; color: var(--accent); }
+
+        /* Reviews Section */
+        .reviews-section {
+            background: var(--card-dark);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .stars-summary { color: var(--star-color); font-size: 14px; }
+
+        .review-msg {
+            background: #0f172a;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        /* Real Cart Slide Panel */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--card-dark);
+            z-index: 2000;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+            transition: 0.3s right ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open { right: 0; }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-items-wrapper {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #334155;
+            background: #111827;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1500;
+            display: none;
+        }
+        .overlay.open { display: block; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Gallery -->
-    <div class="gallery">
-        <video controls><source src="InShot_20260604_211622270.mp4" type="video/mp4"></video>
-        <video controls><source src="InShot_20260604_210654716.mp4" type="video/mp4"></video>
-        <video controls><source src="InShot_20260604_210050619.mp4" type="video/mp4"></video>
+    <!-- Header Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <h1>AQUATIC PARADISE</h1>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-btn" onclick="toggleWishlistModal()"><i class="fa-regular fa-heart"></i><span class="badge" id="wish-badge">0</span></button>
+            <button class="nav-btn" onclick="toggleCart(true)"><i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-badge">0</span></button>
+        </div>
     </div>
 
-    <!-- Product Details -->
-    <div class="info">
-        <div class="title">Tiger Cobra Guppy - Show Quality Pair</div>
-        <div class="price">Tk 350</div>
-        <div class="rating">★★★★★ <span style="color:#555; font-size: 14px;">(4.9/5)</span></div>
+    <!-- Search Box Box -->
+    <div class="search-box">
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="Search Tiger Cobra, Betta..." onkeyup="filterSearch()">
+        </div>
     </div>
 
-    <!-- Cart -->
-    <div class="cart-box">
-        <input type="number" id="qty" class="qty-input" value="1" min="1">
-        <button class="btn-add" onclick="order()">BUY NOW</button>
+    <!-- Categories Filters -->
+    <div class="categories">
+        <button class="cat-btn active" onclick="switchCategory('all', this)">All Items</button>
+        <button class="cat-btn" onclick="switchCategory('guppy', this)">Guppy</button>
+        <button class="cat-btn" onclick="switchCategory('betta', this)">Betta</button>
+        <button class="cat-btn" onclick="switchCategory('accessories', this)">Accessories</button>
     </div>
 
-    <!-- Comments -->
-    <div class="section">
-        <h3>Customer Reviews</h3>
-        <div class="comment"><b>Rahim:</b> দারুণ মাছ, একদম ভিডিওর মতোই!</div>
-        <div class="comment"><b>Karim:</b> সুস্থ সবল মাছ পেয়েছি, ধন্যবাদ।</div>
-    </div>
-</div>
+    <!-- Main Content Box -->
+    <div class="main-container">
 
-<script>
-    function order() {
-        let q = document.getElementById('qty').value;
-        let msg = `আমি Tiger Cobra Guppy কিনতে চাই। পরিমাণ: ${q} Pair।`;
-        window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(msg), '_blank');
-    }
-</script>
+        <!-- Combined Media Block (Auto Video & 5-10 Image Gallery Container) -->
+        <div class="media-slider-box" id="product-gallery">
+            <div class="slider-wrapper">
+                <!-- Video Slides -->
+                <div class="slide-item active"><video src="InShot_20260604_211622270.mp4" controls playsinline></video></div>
+                <div class="slide-item"><video src="InShot_20260604_210654716.mp4" controls playsinline></video></div>
+                <div class="slide-item"><video src="InShot_20260604_210050619.mp4" controls playsinline></video></div>
+                
+                <!-- 5-10 Fish Image Slides -->
+                <div class="slide-item"><img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=500" alt="Guppy 1"></div>
+                <div class="slide-item"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500" alt="Guppy 2"></div>
+                <div class="slide-item"><img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=500" alt="Guppy 3"></div>
+                <div class="slide-item"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500" alt="Guppy 4"></div>
+                <div class="slide-item"><img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=500" alt="Guppy 5"></div>
+
+                <button class="slider-btn prev-btn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-btn next-btn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="slider-dots" id="slider-dots-container"></div>
+        </div>
+
+        <!-- Product Details Card -->
+        <div class="product-detail-card" id="product-info" data-category="guppy" data-name="Tiger Cobra Guppy">
+            <div class="p-title-row">
+                <div class="p-title" id="item-title">Tiger Cobra Guppy - Show Quality Handpicked Pair</div>
+                <button class="wishlist-btn" onclick="toggleFavorite()"><i class="fa-solid fa-heart"></i></button>
+            </div>
+            
+            <div class="p-price">Tk <span id="unit-price">350</span></div>
+
+            <!-- Quantity Incrementor and Real-Time Price Counter -->
+            <div class="qty-container">
+                <span style="font-size: 14px; color: var(--secondary-text);">Select Quantity:</span>
+                <div class="qty-control-box">
+                    <button class="qty-action-btn" onclick="updateQty(-1)">-</button>
+                    <div class="qty-display" id="qty-val">1</div>
+                    <button class="qty-action-btn" onclick="updateQty(1)">+</button>
+                </div>
+            </div>
+
+            <!-- Advanced Actions -->
+            <div class="action-grid">
+                <button class="btn-main btn-cart-add" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i> Add To Cart</button>
+                <button class="btn-main btn-buy-whatsapp" onclick="instantCheckout()"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+            </div>
+        </div>
+
+        <!-- Shipping & Payment Methods Info Details -->
+        <div class="info-card">
+            <div class="info-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div><b>Delivery Info:</b> Inside Area Only. (Standard Charges Apply)</div>
+            </div>
+            <div class="info-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <div><b>Payment Methods:</b> Cash on Delivery, bKash, Nagad</div>
+            </div>
+            <div class="info-item" id="contact">
+                <i class="fa-solid fa-headset"></i>
+                <div><b>Contact:</b> WhatsApp Official Support (01606597522)</div>
+            </div>
+        </div>
+
+        <!-- Ratings & Customer Reviews Section -->
+        <div class="reviews-section">
+            <div class="review-header">
+                <h3 style="font-size: 15px;">Customer Reviews & Rating</h3>
+                <div class="stars-summary">★★★★★ 4.9 (8)</div>
+            </div>
+            <div class="review-msg">
+                <strong>Sajib Ahmed:</strong> ভাই, টাইগার কোব্রা গাপ্পিগুলোর কালার প্যাটার্ন জাস্ট অসাধারণ ছিল। সব একদম অ্যাক্টিভ হেলদি মাছ।
+            </div>
+            <div class="review-msg">
+                <strong>Anik Rahman:</strong> গ্রেট প্যাকেজিং এবং অনটাইম রেসপন্স। রেকমেন্ডেড শপ!
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Right Side Sliding Cart Panel View -->
+    <div class="overlay" id="cart-overlay" onclick="toggleCart(false)"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="nav-btn" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items-wrapper" id="cart-items-container">
+            <!-- Dynamic Cart Row Inserted via JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total Amount:</span>
+                <span id="cart-total-display">Tk 0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkoutViaWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        // Media Slider Control Scripts
+        let currentSlideIdx = 0;
+        const slides = document.querySelectorAll('.slide-item');
+        const dotsContainer = document.getElementById('slider-dots-container');
+
+        // Create Dynamic slider Dots
+        slides.forEach((_, idx) => {
+            let dot = document.createElement('div');
+            dot.className = `dot ${idx === 0 ? 'active' : ''}`;
+            dot.onclick = () => jumpToSlide(idx);
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(idx) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            // Auto pause other videos inside slider if we skip slide
+            slides.forEach(s => {
+                let vid = s.querySelector('video');
+                if(vid) vid.pause();
+            });
+
+            slides[idx].classList.add('active');
+            dots[idx].classList.add('active');
+        }
+
+        function moveSlide(step) {
+            currentSlideIdx += step;
+            if (currentSlideIdx >= slides.length) currentSlideIdx = 0;
+            if (currentSlideIdx < 0) currentSlideIdx = slides.length - 1;
+            showSlide(currentSlideIdx);
+        }
+
+        function jumpToSlide(idx) {
+            currentSlideIdx = idx;
+            showSlide(idx);
+        }
+
+        // Cart Structure Management Logic
+        let currentQuantity = 1;
+        const baseItemPrice = 350;
+        let cart = [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || false;
+
+        // Init Wishlist State UI
+        if(wishlist) {
+            document.querySelector('.wishlist-btn').classList.add('active');
+            document.getElementById('wish-badge').innerText = "1";
+        }
+
+        function updateQty(val) {
+            currentQuantity += val;
+            if(currentQuantity < 1) currentQuantity = 1;
+            document.getElementById('qty-val').innerText = currentQuantity;
+            document.getElementById('unit-price').innerText = baseItemPrice * currentQuantity;
+        }
+
+        function toggleFavorite() {
+            wishlist = !wishlist;
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            let btn = document.querySelector('.wishlist-btn');
+            if(wishlist) {
+                btn.classList.add('active');
+                document.getElementById('wish-badge').innerText = "1";
+                alert("Added to Wishlist! Saved safely in your browser.");
+            } else {
+                btn.classList.remove('active');
+                document.getElementById('wish-badge').innerText = "0";
+            }
+        }
+
+        function toggleWishlistModal() {
+            if(wishlist) {
+                alert("Your saved wishlist item: Tiger Cobra Guppy Pair.");
+            } else {
+                alert("Your wishlist is empty!");
+            }
+        }
+
+        function toggleCart(open) {
+            document.getElementById('cart-sidebar').classList.toggle('open', open);
+            document.getElementById('cart-overlay').classList.toggle('open', open);
+            renderCartUI();
+        }
+
+        function addToCart() {
+            cart = [{
+                name: "Tiger Cobra Guppy Pair",
+                qty: currentQuantity,
+                total: baseItemPrice * currentQuantity
+            }];
+            document.getElementById('cart-badge').innerText = currentQuantity;
+            alert("Item successfully added to your real shopping cart!");
+            toggleCart(true);
+        }
+
+        function renderCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const totalDisplay = document.getElementById('cart-total-display');
+            container.innerHTML = "";
+
+            if(cart.length === 0) {
+                container.innerHTML = "<p style='color: var(--secondary-text); text-align:center; margin-top:40px;'>Your cart is completely empty.</p>";
+                totalDisplay.innerText = "Tk 0";
+                return;
+            }
+
+            cart.forEach(item => {
+                container.innerHTML = `
+                    <div class="cart-item-row">
+                        <div>
+                            <h4>${item.name}</h4>
+                            <small style="color: var(--accent)">Qty: ${item.qty}</small>
+                        </div>
+                        <div style="font-weight:700;">Tk ${item.total}</div>
+                    </div>
+                `;
+                totalDisplay.innerText = "Tk " + item.total;
+            });
+        }
+
+        function instantCheckout() {
+            let message = `Hello Aquatic Paradise, I want to instantly purchase:\n\n📦 Product: Tiger Cobra Guppy\n🔢 Quantity: ${currentQuantity} Pair(s)\n💰 Auto calculated Total: ${baseItemPrice * currentQuantity} Tk\n\nMethod: Cash On Delivery`;
+            window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(message), '_blank');
+        }
+
+        function checkoutViaWhatsApp() {
+            if(cart.length === 0) return alert("Add items to your cart first.");
+            let item = cart[0];
+            let message = `Hello Aquatic Paradise, I am checking out my cart:\n\n🛒 Order Details:\n- ${item.name} (x${item.qty})\n\n💵 Grand Total: ${item.total} Tk\n\nPlease finalize my delivery process.`;
+            window.open("https://wa.me/8801606597522?text=" + encodeURIComponent(message), '_blank');
+        }
+
+        // Live Category Switcher Simulation
+        function switchCategory(cat, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const pCard = document.getElementById('product-info');
+            const pGallery = document.getElementById('product-gallery');
+            
+            if(cat !== 'guppy' && cat !== 'all') {
+                pCard.style.opacity = "0.2";
+                pGallery.style.opacity = "0.2";
+                alert("This category item is currently Out of Stock! Showing Tiger Cobra only.");
+            } else {
+                pCard.style.opacity = "1";
+                pGallery.style.opacity = "1";
+            }
+        }
+
+        // Search Filter Engine
+        function filterSearch() {
+            let query = document.getElementById('search-input').value.toLowerCase();
+            let name = document.getElementById('item-title').innerText.toLowerCase();
+            const pCard = document.getElementById('product-info');
+            const pGallery = document.getElementById('product-gallery');
+
+            if(!name.includes(query)) {
+                pCard.style.display = "none";
+                pGallery.style.display = "none";
+            } else {
+                pCard.style.display = "block";
+                pGallery.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
