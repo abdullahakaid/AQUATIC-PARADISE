@@ -1,699 +1,215 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiger Cobra Guppy - Aquatic Paradise</title>
+// ১. প্রিলোডার বা লোডিং স্ক্রিন বন্ধ করার ফাংশন
+window.onload = function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+            // সাইট খোলার ৩ সেকেন্ড পর স্ক্র্যাচ কার্ড পপ-আপ হবে
+            openScratchPopup();
+        }, 500);
+    }
+    // স্লাইডার ডটস তৈরি করা
+    initSliderDots();
+};
+
+// ২. স্ক্র্যাচ কার্ড পপ-আপ খোলার ফাংশন
+function openScratchPopup() {
+    const popup = document.getElementById('scratch-popup');
+    if (popup) popup.classList.add('open');
+}
+
+// ৩. স্ক্র্যাচ কার্ড বন্ধ করার ফাংশন
+function closeScratchPopup() {
+    const popup = document.getElementById('scratch-popup');
+    if (popup) popup.classList.remove('open');
+    triggerHapticSound();
+}
+
+// ৪. ইন-অ্যাপ অর্ডার ফর্ম ওপেন ও ক্লোজ লজিক
+function openOrderForm(type) {
+    checkoutType = type;
+    document.getElementById('order-form-popup').classList.add('open');
+    updateBillReceipt();
+    triggerHapticSound();
+}
+
+function closeOrderForm() {
+    document.getElementById('order-form-popup').classList.remove('open');
+    triggerHapticSound();
+}
+
+// ৫. রসিদ বা বিল আপডেট করার ফাংশন (English)
+function updateBillReceipt() {
+    let name = document.getElementById('cust-name').value.trim() || "Guest";
+    let area = document.getElementById('cust-area').value;
+    let qty = currentQuantity;
+    let subtotal = baseItemPrice * qty;
     
-    <!-- SEO Optimization -->
-    <meta name="description" content="Premium quality Tiger Cobra Guppy Pair in Chattogram. Order instantly via WhatsApp.">
-    <meta name="keywords" content="Tiger Cobra Guppy, Guppy Chattogram, Aquatic Paradise CTG">
+    if(checkoutType === 'cart') {
+        // যদি কার্ট থেকে আসে তবে কার্টের টোটাল হিসাব হবে
+        subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        qty = cart.reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    let discount = discountActive ? Math.round(subtotal * 0.10) : 0;
+    let total = subtotal - discount;
+
+    document.getElementById('rcpt-name').innerText = name;
+    document.getElementById('rcpt-location').innerText = area + " (CTG)";
+    document.getElementById('rcpt-qty').innerText = checkoutType === 'cart' ? `${qty} Items` : `${qty} Pair`;
+    document.getElementById('rcpt-subtotal').innerText = subtotal + " Tk";
     
-    <!-- FontAwesome for Premium Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-dark: #090d16;
-            --card-dark: #111827;
-            --accent: #38bdf8;
-            --primary-text: #f8fafc;
-            --secondary-text: #94a3b8;
-            --star-color: #fbbf24;
-            --heart-color: #f43f5e;
-            --iphone-glow: 0 0 20px rgba(56, 189, 248, 0.25);
-            --btn-glow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--primary-text);
-            padding-bottom: 80px;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* 1. DYNAMIC AQUARIUM PARTICLE BACKGROUND */
-        #aquarium-particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        .bubble {
-            position: absolute;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, rgba(56, 189, 248, 0) 70%);
-            border-radius: 50%;
-            bottom: -20px;
-            animation: floatUp 12s infinite linear;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-105vh) translateX(50px); opacity: 0; }
-        }
-
-        .ambient-glow-bg {
-            position: absolute;
-            top: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(9, 13, 22, 0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(40px);
-            pointer-events: none;
-            animation: pulseGlow 6s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: translateX(-50%) scale(1); opacity: 0.6; }
-            100% { transform: translateX(-50%) scale(1.3); opacity: 0.9; }
-        }
-
-        /* Preloader Screen */
-        #preloader {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-dark);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid #1e293b;
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            box-shadow: var(--iphone-glow);
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* Navbar */
-        .navbar {
-            background: rgba(17, 24, 39, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #1e293b;
-            box-shadow: var(--iphone-glow);
-        }
-
-        .logo h1 {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .nav-btn {
-            position: relative;
-            background: none;
-            border: none;
-            color: var(--primary-text);
-            font-size: 20px;
-            cursor: pointer;
-            transition: transform 0.1s ease;
-        }
-
-        .badge {
-            position: absolute;
-            top: -6px;
-            right: -8px;
-            background: var(--heart-color);
-            color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 50%;
-            font-weight: bold;
-        }
-
-        /* Search Box */
-        .search-box { padding: 15px; max-width: 600px; margin: 0 auto; }
-        .search-wrapper input {
-            width: 100%; padding: 12px 15px 12px 45px; border-radius: 25px;
-            border: 1px solid #1e293b; background: var(--card-dark); color: white;
-            outline: none; transition: 0.3s;
-        }
-        .search-wrapper input:focus { border-color: var(--accent); box-shadow: var(--iphone-glow); }
-        .search-wrapper i { position: absolute; margin-top: 14px; margin-left: 18px; color: var(--secondary-text); }
-
-        /* Categories Section */
-        .categories { display: flex; gap: 10px; padding: 0 15px 15px 15px; overflow-x: auto; max-width: 600px; margin: 0 auto; }
-        .categories::-webkit-scrollbar { display: none; }
-        .cat-btn {
-            background: var(--card-dark); color: var(--secondary-text); border: 1px solid #1e293b;
-            padding: 8px 16px; border-radius: 20px; white-space: nowrap; cursor: pointer;
-            font-size: 13px; font-weight: 600; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .cat-btn.active { background: var(--accent); color: var(--bg-dark); border-color: var(--accent); box-shadow: var(--iphone-glow); }
-
-        /* Main Container */
-        .main-container { max-width: 600px; margin: 0 auto; padding: 0 15px; }
-
-        /* Location Alert Badge */
-        .loc-badge {
-            background: rgba(244, 63, 94, 0.1); border: 1px solid var(--heart-color); color: #fda4af;
-            padding: 10px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 700;
-            margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;
-            box-shadow: 0 0 15px rgba(244, 63, 94, 0.15);
-        }
-
-        /* Animated Glowing Border */
-        .media-slider-box {
-            position: relative; background: var(--card-dark); border-radius: 16px; margin-bottom: 20px; padding: 2px;
-            background: linear-gradient(90deg, var(--accent), #1e293b, var(--accent)); background-size: 200% 200%;
-            animation: borderGlowFlow 4s linear infinite; box-shadow: var(--iphone-glow);
-        }
-        @keyframes borderGlowFlow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-
-        .slider-wrapper { position: relative; width: 100%; height: 320px; display: flex; overflow: hidden; border-radius: 14px; }
-        .premium-tag {
-            position: absolute; top: 12px; left: 12px; z-index: 20; background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 5px 12px; border-radius: 8px;
-            font-size: 11px; font-weight: 700; color: white; border: 1px solid rgba(255, 255, 255, 0.15); letter-spacing: 0.5px;
-        }
-
-        .slide-item { min-width: 100%; height: 100%; display: none; background: #000; }
-        .slide-item.active { display: block; }
-        .slide-item video { width: 100%; height: 100%; object-fit: cover; }
-
-        .slider-btn {
-            position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6);
-            color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10;
-        }
-        .prev-btn { left: 10px; } .next-btn { right: 10px; }
-
-        .slider-dots { display: flex; justify-content: center; gap: 6px; padding: 12px 0; background: #0b0f19; border-bottom-left-radius: 14px; border-bottom-right-radius: 14px; }
-        .dot { width: 6px; height: 6px; background: #334155; border-radius: 50%; cursor: pointer; transition: 0.3s; }
-        .dot.active { background: var(--accent); width: 18px; border-radius: 3px; }
-
-        /* Product Card with 3D Parallax & Metallic Shine */
-        .product-detail-card {
-            background: var(--card-dark); border-radius: 16px; padding: 20px; margin-bottom: 20px; border: 1px solid #1e293b;
-            position: relative; overflow: hidden; transform-style: preserve-3d; perspective: 1000px;
-            transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-        }
-        .product-detail-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(125deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 60%, rgba(255,255,255,0) 70%);
-            transform: rotate(-45deg); pointer-events: none; z-index: 5;
-        }
-
-        .p-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; transform: translateZ(15px); }
-        .p-title { font-size: 18px; font-weight: 700; line-height: 1.4; }
-        .wishlist-btn { background: none; border: none; color: var(--secondary-text); font-size: 22px; cursor: pointer; }
-        .wishlist-btn.active { color: var(--heart-color); text-shadow: 0 0 10px var(--heart-color); }
-        .p-price { font-size: 26px; font-weight: 800; color: var(--accent); margin: 12px 0; text-shadow: 0 0 10px rgba(56, 189, 248, 0.3); transform: translateZ(25px); }
-
-        /* Quantity Box */
-        .qty-container { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; transform: translateZ(10px); }
-        .qty-control-box { display: flex; align-items: center; background: #1f2937; border: 1px solid #374151; border-radius: 8px; overflow: hidden; }
-        .qty-action-btn { background: #374151; color: white; border: none; width: 38px; height: 38px; font-weight: bold; font-size: 18px; cursor: pointer; }
-        .qty-display { width: 40px; text-align: center; font-weight: 600; }
-
-        /* Actions layout */
-        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; transform: translateZ(20px); }
-        .btn-main {
-            padding: 14px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; border: none;
-            display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; overflow: hidden;
-            transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
-        }
-
-        .btn-main:active, .slider-btn:active, .nav-btn:active, .cat-btn:active, .btn-write-review:active { transform: scale(0.94); }
-        .ripple { position: absolute; background: rgba(255, 255, 255, 0.3); border-radius: 50%; transform: scale(0); animation: ripple-effect 0.5s linear; pointer-events: none; }
-        @keyframes ripple-effect { to { transform: scale(4); opacity: 0; } }
-
-        .btn-cart-add { background: #1f2937; color: white; border: 1px solid #374151; }
-        .btn-buy-whatsapp { background: #25D366; color: black; box-shadow: var(--btn-glow); }
-
-        /* 5. PREMIUM SCRATCH CARD MODAL */
-        .scratch-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 3000;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
-        }
-        .scratch-modal.open { opacity: 1; pointer-events: auto; }
-        .scratch-card-box {
-            background: var(--card-dark); border: 2px solid var(--accent); border-radius: 20px;
-            padding: 30px 20px; width: 90%; max-width: 360px; text-align: center;
-            box-shadow: var(--iphone-glow); position: relative;
-        }
-        .scratch-canvas-container {
-            position: relative; width: 260px; height: 150px; margin: 20px auto;
-            border-radius: 12px; overflow: hidden; background: #1e293b;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
-        }
-        .scratch-prize-layer {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1;
-        }
-        .scratch-prize-layer h2 { color: var(--accent); font-size: 28px; text-shadow: 0 0 10px rgba(56,189,248,0.5); }
-        .scratch-canvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: crosshair; touch-action: none; }
-        .close-scratch-btn {
-            background: none; border: none; color: var(--secondary-text); position: absolute;
-            top: 15px; right: 15px; font-size: 20px; cursor: pointer;
-        }
-
-        /* 16 & 24. IN-APP ORDER FORM WITH GLASSMORPHIC BILL RECEIPT */
-        .order-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 2500;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
-        }
-        .order-modal.open { opacity: 1; pointer-events: auto; }
-        .order-box {
-            background: var(--card-dark); border: 1px solid #1e293b; border-radius: 16px;
-            padding: 25px 20px; width: 92%; max-width: 420px; box-shadow: var(--iphone-glow);
-            max-height: 90vh; overflow-y: auto;
-        }
-        .order-box h3 { font-size: 18px; margin-bottom: 15px; text-align: center; color: var(--accent); }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 13px; color: var(--secondary-text); margin-bottom: 6px; }
-        .form-group input, .form-group select {
-            width: 100%; padding: 12px; background: #1f2937; border: 1px solid #374151;
-            border-radius: 8px; color: white; outline: none; font-size: 14px;
-        }
-        .form-group input:focus { border-color: var(--accent); }
-
-        /* 24. Glassmorphic Bill Receipt Layout (English) */
-        .receipt-box {
-            background: var(--glass-bg); border: 1px solid var(--glass-border);
-            border-radius: 12px; padding: 15px; margin: 18px 0;
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            font-family: 'Courier New', Courier, monospace; font-size: 13px; color: #e2e8f0;
-        }
-        .receipt-title { text-align: center; font-weight: bold; border-bottom: 1px dashed var(--glass-border); padding-bottom: 6px; margin-bottom: 10px; letter-spacing: 1px; color: var(--accent); }
-        .receipt-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
-        .receipt-total { border-top: 1px dashed var(--glass-border); padding-top: 6px; margin-top: 8px; font-weight: bold; font-size: 14px; color: #fff; }
-
-        /* 19 & 23. LIVE TYPING MESSENGER WITH NEON STATUS RING */
-        .floating-chat-container { position: fixed; bottom: 20px; right: 20px; z-index: 1200; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-        
-        /* 23. Neon Status Ring on Chat Window/Icon */
-        .whatsapp-floating-widget {
-            background: #25D366; width: 55px; height: 55px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5), var(--iphone-glow);
-            cursor: pointer; position: relative; animation: pulse 2s infinite;
-        }
-        .whatsapp-floating-widget i { color: black; font-size: 28px; }
-        
-        .status-ring {
-            position: absolute; top: 2px; right: 2px; width: 12px; height: 12px;
-            background-color: #00ff66; border: 2px solid var(--bg-dark); border-radius: 50%;
-            box-shadow: 0 0 10px #00ff66;
-        }
-
-        /* 19. Live Typing Floating Bubble */
-        .typing-bubble {
-            background: rgba(17, 24, 39, 0.9); border: 1px solid #1e293b; backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px); padding: 8px 14px; border-radius: 15px 15px 0 15px;
-            display: flex; align-items: center; gap: 6px; box-shadow: var(--iphone-glow);
-            animation: fadeInBubble 0.5s ease forwards;
-        }
-        .typing-text { font-size: 11px; color: var(--secondary-text); font-weight: 600; }
-        .typing-dots { display: flex; gap: 3px; }
-        .typing-dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; animation: blinkDot 1.4s infinite both; }
-        .typing-dot:nth-child(2) { animation-delay: .2s; }
-        .typing-dot:nth-child(3) { animation-delay: .4s; }
-
-        @keyframes blinkDot { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
-        @keyframes fadeInBubble { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
-
-        /* Custom Info Cards */
-        .info-card { background: var(--card-dark); border-radius: 16px; padding: 15px; margin-bottom: 20px; border: 1px solid #1e293b; }
-        .info-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; font-size: 13px; }
-        .info-item:not(:last-child) { border-bottom: 1px solid #1e293b; }
-        .info-item i { font-size: 16px; color: var(--accent); }
-
-        /* Review Section */
-        .reviews-section { background: var(--card-dark); border-radius: 16px; padding: 20px; margin-bottom: 20px; border: 1px solid #1e293b; text-align: center; }
-        .review-header-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-        .review-subtitle { font-size: 12px; color: var(--secondary-text); margin-bottom: 15px; line-height: 1.4; }
-        .btn-write-review {
-            background: #25D366; color: black; border: none; padding: 12px 20px; border-radius: 8px;
-            font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--btn-glow);
-        }
-
-        /* Cart Slide Panel */
-        .cart-sidebar {
-            position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%;
-            background: var(--card-dark); z-index: 2000; box-shadow: -5px 0 25px rgba(0,0,0,0.7);
-            transition: 0.3s right ease-in-out; display: flex; flex-direction: column;
-        }
-        .cart-sidebar.open { right: 0; }
-        .cart-header { padding: 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
-        .cart-items-wrapper { flex-grow: 1; padding: 20px; overflow-y: auto; }
-        .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #1e293b; }
-        .cart-footer { padding: 20px; border-top: 1px solid #1e293b; background: #0b0f19; }
-        .total-row { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 15px; font-size: 16px; }
-        .btn-checkout { width: 100%; background: var(--accent); color: var(--bg-dark); border: none; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: var(--iphone-glow); }
-
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; display: none; }
-        .overlay.open { display: block; }
-    </style>
-</head>
-<body>
-
-    <!-- 1. Aquarium Particles Layer -->
-    <div id="aquarium-particles"></div>
-
-    <!-- Backdrop Glow -->
-    <div class="ambient-glow-bg" id="dynamic-backdrop"></div>
-
-    <!-- Preloader Loading Screen -->
-    <div id="preloader">
-        <div class="spinner"></div>
-        <p style="color: var(--secondary-text); margin-top: 15px; font-size: 13px; font-weight: 600;">Loading Luxury Experience...</p>
-    </div>
-
-    <!-- 5. Premium Scratch Card Modal -->
-    <div class="scratch-modal" id="scratch-popup">
-        <div class="scratch-card-box">
-            <button class="close-scratch-btn" onclick="closeScratchPopup()"><i class="fa-solid fa-xmark"></i></button>
-            <h3 style="color: white; font-size: 16px;">🎁 Premium Customer Gift!</h3>
-            <p style="font-size: 12px; color: var(--secondary-text); margin-top: 5px;">Scratch the card below to win a special checkout discount!</p>
-            
-            <div class="scratch-canvas-container">
-                <div class="scratch-prize-layer">
-                    <p style="font-size: 11px; color: var(--secondary-text); text-transform: uppercase;">Your Promo Code</p>
-                    <h2 id="discount-code-text">COBRA10</h2>
-                    <p style="font-size: 12px; color: #25D366; font-weight: bold; margin-top: 4px;">10% OFF Applied!</p>
-                </div>
-                <canvas class="scratch-canvas" id="scratch-canvas" width="260" height="150"></canvas>
-            </div>
-            <p style="font-size: 11px; color: var(--secondary-text);">Scratch more than 50% area to activate code automatically</p>
-        </div>
-    </div>
-
-    <!-- 16 & 24. In-App WhatsApp Checkout Form -->
-    <div class="order-modal" id="order-form-popup">
-        <div class="order-box">
-            <h3>🛒 Confirm Delivery Information</h3>
-            <div class="form-group">
-                <label>আপনার নাম (Your Name):</label>
-                <input type="text" id="cust-name" placeholder="E.g. Tasnim Ahmed" oninput="updateBillReceipt()">
-            </div>
-            <div class="form-group">
-                <label>চট্টগ্রামের ডেলিভারি এলাকা (Delivery Area in CTG):</label>
-                <select id="cust-area" onchange="updateBillReceipt()">
-                    <option value="GEC Circle">GEC Circle</option>
-                    <option value="Halishahar">Halishahar</option>
-                    <option value="Agrabad">Agrabad</option>
-                    <option value="Chawkbazar">Chawkbazar</option>
-                    <option value="Nasirabad">Nasirabad</option>
-                    <option value="Khulshi">Khulshi</option>
-                    <option value="Bahaddarhat">Bahaddarhat</option>
-                    <option value="Other Area (Inside CTG)">Other Area (Inside CTG)</option>
-                </select>
-            </div>
-
-            <!-- 24. Glassmorphic Bill Receipt Layout (English) -->
-            <div class="receipt-box">
-                <div class="receipt-title">PREMIUM DIGITAL RECEIPT</div>
-                <div class="receipt-row">
-                    <span>Customer:</span>
-                    <span id="rcpt-name" style="font-weight: bold; color: white;">Guest</span>
-                </div>
-                <div class="receipt-row">
-                    <span>Location:</span>
-                    <span id="rcpt-location">GEC Circle (CTG)</span>
-                </div>
-                <div class="receipt-row">
-                    <span>Product:</span>
-                    <span>Tiger Cobra Guppy Pair</span>
-                </div>
-                <div class="receipt-row">
-                    <span>Quantity:</span>
-                    <span id="rcpt-qty">1 Pair</span>
-                </div>
-                <div class="receipt-row">
-                    <span>Subtotal:</span>
-                    <span id="rcpt-subtotal">350 Tk</span>
-                </div>
-                <div class="receipt-row" id="rcpt-discount-row" style="display:none; color: #25D366;">
-                    <span>Discount (Promo):</span>
-                    <span id="rcpt-discount">-35 Tk</span>
-                </div>
-                <div class="receipt-row receipt-total">
-                    <span>GRAND TOTAL:</span>
-                    <span id="rcpt-total" style="color: var(--accent);">350 Tk</span>
-                </div>
-            </div>
-
-            <div style="display:flex; gap:10px;">
-                <button class="btn-main btn-cart-add" onclick="closeOrderForm()" style="padding: 10px;">Cancel</button>
-                <button class="btn-main btn-buy-whatsapp" onclick="submitWhatsAppOrder()" style="flex-grow:1;"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navbar Container -->
-    <div class="navbar">
-        <div class="logo">
-            <h1>AQUATIC PARADISE</h1>
-        </div>
-        <div class="nav-actions">
-            <button class="nav-btn haptic-target" onclick="toggleWishlistModal()"><i class="fa-regular fa-heart"></i><span class="badge" id="wish-badge">0</span></button>
-            <button class="nav-btn haptic-target" onclick="toggleCart(true)"><i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-badge">0</span></button>
-        </div>
-    </div>
-
-    <!-- Search Section -->
-    <div class="search-box">
-        <div class="search-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="search-input" placeholder="Search Tiger Cobra..." onkeyup="filterSearch()">
-        </div>
-    </div>
-
-    <!-- Filters Section -->
-    <div class="categories">
-        <button class="cat-btn active haptic-target" onclick="switchCategory('all', this)">All Items</button>
-        <button class="cat-btn haptic-target" onclick="switchCategory('guppy', this)">Guppy</button>
-        <button class="cat-btn haptic-target" onclick="switchCategory('betta', this)">Betta</button>
-        <button class="cat-btn haptic-target" onclick="switchCategory('accessories', this)">Accessories</button>
-    </div>
-
-    <!-- Core Layout Grid Container -->
-    <div class="main-container">
-
-        <div class="loc-badge">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>Available inside Chattogram (CTG) City Only</span>
-        </div>
-
-        <!-- Slider Block Box -->
-        <div class="media-slider-box" id="product-gallery">
-            <div class="premium-tag">PREMIUM PAIR</div>
-            <div class="slider-wrapper">
-                <div class="slide-item active"><video src="InShot_20260604_211622270.mp4" controls playsinline></video></div>
-                <div class="slide-item"><video src="InShot_20260604_210654716.mp4" controls playsinline></video></div>
-                <div class="slide-item"><video src="InShot_20260604_210050619.mp4" controls playsinline></video></div>
-
-                <button class="slider-btn prev-btn haptic-target" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="slider-btn next-btn haptic-target" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-            <div class="slider-dots" id="slider-dots-container"></div>
-        </div>
-
-        <!-- Core Specs Layout Details Matrix -->
-        <div class="product-detail-card" id="product-info" data-category="guppy" data-name="Tiger Cobra Guppy">
-            <div class="p-title-row">
-                <div class="p-title" id="item-title">Tiger Cobra Guppy - Show Quality Handpicked Pair</div>
-                <button class="wishlist-btn haptic-target" onclick="toggleFavorite()"><i class="fa-solid fa-heart"></i></button>
-            </div>
-            
-            <div class="p-price">Tk <span id="unit-price">350</span></div>
-
-            <div class="qty-container">
-                <span style="font-size: 14px; color: var(--secondary-text);">Select Quantity:</span>
-                <div class="qty-control-box">
-                    <button class="qty-action-btn haptic-target" onclick="updateQty(-1)">-</button>
-                    <div class="qty-display" id="qty-val">1</div>
-                    <button class="qty-action-btn haptic-target" onclick="updateQty(1)">+</button>
-                </div>
-            </div>
-
-            <div class="action-grid">
-                <button class="btn-main btn-cart-add haptic-target" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i> Add To Cart</button>
-                <button class="btn-main btn-buy-whatsapp haptic-target" onclick="openOrderForm('direct')"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
-            </div>
-        </div>
-
-        <!-- Trust Information Badges -->
-        <div class="info-card">
-            <div class="info-item">
-                <i class="fa-solid fa-money-bill-wave"></i>
-                <div><b>Payment Methods:</b> Cash on Delivery (COD) & Nagad Personal</div>
-            </div>
-            <div class="info-item" id="contact">
-                <i class="fa-solid fa-headset"></i>
-                <div><b>Location & Support:</b> Chattogram Base Shop (01606597522)</div>
-            </div>
-        </div>
-
-        <!-- Feedback Engine -->
-        <div class="reviews-section">
-            <div class="review-header-title">Customer Reviews & Feedback</div>
-            <div class="review-subtitle">মাছগুলোর হেলথ ও কোয়ালিটি কেমন লেগেছে? সরাসরি আমাদের হোয়াটসঅ্যাপে রিভিউ শেয়ার করুন!</div>
-            <button class="btn-write-review haptic-target" onclick="sendReviewViaWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> Send Feedback
-            </button>
-        </div>
-
-    </div>
-
-    <!-- 19 & 23. Live Floating Chat Container View Setup -->
-    <div class="floating-chat-container">
-        <!-- 19. Floating Live Typing Simulator Box -->
-        <div class="typing-bubble" id="typing-bubble">
-            <span class="typing-text">Paradise Admin Support</span>
-            <div class="typing-dots">
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-            </div>
-        </div>
-        <!-- 23. Chat Widget Button with Neon Notification Ring Status -->
-        <div class="whatsapp-floating-widget haptic-target" onclick="openFloatingChat()" title="Chat with us">
-            <div class="status-ring"></div>
-            <i class="fa-brands fa-whatsapp"></i>
-        </div>
-    </div>
-
-    <!-- Sliding Cart Panel Markup -->
-    <div class="overlay" id="cart-overlay" onclick="toggleCart(false)"></div>
-    <div class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-header">
-            <h3>Shopping Cart</h3>
-            <button class="nav-btn haptic-target" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="cart-items-wrapper" id="cart-items-container"></div>
-        <div class="cart-footer">
-            <div class="total-row">
-                <span>Total Amount:</span>
-                <span id="cart-total-display">Tk 0</span>
-            </div>
-            <button class="btn-checkout haptic-target" onclick="openOrderForm('cart')"><i class="fa-brands fa-whatsapp"></i> Proceed to Checkout</button>
-        </div>
-    </div>
-
-    <script>
-        // Global variables state setup
-        let currentQuantity = 1;
-        const baseItemPrice = 350;
-        let cart = [];
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || false;
-        let checkoutType = 'direct'; // direct or cart
-        let discountActive = false; // Scratch code state tracker
-
-        // 1. Procedural Aquarium Particle System Engine Initialization
-        function createAquariumParticles() {
-            const container = document.getElementById('aquarium-particles');
-            const bubbleCount = 12;
-            for(let i=0; i < bubbleCount; i++){
-                let bubble = document.createElement('div');
-                bubble.classList.add('bubble');
-                let size = Math.random() * 8 + 4; // Random size parameter dimensions
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.animationDelay = `${Math.random() * 8}s`;
-                bubble.style.animationDuration = `${Math.random() * 6 + 8}s`;
-                container.appendChild(bubble);
-            }
-        }
-        createAquariumParticles();
-
-        // 19. Intelligent Auto-Typing Dynamic Message Routine
-        const supportMessages = ["Typing standard advice...", "Active to answer CTG...", "Checking Live Stock..."];
-        function simulateSupportTyping() {
-            const bubble = document.getElementById('typing-bubble');
-            const textNode = bubble.querySelector('.typing-text');
-            
-            setInterval(() => {
-                bubble.style.display = "flex";
-                let randMsg = supportMessages[Math.floor(Math.random() * supportMessages.length)];
-                textNode.innerText = randMsg;
-                
-                setTimeout(() => {
-                    bubble.style.display = "none";
-                }, 4000);
-
-            }, 12000);
-        }
-        simulateSupportTyping();
-
-        // 5. Native Electronic Scratch Card Canvas Matrix Algorithm Core
-        function initScratchCard() {
-            const canvas = document.getElementById('scratch-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Silver premium scratch gradient overlay filling paint context
-            ctx.fillStyle = '#475569';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#64748b';
-            ctx.font = 'bold 14px Segoe UI';
-            ctx.textAlign = 'center';
-            ctx.fillText('SCRATCH HERE TO WIN', canvas.width/2, canvas.height/2 + 5);
-
-            let isDrawing = false;
-
-            function scratch(e) {
-                if(!isDrawing) return;
-                let rect = canvas.getBoundingClientRect();
-                // Safe calculations unified mapping coordinates for mouse & touches
-                let x = (e.clientX || e.touches[0].clientX) - rect.left;
-                let y = (e.clientY || e.touches[0].clientY) - rect.top;
-                
-                ctx.globalCompositeOperation = 'destination-out';
-                ctx.beginPath();
-                ctx.arc(x, y, 22, 0, Math.PI * 2);
-                ctx.fill();
-                checkScratchPercentage();
-            }
-
-            canvas.addEventListener('mousedown', () => isDrawing = true);
-            canvas.addEventListener('touchstart', () => isDrawing = true);
-            window.addEventListener('mouseup', () => isDrawing = falseNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+    if(discountActive) {
+        document.getElementById('rcpt-discount-row').style.display = 'flex';
+        document.getElementById('rcpt-discount').innerText = "-" + discount + " Tk";
+    } else {
+        document.getElementById('rcpt-discount-row').style.display = 'none';
+    }
+    
+    document.getElementById('rcpt-total').innerText = total + " Tk";
+}
+
+// ৬. হোয়াটসঅ্যাপে ফর্মের ডেটা পাঠানোর ফাইনাল লজिक
+function submitWhatsAppOrder() {
+    let name = document.getElementById('cust-name').value.trim();
+    let area = document.getElementById('cust-area').value;
+    
+    if(!name) {
+        alert("Please enter your name to confirm order.");
+        return;
+    }
+
+    let qty = currentQuantity;
+    let subtotal = baseItemPrice * qty;
+    let discount = discountActive ? Math.round(subtotal * 0.10) : 0;
+    let total = subtotal - discount;
+
+    let message = `*NEW ORDER - AQUATIC PARADISE*%0A`;
+    message += `-----------------------------------%0A`;
+    message += `*Customer Name:* ${name}%0A`;
+    message += `*Delivery Area:* ${area}, Chattogram%0A`;
+    message += `-----------------------------------%0A`;
+    
+    if(checkoutType === 'cart') {
+        message += `*Order Details (Cart):*%0A`;
+        cart.forEach(item => {
+            message += `- ${item.name} x ${item.qty} (${item.price * item.qty} Tk)%0A`;
+        });
+    } else {
+        message += `*Product:* Tiger Cobra Guppy Pair%0A`;
+        message += `*Quantity:* ${qty} Pair%0A`;
+    }
+    
+    message += `-----------------------------------%0A`;
+    if(discountActive) {
+        message += `*Subtotal:* ${subtotal} Tk%0A`;
+        message += `*Coupon Discount (10%):* -${discount} Tk%0A`;
+    }
+    message += `*GRAND TOTAL:* ${total} Tk%0A`;
+    message += `-----------------------------------%0A`;
+    message += `_Please confirm my delivery order. Cash on Delivery._`;
+
+    let whatsappUrl = `https://wa.me/8801606597522?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// বাকি সব বেসিক ইউজার ইন্টারফেস (UI) ফাংশনাবিলিটি
+function updateQty(change) {
+    currentQuantity += change;
+    if(currentQuantity < 1) currentQuantity = 1;
+    document.getElementById('qty-val').innerText = currentQuantity;
+    triggerHapticSound();
+}
+
+function toggleCart(show) {
+    const sidebar = document.getElementById('cart-sidebar');
+    const overlay = document.getElementById('cart-overlay');
+    if(show) {
+        sidebar.classList.add('open');
+        overlay.classList.add('open');
+    } else {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+    }
+    triggerHapticSound();
+}
+
+// ৭. স্ক্র্যাচিং পার্সেন্টেজ চেক করার কাস্টম মেকানিজম
+function checkScratchPercentage() {
+    if(discountActive) return;
+    const canvas = document.getElementById('scratch-canvas');
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let clearedPixels = 0;
+    
+    for (let i = 0; i < imgData.data.length; i += 4) {
+        if (imgData.data[i + 3] === 0) clearedPixels++;
+    }
+    
+    let percentage = (clearedPixels / (canvas.width * canvas.height)) * 100;
+    if (percentage > 45) { // ৪৫% এর বেশি স্ক্র্যাচ করলেই ডিসকাউন্ট লক ইন হবে
+        discountActive = true;
+        canvas.style.transition = 'opacity 0.4s';
+        canvas.style.opacity = '0';
+        setTimeout(() => canvas.remove(), 400);
+    }
+}
+
+// হ্যাপটিক অডিও বিহেভিয়ার ট্রিগার
+function triggerHapticSound() {
+    try {
+        let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let osc = audioCtx.createOscillator();
+        let gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(120, audioCtx.currentTime); 
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+    } catch(e) {}
+}
+
+// স্লাইডারের বেসিক ভ্যারিয়েবল লজিক
+let currentSlide = 0;
+function moveSlide(dir) {
+    const slides = document.querySelectorAll('.slide-item');
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + dir + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    updateDots();
+    triggerHapticSound();
+}
+
+function initSliderDots() {
+    const dotsContainer = document.getElementById('slider-dots-container');
+    const slides = document.querySelectorAll('.slide-item');
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, idx) => {
+        let dot = document.createElement('div');
+        dot.classList.add('dot');
+        if(idx === 0) dot.classList.add('active');
+        dot.onclick = () => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = idx;
+            slides[currentSlide].classList.add('active');
+            updateDots();
+        };
+        dotsContainer.appendChild(dot);
+    });
+}
+
+function updateDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
+    });
+}
+
+function sendReviewViaWhatsApp() {
+    let msg = encodeURIComponent("Salam! I want to share my feedback about your Tiger Cobra Guppy...");
+    window.open(`https://wa.me/8801606597522?text=${msg}`, '_blank');
+}
