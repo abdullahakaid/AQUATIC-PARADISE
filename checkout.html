@@ -3,49 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout | Aquatic Paradise</title>
+    <title>Secure Checkout</title>
     <style>
-        :root { --bg-dark: #05070f; --card-dark: #0b111e; --accent: #38bdf8; --primary-text: #f8fafc; --secondary-text: #94a3b8; }
-        body { background-color: var(--bg-dark); color: var(--primary-text); font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; padding: 20px; margin: 0; }
-        .checkout-box { background: var(--card-dark); width: 100%; max-width: 400px; padding: 25px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        h2 { color: var(--accent); text-align: center; margin-bottom: 25px; font-size: 22px; }
-        .input-group { margin-bottom: 18px; }
-        label { font-size: 13px; color: var(--secondary-text); display: block; margin-bottom: 6px; font-weight: 600; }
-        input, select { width: 100%; padding: 14px; background: rgba(0,0,0,0.2); border: 1px solid #1e293b; border-radius: 12px; color: white; outline: none; box-sizing: border-box; transition: 0.3s; }
-        input:focus { border-color: var(--accent); }
-        .btn-confirm { width: 100%; padding: 15px; background: #25D366; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; color: black; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .back-link { display: block; text-align: center; margin-top: 15px; color: var(--secondary-text); font-size: 13px; text-decoration: none; }
+        :root { --bg-dark: #05070f; --card-dark: #0b111e; --accent: #38bdf8; --primary-text: #f8fafc; }
+        body { background-color: var(--bg-dark); color: var(--primary-text); font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .checkout-box { background: var(--card-dark); padding: 30px; border-radius: 16px; width: 100%; max-width: 400px; border: 1px solid rgba(255,255,255,0.05); }
+        h2 { text-align: center; color: var(--accent); margin-bottom: 25px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 14px; color: #94a3b8; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: #05070f; color: white; box-sizing: border-box; }
+        .btn-order { width: 100%; padding: 14px; background: #25D366; border: none; border-radius: 10px; color: black; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #94a3b8; text-decoration: none; font-size: 14px; }
     </style>
 </head>
 <body>
 
 <div class="checkout-box">
     <h2>Secure Checkout</h2>
-    <div class="input-group"><label>Full Name</label><input type="text" id="name" placeholder="E.g. Tasnim Ahmed"></div>
-    <div class="input-group"><label>Phone Number</label><input type="text" id="phone" placeholder="01XXXXXXXXX"></div>
-    <div class="input-group"><label>Delivery Address</label><input type="text" id="address" placeholder="Your full address"></div>
-    <div class="input-group"><label>Payment Method</label>
-        <select id="payment">
-            <option value="Cash on Delivery">Cash on Delivery</option>
-            <option value="Nagad Personal">Nagad Personal</option>
-        </select>
-    </div>
-    <button class="btn-confirm" onclick="submitOrder()">Order via WhatsApp</button>
+    <form id="checkoutForm">
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="E.g. Tasnim Ahmed" required>
+        </div>
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phoneNumber" placeholder="01XXXXXXXXX" required>
+        </div>
+        <div class="form-group">
+            <label>Payment Method</label>
+            <select id="paymentMethod">
+                <option value="Cash on Delivery">Cash on Delivery</option>
+                <option value="Nagad">Nagad</option>
+                <option value="Bkash">Bkash</option>
+            </select>
+        </div>
+        <button type="button" class="btn-order" onclick="sendToWhatsApp()">Order via WhatsApp</button>
+    </form>
     <a href="index.html" class="back-link">← Back to shop</a>
 </div>
 
 <script>
-    function submitOrder() {
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const addr = document.getElementById('address').value;
-        const pay = document.getElementById('payment').value;
+    function sendToWhatsApp() {
+        const name = document.getElementById('fullName').value;
+        const phone = document.getElementById('phoneNumber').value;
+        const payment = document.getElementById('paymentMethod').value;
         
-        if(!name || !phone || !addr) { alert("Please fill in all details!"); return; }
-        
-        const msg = `*NEW ORDER - AQUATIC PARADISE*%0A-----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${addr}%0A*Payment:* ${pay}%0A-----------------------------------%0A_Please confirm my order._`;
-        window.open(`https://wa.me/8801606597522?text=${msg}`, '_blank');
+        if(name === "" || phone === "") {
+            alert("Please fill in the required fields.");
+            return;
+        }
+
+        const message = `New Order Request:%0A- Name: ${name}%0A- Phone: ${phone}%0A- Payment: ${payment}`;
+        const url = `https://wa.me/8801606597522?text=${message}`;
+        window.open(url, '_blank');
     }
 </script>
+
 </body>
 </html>
