@@ -19,9 +19,9 @@
             --secondary-text: #94a3b8;
             --star-color: #fbbf24;
             --heart-color: #f43f5e;
-            --iphone-glow: 0 0 35px rgba(56, 189, 248, 0.45); /* Enhanced Vivid Glow */
+            --iphone-glow: 0 0 35px rgba(56, 189, 248, 0.45);
             --btn-glow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            --aurora-1: rgba(56, 189, 248, 0.25); /* Ultra rich backdrop glow */
+            --aurora-1: rgba(56, 189, 248, 0.25);
             --aurora-2: rgba(139, 92, 246, 0.2);
         }
 
@@ -53,7 +53,6 @@
             transition: background-color 0.4s ease;
         }
 
-        /* HIGH-PERFORMANCE INTENSE NEON GLOW BACKDROP */
         .aurora-bg {
             position: fixed;
             top: -10%; left: -10%; width: 120%; height: 120%;
@@ -66,7 +65,6 @@
             will-change: transform;
         }
 
-        /* PRELOADER SKELETON SHIMMER */
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -90,7 +88,6 @@
         }
         @keyframes shimmer { 100% { left: 150%; } }
 
-        /* TEXT REVEAL ENTRANCES */
         .reveal-text {
             opacity: 0;
             transform: translateY(15px);
@@ -100,7 +97,6 @@
         .reveal-delay-2 { animation-delay: 0.2s; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* Navbar */
         .navbar {
             background: rgba(5, 7, 15, 0.75);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -118,7 +114,6 @@
         }
         .badge { position: absolute; top: -3px; right: -3px; background: var(--heart-color); color: white; font-size: 9px; padding: 2px 5px; border-radius: 50%; font-weight: bold; }
 
-        /* Search & Categories */
         .search-box { padding: 15px; max-width: 600px; margin: 0 auto; }
         .search-wrapper { position: relative; }
         .search-wrapper input {
@@ -137,7 +132,6 @@
         }
         .cat-btn.active { background: var(--accent); color: var(--bg-dark); border-color: var(--accent); box-shadow: 0 0 15px var(--aurora-1); }
 
-        /* Main Container */
         .main-container { max-width: 600px; margin: 0 auto; padding: 0 15px; }
         .loc-badge {
             background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); color: #93c5fd;
@@ -146,10 +140,9 @@
             box-shadow: 0 0 10px rgba(56, 189, 248, 0.05);
         }
 
-        /* MEDIA SLIDER BOX WITH VIVID GLOW */
         .media-slider-box {
             position: relative; background: var(--card-dark); border-radius: 16px; margin-bottom: 20px; padding: 1px;
-            border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: var(--iphone-glow); /* VIVID IPHONE GLOW */
+            border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: var(--iphone-glow);
         }
         .slider-wrapper { position: relative; width: 100%; height: 320px; display: flex; overflow: hidden; border-radius: 14px; }
         .premium-tag {
@@ -166,7 +159,6 @@
         .dot { width: 6px; height: 6px; background: #1e293b; border-radius: 50%; cursor: pointer; transition: 0.3s; }
         .dot.active { background: var(--accent); width: 18px; border-radius: 3px; box-shadow: 0 0 8px var(--accent); }
 
-        /* PRODUCT CARD WITH 3D PARALLAX */
         .product-detail-card {
             background: var(--card-dark); border-radius: 16px; padding: 20px; margin-bottom: 20px;
             border: 1px solid rgba(255,255,255,0.03); position: relative; overflow: hidden;
@@ -187,46 +179,13 @@
         .btn-main {
             padding: 14px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; border: none;
             display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; overflow: hidden;
+            text-decoration: none;
         }
         .btn-cart-add { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.08); }
         .btn-buy-whatsapp { background: #25D366; color: black; box-shadow: var(--btn-glow); }
         .ripple { position: absolute; background: rgba(255, 255, 255, 0.2); border-radius: 50%; transform: scale(0); animation: ripple-effect 0.4s linear; pointer-events: none; }
         @keyframes ripple-effect { to { transform: scale(4); opacity: 0; } }
 
-        /* ULTRA SMOOTH IPHONE BOTTOM SHEET */
-        .bottom-sheet {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(11, 17, 30, 0.9); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            z-index: 2500; border-top-left-radius: 24px; border-top-right-radius: 24px;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            max-height: 85vh; overflow-y: auto;
-            transform: translateY(100%);
-            transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-            will-change: transform;
-        }
-        .bottom-sheet.open { transform: translateY(0); }
-        
-        .sheet-notch { width: 40px; height: 5px; background: rgba(255,255,255,0.2); border-radius: 3px; margin: 12px auto; }
-        .sheet-content { padding: 0 24px 30px 24px; }
-        .sheet-content h3 { font-size: 18px; text-align: center; margin-bottom: 20px; color: var(--accent); font-weight: 800; text-shadow: 0 0 10px rgba(56, 189, 248, 0.3); }
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; font-size: 13px; color: var(--secondary-text); margin-bottom: 6px; font-weight: 600; }
-        .form-group input {
-            width: 100%; padding: 14px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px; color: white; outline: none; font-size: 14px; transition: 0.3s;
-        }
-        .form-group input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
-
-        .receipt-box {
-            background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 16px; padding: 18px; margin: 20px 0; font-family: 'Courier New', Courier, monospace; font-size: 13px;
-        }
-        .receipt-title { text-align: center; font-weight: bold; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 12px; color: var(--accent); }
-        .receipt-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
-        .receipt-total { border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px; margin-top: 10px; font-weight: bold; font-size: 15px; }
-
-        /* PREMIUM SCRATCH CARD MODAL */
         .scratch-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.7); z-index: 3000;
@@ -245,19 +204,11 @@
         .scratch-canvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: crosshair; touch-action: none; transition: opacity 0.3s; }
         .close-scratch-btn { background: none; border: none; color: var(--secondary-text); position: absolute; top: 15px; right: 15px; font-size: 20px; }
 
-        /* SUPPORT WIDGETS */
         .floating-chat-container { position: fixed; bottom: 20px; right: 20px; z-index: 1200; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
         .whatsapp-floating-widget { background: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; box-shadow: var(--btn-glow); }
         .whatsapp-floating-widget i { color: black; font-size: 26px; }
         .status-ring { position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; background-color: #00ff66; border: 2px solid var(--bg-dark); border-radius: 50%; }
         
-        .typing-bubble { background: rgba(11, 17, 30, 0.95); border: 1px solid rgba(255,255,255,0.05); padding: 8px 14px; border-radius: 15px 15px 0 15px; display: none; align-items: center; gap: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .typing-text { font-size: 11px; color: var(--secondary-text); font-weight: 600; }
-        .typing-dots { display: flex; gap: 3px; }
-        .typing-dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; animation: blinkDot 1.4s infinite both; }
-        .typing-dot:nth-child(2) { animation-delay: .2s; } .typing-dot:nth-child(3) { animation-delay: .4s; }
-        @keyframes blinkDot { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
-
         .info-card { background: var(--card-dark); border-radius: 16px; padding: 15px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.03); }
         .info-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; font-size: 13px; }
         .info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.03); }
@@ -268,7 +219,6 @@
         .review-subtitle { font-size: 12px; color: var(--secondary-text); margin-bottom: 15px; line-height: 1.4; }
         .btn-write-review { background: #25D366; color: black; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--btn-glow); }
 
-        /* CART PANEL */
         .cart-sidebar { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: var(--card-dark); z-index: 2000; box-shadow: -5px 0 25px rgba(0,0,0,0.5); transition: 0.3s right cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; border-left: 1px solid rgba(255,255,255,0.03); }
         .cart-sidebar.open { right: 0; }
         .cart-header { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; }
@@ -276,7 +226,7 @@
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .cart-footer { padding: 20px; border-top: 1px solid rgba(255,255,255,0.03); background: rgba(0,0,0,0.1); }
         .total-row { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 15px; font-size: 16px; }
-        .btn-checkout { width: 100%; background: var(--accent); color: var(--bg-dark); border: none; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 0 15px var(--aurora-1); }
+        .btn-checkout { width: 100%; background: var(--accent); color: var(--bg-dark); border: none; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 0 15px var(--aurora-1); text-decoration: none; display: block; text-align: center; }
 
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; display: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
         .overlay.open { display: block; }
@@ -284,10 +234,8 @@
 </head>
 <body>
 
-    <!-- HIGH-PERFORMANCE NEON GLOW BACKDROP Layer -->
     <div class="aurora-bg"></div>
 
-    <!-- SHIMMER SKELETON PRELOADER -->
     <div id="preloader">
         <div class="shimmer-logo shimmer-effect"></div>
         <div class="shimmer-card shimmer-effect"></div>
@@ -295,7 +243,6 @@
         <div class="shimmer-text shimmer-effect" style="width: 50%;"></div>
     </div>
 
-    <!-- SCRATCH CARD DISCOUNT MODAL -->
     <div class="scratch-modal" id="scratch-popup">
         <div class="scratch-card-box">
             <button class="close-scratch-btn" onclick="closeScratchPopup()"><i class="fa-solid fa-xmark"></i></button>
@@ -313,34 +260,6 @@
         </div>
     </div>
 
-    <!-- GPU ACCELERATED SMOOTH BOTTOM SHEET -->
-    <div class="bottom-sheet" id="order-sheet">
-        <div class="sheet-notch"></div>
-        <div class="sheet-content">
-            <h3>🛒 Confirm Order Information</h3>
-            <div class="form-group">
-                <label>আপনার নাম (Your Name):</label>
-                <input type="text" id="cust-name" placeholder="E.g. Tasnim Ahmed" oninput="updateBillReceipt()">
-            </div>
-
-            <div class="receipt-box">
-                <div class="receipt-title">PREMIUM DIGITAL RECEIPT</div>
-                <div class="receipt-row"><span>Customer:</span><span id="rcpt-name" style="font-weight: bold; color: white;">Guest</span></div>
-                <div class="receipt-row"><span>Product:</span><span>Tiger Cobra Guppy Pair</span></div>
-                <div class="receipt-row"><span>Quantity:</span><span id="rcpt-qty">1 Pair</span></div>
-                <div class="receipt-row"><span>Subtotal:</span><span id="rcpt-subtotal">350 Tk</span></div>
-                <div class="receipt-row" id="rcpt-discount-row" style="display:none; color: #25D366;"><span>Discount (Promo):</span><span id="rcpt-discount">-35 Tk</span></div>
-                <div class="receipt-row receipt-total"><span>GRAND TOTAL:</span><span id="rcpt-total" style="color: var(--accent);">350 Tk</span></div>
-            </div>
-
-            <div style="display:flex; gap:12px;">
-                <button class="btn-main btn-cart-add" onclick="closeOrderSheet()" style="padding: 12px;">Cancel</button>
-                <button class="btn-main btn-buy-whatsapp" onclick="submitWhatsAppOrder()" style="flex-grow:1;"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- NAVBAR WITH MODE SWITCHER -->
     <div class="navbar">
         <div class="logo"><h1>AQUATIC PARADISE</h1></div>
         <div class="nav-actions">
@@ -367,7 +286,6 @@
     <div class="main-container reveal-text reveal-delay-1">
         <div class="loc-badge"><i class="fa-solid fa-clock"></i><span>Order Instantly Via WhatsApp</span></div>
 
-        <!-- VIDEO SLIDER WITH RE-ACTIVATED GORGEOUS GLOW -->
         <div class="media-slider-box" id="product-gallery">
             <div class="premium-tag">PREMIUM PAIR</div>
             <div class="slider-wrapper">
@@ -380,7 +298,6 @@
             <div class="slider-dots" id="slider-dots-container"></div>
         </div>
 
-        <!-- PRODUCT CARD -->
         <div class="product-detail-card reveal-text reveal-delay-2" id="product-info" data-category="guppy" data-name="Tiger Cobra Guppy">
             <div class="p-title-row">
                 <div class="p-title" id="item-title">Tiger Cobra Guppy - Show Quality Handpicked Pair</div>
@@ -399,7 +316,7 @@
 
             <div class="action-grid">
                 <button class="btn-main btn-cart-add" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i> Add To Cart</button>
-                <button class="btn-main btn-buy-whatsapp" onclick="openOrderSheet('direct')"><i class="fa-brands fa-whatsapp"></i> Buy Now</button>
+                <a href="checkout.html" class="btn-main btn-buy-whatsapp"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
             </div>
         </div>
 
@@ -416,12 +333,7 @@
         </div>
     </div>
 
-    <!-- WHATSAPP FLOATING CHAT -->
     <div class="floating-chat-container">
-        <div class="typing-bubble" id="typing-bubble">
-            <span class="typing-text">Paradise Admin Support</span>
-            <div class="typing-dots"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
-        </div>
         <div class="whatsapp-floating-widget" onclick="openFloatingChat()">
             <div class="status-ring"></div><i class="fa-brands fa-whatsapp"></i>
         </div>
@@ -429,7 +341,6 @@
 
     <div class="overlay" id="global-overlay" onclick="closeAllPanels()"></div>
     
-    <!-- CART SIDEBAR PANEL -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h3>Shopping Cart</h3>
@@ -438,7 +349,7 @@
         <div class="cart-items-wrapper" id="cart-items-container"></div>
         <div class="cart-footer">
             <div class="total-row"><span>Total Amount:</span><span id="cart-total-display">Tk 0</span></div>
-            <button class="btn-checkout" onclick="openOrderSheet('cart')"><i class="fa-brands fa-whatsapp"></i> Proceed to Checkout</button>
+            <a href="checkout.html" class="btn-checkout"><i class="fa-brands fa-whatsapp"></i> Proceed to Checkout</a>
         </div>
     </div>
 
@@ -447,7 +358,6 @@
         const baseItemPrice = 350;
         let cart = [];
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || false;
-        let checkoutType = 'direct'; 
         let discountActive = false; 
 
         window.addEventListener('load', () => { hidePreloader(); });
@@ -469,22 +379,7 @@
             } else {
                 body.setAttribute('data-theme', 'moonlight');
             }
-            playHapticSound();
         }
-
-        function openOrderSheet(type) {
-            checkoutType = type;
-            if(type === 'cart' && cart.length === 0) { alert("Your cart is empty!"); return; }
-            toggleCart(false);
-            document.getElementById('order-sheet').classList.add('open');
-            document.getElementById('global-overlay').classList.add('open');
-            updateBillReceipt();
-        }
-        function closeOrderSheet() {
-            document.getElementById('order-sheet').classList.remove('open');
-            document.getElementById('global-overlay').classList.remove('open');
-        }
-        function closeAllPanels() { closeOrderSheet(); toggleCart(false); }
 
         function setupButtonRipples() {
             document.querySelectorAll('.btn-main').forEach(btn => {
@@ -498,62 +393,7 @@
             });
         }
 
-        function playHapticSound() {
-            try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext; if (!AudioContext) return;
-                const ctx = new AudioContext(), osc = ctx.createOscillator(), gain = ctx.createGain();
-                osc.type = 'sine'; osc.frequency.setValueAtTime(120, ctx.currentTime);
-                gain.gain.setValueAtTime(0.03, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
-                osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.03);
-            } catch (e) {}
-        }
-
-        // SMOOTH 3D LEAN PARALLAX
-        const card = document.getElementById('product-info');
-        if(card) {
-            card.addEventListener('mousemove', (e) => {
-                const r = card.getBoundingClientRect();
-                card.style.transform = `rotateX(${-(e.clientY - r.top - (r.height/2)) / 25}deg) rotateY(${(e.clientX - r.left - (r.width/2)) / 25}deg)`;
-            });
-            card.addEventListener('mouseleave', () => card.style.transform = 'rotateX(0deg) rotateY(0deg)');
-        }
-
-        function updateBillReceipt() {
-            let name = document.getElementById('cust-name').value.trim() || "Guest";
-            let qty = currentQuantity, subtotal = baseItemPrice * qty;
-            if(checkoutType === 'cart') {
-                subtotal = cart.reduce((sum, item) => sum + item.total, 0);
-                qty = cart.reduce((sum, item) => sum + item.qty, 0);
-            }
-            let discount = discountActive ? Math.round(subtotal * 0.10) : 0;
-            document.getElementById('rcpt-name').innerText = name;
-            document.getElementById('rcpt-qty').innerText = checkoutType === 'cart' ? `${qty} Items` : `${qty} Pair`;
-            document.getElementById('rcpt-subtotal').innerText = subtotal + " Tk";
-            if(discountActive) {
-                document.getElementById('rcpt-discount-row').style.display = 'flex';
-                document.getElementById('rcpt-discount').innerText = "-" + discount + " Tk";
-            }
-            document.getElementById('rcpt-total').innerText = (subtotal - discount) + " Tk";
-        }
-
-        function submitWhatsAppOrder() {
-            let name = document.getElementById('cust-name').value.trim();
-            if(!name) { alert("Please enter your name to confirm order."); return; }
-            let qty = currentQuantity, subtotal = baseItemPrice * qty;
-            if(checkoutType === 'cart') subtotal = cart.reduce((sum, item) => sum + item.total, 0);
-            let discount = discountActive ? Math.round(subtotal * 0.10) : 0;
-
-            let msg = `*NEW ORDER - AQUATIC PARADISE*%0A-----------------------------------%0A*Customer:* ${name}%0A-----------------------------------%0A`;
-            if(checkoutType === 'cart') {
-                cart.forEach(i => { msg += `- ${i.name} x ${i.qty} (${i.total} Tk)%0A`; });
-            } else {
-                msg += `*Product:* Tiger Cobra Guppy Pair%0A*Quantity:* ${qty} Pair%0A`;
-            }
-            msg += `-----------------------------------%0A`;
-            if(discountActive) msg += `*Subtotal:* ${subtotal} Tk%0A*Discount (10%):* -${discount} Tk%0A`;
-            msg += `*GRAND TOTAL:* ${(subtotal - discount)} Tk%0A-----------------------------------%0A_Please confirm my order._`;
-            window.open(`https://wa.me/8801606597522?text=${msg}`, '_blank');
-        }
+        function closeAllPanels() { toggleCart(false); }
 
         function openScratchPopup() { document.getElementById('scratch-popup').classList.add('open'); }
         function closeScratchPopup() { document.getElementById('scratch-popup').classList.remove('open'); }
@@ -582,7 +422,7 @@
             let cleared = 0; for (let i = 0; i < imgData.data.length; i += 4) { if (imgData.data[i + 3] === 0) cleared++; }
             if ((cleared / (canvas.width * canvas.height)) * 100 > 45) {
                 discountActive = true; canvas.style.opacity = '0';
-                setTimeout(() => { canvas.remove(); alert("🎉 10% Luxury Coupon Activated!"); updateBillReceipt(); }, 300);
+                setTimeout(() => { canvas.remove(); alert("🎉 10% Luxury Coupon Activated!"); }, 300);
             }
         }
 
