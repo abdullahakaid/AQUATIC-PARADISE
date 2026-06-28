@@ -19,9 +19,9 @@
             --secondary-text: #94a3b8;
             --star-color: #fbbf24;
             --heart-color: #f43f5e;
-            --iphone-glow: 0 0 35px rgba(56, 189, 248, 0.45); /* Enhanced Vivid Glow */
+            --iphone-glow: 0 0 35px rgba(56, 189, 248, 0.45); 
             --btn-glow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            --aurora-1: rgba(56, 189, 248, 0.25); /* Ultra rich backdrop glow */
+            --aurora-1: rgba(56, 189, 248, 0.25); 
             --aurora-2: rgba(139, 92, 246, 0.2);
         }
 
@@ -53,7 +53,6 @@
             transition: background-color 0.4s ease;
         }
 
-        /* HIGH-PERFORMANCE INTENSE NEON GLOW BACKDROP */
         .aurora-bg {
             position: fixed;
             top: -10%; left: -10%; width: 120%; height: 120%;
@@ -66,7 +65,6 @@
             will-change: transform;
         }
 
-        /* PRELOADER SKELETON SHIMMER */
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -90,7 +88,6 @@
         }
         @keyframes shimmer { 100% { left: 150%; } }
 
-        /* TEXT REVEAL ENTRANCES */
         .reveal-text {
             opacity: 0;
             transform: translateY(15px);
@@ -100,7 +97,6 @@
         .reveal-delay-2 { animation-delay: 0.2s; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* Navbar */
         .navbar {
             background: rgba(5, 7, 15, 0.75);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -118,7 +114,6 @@
         }
         .badge { position: absolute; top: -3px; right: -3px; background: var(--heart-color); color: white; font-size: 9px; padding: 2px 5px; border-radius: 50%; font-weight: bold; }
 
-        /* Search & Categories */
         .search-box { padding: 15px; max-width: 600px; margin: 0 auto; }
         .search-wrapper { position: relative; }
         .search-wrapper input {
@@ -137,7 +132,6 @@
         }
         .cat-btn.active { background: var(--accent); color: var(--bg-dark); border-color: var(--accent); box-shadow: 0 0 15px var(--aurora-1); }
 
-        /* Main Container */
         .main-container { max-width: 600px; margin: 0 auto; padding: 0 15px; }
         .loc-badge {
             background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); color: #93c5fd;
@@ -146,10 +140,9 @@
             box-shadow: 0 0 10px rgba(56, 189, 248, 0.05);
         }
 
-        /* MEDIA SLIDER BOX WITH VIVID GLOW */
         .media-slider-box {
             position: relative; background: var(--card-dark); border-radius: 16px; margin-bottom: 20px; padding: 1px;
-            border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: var(--iphone-glow); /* VIVID IPHONE GLOW */
+            border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: var(--iphone-glow); 
         }
         .slider-wrapper { position: relative; width: 100%; height: 320px; display: flex; overflow: hidden; border-radius: 14px; }
         .premium-tag {
@@ -166,7 +159,6 @@
         .dot { width: 6px; height: 6px; background: #1e293b; border-radius: 50%; cursor: pointer; transition: 0.3s; }
         .dot.active { background: var(--accent); width: 18px; border-radius: 3px; box-shadow: 0 0 8px var(--accent); }
 
-        /* PRODUCT CARD WITH 3D PARALLAX */
         .product-detail-card {
             background: var(--card-dark); border-radius: 16px; padding: 20px; margin-bottom: 20px;
             border: 1px solid rgba(255,255,255,0.03); position: relative; overflow: hidden;
@@ -193,7 +185,6 @@
         .ripple { position: absolute; background: rgba(255, 255, 255, 0.2); border-radius: 50%; transform: scale(0); animation: ripple-effect 0.4s linear; pointer-events: none; }
         @keyframes ripple-effect { to { transform: scale(4); opacity: 0; } }
 
-        /* ULTRA SMOOTH IPHONE BOTTOM SHEET */
         .bottom-sheet {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(11, 17, 30, 0.9); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
@@ -226,7 +217,6 @@
         .receipt-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
         .receipt-total { border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 8px; margin-top: 10px; font-weight: bold; font-size: 15px; }
 
-        /* PREMIUM SCRATCH CARD MODAL */
         .scratch-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.7); z-index: 3000;
@@ -245,7 +235,6 @@
         .scratch-canvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: crosshair; touch-action: none; transition: opacity 0.3s; }
         .close-scratch-btn { background: none; border: none; color: var(--secondary-text); position: absolute; top: 15px; right: 15px; font-size: 20px; }
 
-        /* SUPPORT WIDGETS */
         .floating-chat-container { position: fixed; bottom: 20px; right: 20px; z-index: 1200; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
         .whatsapp-floating-widget { background: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; box-shadow: var(--btn-glow); }
         .whatsapp-floating-widget i { color: black; font-size: 26px; }
@@ -268,7 +257,6 @@
         .review-subtitle { font-size: 12px; color: var(--secondary-text); margin-bottom: 15px; line-height: 1.4; }
         .btn-write-review { background: #25D366; color: black; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--btn-glow); }
 
-        /* CART PANEL */
         .cart-sidebar { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: var(--card-dark); z-index: 2000; box-shadow: -5px 0 25px rgba(0,0,0,0.5); transition: 0.3s right cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; border-left: 1px solid rgba(255,255,255,0.03); }
         .cart-sidebar.open { right: 0; }
         .cart-header { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; }
@@ -284,10 +272,8 @@
 </head>
 <body>
 
-    <!-- HIGH-PERFORMANCE NEON GLOW BACKDROP Layer -->
     <div class="aurora-bg"></div>
 
-    <!-- SHIMMER SKELETON PRELOADER -->
     <div id="preloader">
         <div class="shimmer-logo shimmer-effect"></div>
         <div class="shimmer-card shimmer-effect"></div>
@@ -295,7 +281,6 @@
         <div class="shimmer-text shimmer-effect" style="width: 50%;"></div>
     </div>
 
-    <!-- SCRATCH CARD DISCOUNT MODAL -->
     <div class="scratch-modal" id="scratch-popup">
         <div class="scratch-card-box">
             <button class="close-scratch-btn" onclick="closeScratchPopup()"><i class="fa-solid fa-xmark"></i></button>
@@ -313,7 +298,6 @@
         </div>
     </div>
 
-    <!-- GPU ACCELERATED SMOOTH BOTTOM SHEET -->
     <div class="bottom-sheet" id="order-sheet">
         <div class="sheet-notch"></div>
         <div class="sheet-content">
@@ -340,7 +324,6 @@
         </div>
     </div>
 
-    <!-- NAVBAR WITH MODE SWITCHER -->
     <div class="navbar">
         <div class="logo"><h1>AQUATIC PARADISE</h1></div>
         <div class="nav-actions">
@@ -367,20 +350,18 @@
     <div class="main-container reveal-text reveal-delay-1">
         <div class="loc-badge"><i class="fa-solid fa-clock"></i><span>Order Instantly Via WhatsApp</span></div>
 
-        <!-- VIDEO SLIDER WITH RE-ACTIVATED GORGEOUS GLOW -->
         <div class="media-slider-box" id="product-gallery">
             <div class="premium-tag">PREMIUM PAIR</div>
             <div class="slider-wrapper">
-                <div class="slide-item active"><video src="InShot_20260604_211622270.mp4" controls playsinline></video></div>
-                <div class="slide-item"><video src="InShot_20260604_210654716.mp4" controls playsinline></video></div>
-                <div class="slide-item"><video src="InShot_20260604_210050619.mp4" controls playsinline></video></div>
+                <div class="slide-item active"><video src="InShot_20260604_211622270.mp4" controls playsinline preload="auto"></video></div>
+                <div class="slide-item"><video src="InShot_20260604_210654716.mp4" controls playsinline preload="auto"></video></div>
+                <div class="slide-item"><video src="InShot_20260604_210050619.mp4" controls playsinline preload="auto"></video></div>
                 <button class="slider-btn prev-btn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
                 <button class="slider-btn next-btn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
             <div class="slider-dots" id="slider-dots-container"></div>
         </div>
 
-        <!-- PRODUCT CARD -->
         <div class="product-detail-card reveal-text reveal-delay-2" id="product-info" data-category="guppy" data-name="Tiger Cobra Guppy">
             <div class="p-title-row">
                 <div class="p-title" id="item-title">Tiger Cobra Guppy - Show Quality Handpicked Pair</div>
@@ -416,7 +397,6 @@
         </div>
     </div>
 
-    <!-- WHATSAPP FLOATING CHAT -->
     <div class="floating-chat-container">
         <div class="typing-bubble" id="typing-bubble">
             <span class="typing-text">Paradise Admin Support</span>
@@ -429,7 +409,6 @@
 
     <div class="overlay" id="global-overlay" onclick="closeAllPanels()"></div>
     
-    <!-- CART SIDEBAR PANEL -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h3>Shopping Cart</h3>
@@ -508,7 +487,6 @@
             } catch (e) {}
         }
 
-        // SMOOTH 3D LEAN PARALLAX
         const card = document.getElementById('product-info');
         if(card) {
             card.addEventListener('mousemove', (e) => {
@@ -536,36 +514,28 @@
             document.getElementById('rcpt-total').innerText = (subtotal - discount) + " Tk";
         }
 
-        // --- আপডেট করা হোয়াটসঅ্যাপ অর্ডার ফাংশন ---
         function submitWhatsAppOrder() {
             let name = document.getElementById('cust-name').value.trim();
             if(!name) { alert("Please enter your name to confirm order."); return; }
-            
             let qty = currentQuantity;
             let subtotal = baseItemPrice * qty;
-            
             if(checkoutType === 'cart') {
                 subtotal = cart.reduce((sum, item) => sum + item.total, 0);
                 qty = cart.reduce((sum, item) => sum + item.qty, 0);
             }
-            
             let discount = discountActive ? Math.round(subtotal * 0.10) : 0;
             let grandTotal = subtotal - discount;
 
-            let msg = `Hello Aquatic Paradise, Checking out my cart (Chattogram):%0A%0A`;
-            msg += `👤 Name: ${name}%0A%0A`; 
-            msg += `🛒 Details:%0A`;
-            msg += `- Tiger Cobra Guppy Pair (CTG Stock) - ${qty} Pair%0A%0A`;
-            
-            if(discountActive) {
-                msg += `🎁 Discount Applied: -${discount} Tk%0A%0A`;
-            }
-            
+            let msg = `Hello Aquatic Paradise, Checking out my cart (Chattogram):\n\n`;
+            msg += `👤 Name: ${name}\n\n`; 
+            msg += `🛒 Details:\n`;
+            msg += `- Tiger Cobra Guppy Pair (CTG Stock) - ${qty} Pair\n\n`;
+            if(discountActive) { msg += `🎁 Discount Applied: -${discount} Tk\n\n`; }
             msg += `💵 Grand Total: ${grandTotal} Tk`;
             
-            window.open(`https://wa.me/8801606597522?text=${msg}`, '_blank');
+            let whatsappUrl = `https://wa.me/8801606597522?text=${encodeURIComponent(msg)}`;
+            window.open(whatsappUrl, '_blank');
         }
-        // ---------------------------------------------
 
         function openScratchPopup() { document.getElementById('scratch-popup').classList.add('open'); }
         function closeScratchPopup() { document.getElementById('scratch-popup').classList.remove('open'); }
@@ -610,6 +580,10 @@
             slides.forEach(s => { s.classList.remove('active'); let v = s.querySelector('video'); if(v) v.pause(); });
             document.querySelectorAll('.dot').forEach(d => d.classList.remove('active')); slides[idx].classList.add('active');
             if(document.querySelectorAll('.dot')[idx]) document.querySelectorAll('.dot')[idx].classList.add('active');
+            
+            // স্লাইড পরিবর্তনের সাথে সাথে ভিডিও ফোর্সমূলকভাবে প্লে করার ট্রিকার
+            let activeVid = slides[idx].querySelector('video');
+            if(activeVid) { activeVid.play().catch(e => {}); }
         }
         function moveSlide(step) {
             currentSlideIdx += step; if (currentSlideIdx >= slides.length) currentSlideIdx = 0; if (currentSlideIdx < 0) currentSlideIdx = slides.length - 1;
