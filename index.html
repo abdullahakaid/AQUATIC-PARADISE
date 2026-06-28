@@ -2,33 +2,63 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiger Cobra Guppy - Luxury Aquatic Paradise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #05070f; z-index: 9999; display: flex; align-items: center; justify-content: center; color: #38bdf8; font-size: 20px; }
-        /* বাকি CSS আগের মতোই রাখুন */
+        :root { --bg-dark: #05070f; --glow-blue: #38bdf8; --premium-gold: #fbbf24; }
+        body { background-color: var(--bg-dark); color: white; font-family: sans-serif; margin: 0; padding: 0; }
+
+        /* Premium Live Background */
+        .live-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #0d1726, #05070f); }
+
+        /* Preloader */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #05070f; z-index: 9999; display: flex; align-items: center; justify-content: center; color: var(--glow-blue); font-size: 20px; }
+
+        /* Glowing Card Effect */
+        .glow-card { background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 20px; padding: 25px; margin: 20px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.15); backdrop-filter: blur(10px); }
+
+        /* Buttons */
+        .btn-main { background: var(--glow-blue); color: black; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; text-decoration: none; display: block; text-align: center; }
+        
+        .faq-item { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid var(--glow-blue); }
     </style>
 </head>
 <body>
+
+    <div class="live-bg"></div>
     <div id="preloader">Loading Luxury Experience...</div>
 
-    <div class="product-detail-card">
+    <!-- Media Slider (আপনার আগের স্লাইডার স্ট্রাকচার) -->
+    <div class="glow-card" id="slider-box">
+        <h3 style="text-align:center;">Premium Showcase</h3>
+        <!-- আপনার Slider কোড এখানে বসবে -->
+    </div>
+
+    <!-- Product Card -->
+    <div class="glow-card">
         <h2 id="item-title">Tiger Cobra Guppy - Show Quality Pair</h2>
-        <div class="p-price">Tk <span id="unit-price">350</span></div>
-        <div class="qty-control-box">
-            <button onclick="updateQty(-1)">-</button>
-            <div id="qty-val" style="padding:0 10px;">1</div>
-            <button onclick="updateQty(1)">+</button>
+        <div class="p-price" style="font-size: 24px; margin: 15px 0; color: var(--glow-blue);">Tk <span id="unit-price">350</span></div>
+        
+        <div class="qty-control" style="display:flex; align-items:center; gap:20px; margin-bottom:20px;">
+            <button onclick="updateQty(-1)" style="padding:10px;">-</button>
+            <span id="qty-val" style="font-size:18px;">1</span>
+            <button onclick="updateQty(1)" style="padding:10px;">+</button>
         </div>
+        
         <button class="btn-main" onclick="saveCartAndCheckout()">Buy Now</button>
     </div>
 
+    <!-- FAQ Section -->
+    <div class="glow-card">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">Q: Is it healthy? A: Yes, 100% quarantined.</div>
+        <div class="faq-item">Q: Do you offer replacement? A: Yes, for DOA cases.</div>
+    </div>
+
     <script>
-        // প্রিলোডার ফিক্স: ৩ সেকেন্ডের মধ্যে অটো হাইড হবে (যদি এর আগে লোড হয় তো ভালো)
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('preloader');
-            loader.style.display = 'none';
-        });
-        setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 3000);
+        // প্রিলোডার ফিক্স (৩ সেকেন্ড পর অটোমেটিক চলে যাবে)
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 1000); });
 
         let currentQuantity = 1;
         const baseItemPrice = 350;
@@ -40,19 +70,14 @@
         }
 
         function saveCartAndCheckout() {
-            const qty = document.getElementById('qty-val').innerText;
-            const total = document.getElementById('unit-price').innerText;
-            const name = document.getElementById('item-title').innerText;
-            
-            localStorage.setItem('checkoutInfo', JSON.stringify({
-                product: name,
-                qty: qty,
-                total: total
-            }));
+            const data = {
+                product: document.getElementById('item-title').innerText,
+                qty: document.getElementById('qty-val').innerText,
+                total: document.getElementById('unit-price').innerText
+            };
+            localStorage.setItem('checkoutInfo', JSON.stringify(data));
             window.location.href = 'checkout.html';
         }
-        
-        // আপনার স্ক্র্যাচ কার্ড ও স্লাইডার ফাংশনগুলো এখানে বসান
     </script>
 </body>
 </html>
