@@ -3,488 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiger Cobra Guppy - Luxury Aquatic Paradise</title>
-    
-    <meta name="description" content="Premium quality Tiger Cobra Guppy Pair in Chattogram. Order instantly via WhatsApp.">
-    <meta name="keywords" content="Tiger Cobra Guppy, Guppy Chattogram, Aquatic Paradise CTG">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>Secure Checkout</title>
     <style>
-        :root {
-            --bg-dark: #05070f;
-            --card-dark: #0b111e;
-            --accent: #38bdf8;
-            --primary-text: #f8fafc;
-            --secondary-text: #94a3b8;
-            --star-color: #fbbf24;
-            --heart-color: #f43f5e;
-            --iphone-glow: 0 0 35px rgba(56, 189, 248, 0.45);
-            --btn-glow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            --aurora-1: rgba(56, 189, 248, 0.25);
-            --aurora-2: rgba(139, 92, 246, 0.2);
-        }
-
-        [data-theme="moonlight"] {
-            --bg-dark: #040a12;
-            --card-dark: #0d1726;
-            --accent: #2dd4bf;
-            --primary-text: #f1f5f9;
-            --secondary-text: #cbd5e1;
-            --iphone-glow: 0 0 35px rgba(45, 212, 191, 0.45);
-            --aurora-1: rgba(45, 212, 191, 0.25);
-            --aurora-2: rgba(20, 184, 166, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--primary-text);
-            padding-bottom: 80px;
-            overflow-x: hidden;
-            position: relative;
-            transition: background-color 0.4s ease;
-        }
-
-        .aurora-bg {
-            position: fixed;
-            top: -10%; left: -10%; width: 120%; height: 120%;
-            z-index: -4;
-            background: 
-                radial-gradient(circle at 15% 15%, var(--aurora-1) 0%, transparent 45%),
-                radial-gradient(circle at 85% 85%, var(--aurora-2) 0%, transparent 45%);
-            filter: blur(60px);
-            pointer-events: none;
-            will-change: transform;
-        }
-
-        #preloader {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #05070f;
-            z-index: 9999;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.4s ease;
-        }
-        .shimmer-logo { width: 180px; height: 24px; background: #0b111e; border-radius: 4px; position: relative; overflow: hidden; }
-        .shimmer-card { width: 100%; max-width: 450px; height: 280px; background: #0b111e; border-radius: 16px; position: relative; overflow: hidden; }
-        .shimmer-text { width: 80%; max-width: 350px; height: 16px; background: #0b111e; border-radius: 4px; position: relative; overflow: hidden; }
-        .shimmer-effect::after {
-            content: ""; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
-            animation: shimmer 1.5s infinite;
-        }
-        @keyframes shimmer { 100% { left: 150%; } }
-
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(15px);
-            animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .reveal-delay-1 { animation-delay: 0.1s; }
-        .reveal-delay-2 { animation-delay: 0.2s; }
-        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
-
-        .navbar {
-            background: rgba(5, 7, 15, 0.75);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            padding: 15px; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-        .logo h1 { font-size: 16px; font-weight: 800; color: var(--accent); letter-spacing: 1px; text-shadow: 0 0 10px rgba(56, 189, 248, 0.3); }
-        .nav-actions { display: flex; align-items: center; gap: 12px; }
-        .nav-btn {
-            position: relative; background: none; border: none; color: var(--primary-text);
-            font-size: 16px; cursor: pointer; width: 36px; height: 36px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
-        }
-        .badge { position: absolute; top: -3px; right: -3px; background: var(--heart-color); color: white; font-size: 9px; padding: 2px 5px; border-radius: 50%; font-weight: bold; }
-
-        .search-box { padding: 15px; max-width: 600px; margin: 0 auto; }
-        .search-wrapper { position: relative; }
-        .search-wrapper input {
-            width: 100%; padding: 12px 15px 12px 42px; border-radius: 25px;
-            border: 1px solid rgba(255,255,255,0.05); background: var(--card-dark);
-            color: white; outline: none; transition: 0.3s;
-        }
-        .search-wrapper input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
-        .search-wrapper i { position: absolute; top: 15px; left: 16px; color: var(--secondary-text); }
-
-        .categories { display: flex; gap: 10px; padding: 0 15px 15px 15px; overflow-x: auto; max-width: 600px; margin: 0 auto; }
-        .categories::-webkit-scrollbar { display: none; }
-        .cat-btn {
-            background: var(--card-dark); color: var(--secondary-text); border: 1px solid rgba(255,255,255,0.03);
-            padding: 8px 16px; border-radius: 20px; white-space: nowrap; cursor: pointer; font-size: 13px; font-weight: 600;
-        }
-        .cat-btn.active { background: var(--accent); color: var(--bg-dark); border-color: var(--accent); box-shadow: 0 0 15px var(--aurora-1); }
-
-        .main-container { max-width: 600px; margin: 0 auto; padding: 0 15px; }
-        .loc-badge {
-            background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); color: #93c5fd;
-            padding: 10px; border-radius: 8px; text-align: center; font-size: 13px; font-weight: 700;
-            margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.05);
-        }
-
-        .media-slider-box {
-            position: relative; background: var(--card-dark); border-radius: 16px; margin-bottom: 20px; padding: 1px;
-            border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: var(--iphone-glow);
-        }
-        .slider-wrapper { position: relative; width: 100%; height: 320px; display: flex; overflow: hidden; border-radius: 14px; }
-        .premium-tag {
-            position: absolute; top: 12px; left: 12px; z-index: 20; background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 5px 12px;
-            border-radius: 8px; font-size: 11px; font-weight: 700; color: white; border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .slide-item { min-width: 100%; height: 100%; display: none; background: #000; }
-        .slide-item.active { display: block; }
-        .slide-item video { width: 100%; height: 100%; object-fit: cover; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10; }
-        .prev-btn { left: 10px; } .next-btn { right: 10px; }
-        .slider-dots { display: flex; justify-content: center; gap: 6px; padding: 12px 0; }
-        .dot { width: 6px; height: 6px; background: #1e293b; border-radius: 50%; cursor: pointer; transition: 0.3s; }
-        .dot.active { background: var(--accent); width: 18px; border-radius: 3px; box-shadow: 0 0 8px var(--accent); }
-
-        .product-detail-card {
-            background: var(--card-dark); border-radius: 16px; padding: 20px; margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.03); position: relative; overflow: hidden;
-            transform-style: preserve-3d; perspective: 1000px; transition: transform 0.15s ease-out;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .p-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; transform: translateZ(15px); }
-        .p-title { font-size: 18px; font-weight: 700; line-height: 1.4; }
-        .wishlist-btn { background: none; border: none; color: var(--secondary-text); font-size: 22px; cursor: pointer; }
-        .wishlist-btn.active { color: var(--heart-color); filter: drop-shadow(0 0 8px var(--heart-color)); }
-        .p-price { font-size: 26px; font-weight: 800; color: var(--accent); margin: 12px 0; transform: translateZ(25px); text-shadow: 0 0 12px rgba(56, 189, 248, 0.4); }
-        .qty-container { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; transform: translateZ(10px); }
-        .qty-control-box { display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
-        .qty-action-btn { background: rgba(255,255,255,0.08); color: white; border: none; width: 38px; height: 38px; font-weight: bold; font-size: 18px; cursor: pointer; }
-        .qty-display { width: 40px; text-align: center; font-weight: 600; }
-
-        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; transform: translateZ(20px); }
-        .btn-main {
-            padding: 14px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; border: none;
-            display: flex; align-items: center; justify-content: center; gap: 8px; position: relative; overflow: hidden;
-            text-decoration: none;
-        }
-        .btn-cart-add { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.08); }
-        .btn-buy-whatsapp { background: #25D366; color: black; box-shadow: var(--btn-glow); }
-        .ripple { position: absolute; background: rgba(255, 255, 255, 0.2); border-radius: 50%; transform: scale(0); animation: ripple-effect 0.4s linear; pointer-events: none; }
-        @keyframes ripple-effect { to { transform: scale(4); opacity: 0; } }
-
-        .scratch-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); z-index: 3000;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-        }
-        .scratch-modal.open { opacity: 1; pointer-events: auto; }
-        .scratch-card-box {
-            background: var(--card-dark); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 20px;
-            padding: 30px 20px; width: 90%; max-width: 360px; text-align: center; position: relative;
-            box-shadow: var(--iphone-glow);
-        }
-        .scratch-canvas-container { position: relative; width: 260px; height: 150px; margin: 20px auto; border-radius: 12px; overflow: hidden; background: #05070f; }
-        .scratch-prize-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1; }
-        .scratch-prize-layer h2 { color: var(--accent); font-size: 28px; text-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
-        .scratch-canvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: crosshair; touch-action: none; transition: opacity 0.3s; }
-        .close-scratch-btn { background: none; border: none; color: var(--secondary-text); position: absolute; top: 15px; right: 15px; font-size: 20px; }
-
-        .floating-chat-container { position: fixed; bottom: 20px; right: 20px; z-index: 1200; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-        .whatsapp-floating-widget { background: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; box-shadow: var(--btn-glow); }
-        .whatsapp-floating-widget i { color: black; font-size: 26px; }
-        .status-ring { position: absolute; top: 2px; right: 2px; width: 12px; height: 12px; background-color: #00ff66; border: 2px solid var(--bg-dark); border-radius: 50%; }
-        
-        .info-card { background: var(--card-dark); border-radius: 16px; padding: 15px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.03); }
-        .info-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; font-size: 13px; }
-        .info-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .info-item i { font-size: 16px; color: var(--accent); filter: drop-shadow(0 0 5px var(--accent)); }
-
-        .reviews-section { background: var(--card-dark); border-radius: 16px; padding: 20px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.03); text-align: center; }
-        .review-header-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-        .review-subtitle { font-size: 12px; color: var(--secondary-text); margin-bottom: 15px; line-height: 1.4; }
-        .btn-write-review { background: #25D366; color: black; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--btn-glow); }
-
-        .cart-sidebar { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: var(--card-dark); z-index: 2000; box-shadow: -5px 0 25px rgba(0,0,0,0.5); transition: 0.3s right cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; border-left: 1px solid rgba(255,255,255,0.03); }
-        .cart-sidebar.open { right: 0; }
-        .cart-header { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; }
-        .cart-items-wrapper { flex-grow: 1; padding: 20px; overflow-y: auto; }
-        .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .cart-footer { padding: 20px; border-top: 1px solid rgba(255,255,255,0.03); background: rgba(0,0,0,0.1); }
-        .total-row { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 15px; font-size: 16px; }
-        .btn-checkout { width: 100%; background: var(--accent); color: var(--bg-dark); border: none; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; box-shadow: 0 0 15px var(--aurora-1); text-decoration: none; display: block; text-align: center; }
-
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; display: none; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
-        .overlay.open { display: block; }
+        :root { --bg-dark: #05070f; --card-dark: #0b111e; --accent: #38bdf8; --primary-text: #f8fafc; }
+        body { background-color: var(--bg-dark); color: var(--primary-text); font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .checkout-box { background: var(--card-dark); padding: 30px; border-radius: 16px; width: 100%; max-width: 400px; border: 1px solid rgba(255,255,255,0.05); }
+        h2 { text-align: center; color: var(--accent); margin-bottom: 25px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 14px; color: #94a3b8; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: #05070f; color: white; box-sizing: border-box; }
+        .btn-order { width: 100%; padding: 14px; background: #25D366; border: none; border-radius: 10px; color: black; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #94a3b8; text-decoration: none; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <div class="aurora-bg"></div>
-
-    <div id="preloader">
-        <div class="shimmer-logo shimmer-effect"></div>
-        <div class="shimmer-card shimmer-effect"></div>
-        <div class="shimmer-text shimmer-effect"></div>
-        <div class="shimmer-text shimmer-effect" style="width: 50%;"></div>
-    </div>
-
-    <div class="scratch-modal" id="scratch-popup">
-        <div class="scratch-card-box">
-            <button class="close-scratch-btn" onclick="closeScratchPopup()"><i class="fa-solid fa-xmark"></i></button>
-            <h3 style="color: white; font-size: 16px;">🎁 Premium Customer Gift!</h3>
-            <p style="font-size: 12px; color: var(--secondary-text); margin-top: 5px;">Scratch the card below to win a special checkout discount!</p>
-            <div class="scratch-canvas-container">
-                <div class="scratch-prize-layer">
-                    <p style="font-size: 11px; color: var(--secondary-text); text-transform: uppercase;">Your Promo Code</p>
-                    <h2>COBRA10</h2>
-                    <p style="font-size: 12px; color: #25D366; font-weight: bold; margin-top: 4px;">10% OFF Applied!</p>
-                </div>
-                <canvas class="scratch-canvas" id="scratch-canvas" width="260" height="150"></canvas>
-            </div>
-            <p style="font-size: 11px; color: var(--secondary-text);">Scratch more than 45% area to activate code automatically</p>
+<div class="checkout-box">
+    <h2>Secure Checkout</h2>
+    <form id="checkoutForm">
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="E.g. Tasnim Ahmed" required>
         </div>
-    </div>
-
-    <div class="navbar">
-        <div class="logo"><h1>AQUATIC PARADISE</h1></div>
-        <div class="nav-actions">
-            <button class="nav-btn" onclick="toggleTheme()"><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent); filter: drop-shadow(0 0 5px var(--accent));"></i></button>
-            <button class="nav-btn" onclick="toggleWishlistModal()"><i class="fa-regular fa-heart" id="wish-icon"></i><span class="badge" id="wish-badge">0</span></button>
-            <button class="nav-btn" onclick="toggleCart(true)"><i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-badge">0</span></button>
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phoneNumber" placeholder="01XXXXXXXXX" required>
         </div>
-    </div>
-
-    <div class="search-box">
-        <div class="search-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="search-input" placeholder="Search Tiger Cobra..." onkeyup="filterSearch()">
+        <div class="form-group">
+            <label>Payment Method</label>
+            <select id="paymentMethod">
+                <option value="Cash on Delivery">Cash on Delivery</option>
+                <option value="Nagad">Nagad</option>
+                <option value="Bkash">Bkash</option>
+            </select>
         </div>
-    </div>
+        <button type="button" class="btn-order" onclick="sendToWhatsApp()">Order via WhatsApp</button>
+    </form>
+    <a href="index.html" class="back-link">← Back to shop</a>
+</div>
 
-    <div class="categories">
-        <button class="cat-btn active" onclick="switchCategory('all', this)">All Items</button>
-        <button class="cat-btn" onclick="switchCategory('guppy', this)">Guppy</button>
-        <button class="cat-btn" onclick="switchCategory('betta', this)">Betta</button>
-        <button class="cat-btn" onclick="switchCategory('accessories', this)">Accessories</button>
-    </div>
-
-    <div class="main-container reveal-text reveal-delay-1">
-        <div class="loc-badge"><i class="fa-solid fa-clock"></i><span>Order Instantly Via WhatsApp</span></div>
-
-        <div class="media-slider-box" id="product-gallery">
-            <div class="premium-tag">PREMIUM PAIR</div>
-            <div class="slider-wrapper">
-                <div class="slide-item active"><video src="InShot_20260604_211622270.mp4" controls playsinline></video></div>
-                <div class="slide-item"><video src="InShot_20260604_210654716.mp4" controls playsinline></video></div>
-                <div class="slide-item"><video src="InShot_20260604_210050619.mp4" controls playsinline></video></div>
-                <button class="slider-btn prev-btn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="slider-btn next-btn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-            <div class="slider-dots" id="slider-dots-container"></div>
-        </div>
-
-        <div class="product-detail-card reveal-text reveal-delay-2" id="product-info" data-category="guppy" data-name="Tiger Cobra Guppy">
-            <div class="p-title-row">
-                <div class="p-title" id="item-title">Tiger Cobra Guppy - Show Quality Handpicked Pair</div>
-                <button class="wishlist-btn" onclick="toggleFavorite()"><i class="fa-solid fa-heart" id="detail-wish-icon"></i></button>
-            </div>
-            <div class="p-price">Tk <span id="unit-price">350</span></div>
-
-            <div class="qty-container">
-                <span style="font-size: 14px; color: var(--secondary-text);">Select Quantity:</span>
-                <div class="qty-control-box">
-                    <button class="qty-action-btn" onclick="updateQty(-1)">-</button>
-                    <div class="qty-display" id="qty-val">1</div>
-                    <button class="qty-action-btn" onclick="updateQty(1)">+</button>
-                </div>
-            </div>
-
-            <div class="action-grid">
-                <button class="btn-main btn-cart-add" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i> Add To Cart</button>
-                <a href="checkout.html" class="btn-main btn-buy-whatsapp"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
-            </div>
-        </div>
-
-        <div class="info-card">
-            <div class="info-item"><i class="fa-solid fa-style"></i><div><b>Aquarium Lighting Mode:</b> Use Top Bar Magic wand to switch vibe!</div></div>
-            <div class="info-item"><i class="fa-solid fa-money-bill-wave"></i><div><b>Payment Methods:</b> Cash on Delivery & Nagad Personal</div></div>
-            <div class="info-item" id="contact"><i class="fa-solid fa-headset"></i><div><b>Support & Contact:</b> 01606597522</div></div>
-        </div>
-
-        <div class="reviews-section">
-            <div class="review-header-title">Customer Reviews & Feedback</div>
-            <div class="review-subtitle">মাছগুলোর হেলথ ও কোয়ালিটি কেমন লেগেছে? সরাসরি আমাদের হোয়াটসঅ্যাপে রিভিউ শেয়ার করুন!</div>
-            <button class="btn-write-review" onclick="sendReviewViaWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Send Feedback</button>
-        </div>
-    </div>
-
-    <div class="floating-chat-container">
-        <div class="whatsapp-floating-widget" onclick="openFloatingChat()">
-            <div class="status-ring"></div><i class="fa-brands fa-whatsapp"></i>
-        </div>
-    </div>
-
-    <div class="overlay" id="global-overlay" onclick="closeAllPanels()"></div>
-    
-    <div class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-header">
-            <h3>Shopping Cart</h3>
-            <button class="nav-btn" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="cart-items-wrapper" id="cart-items-container"></div>
-        <div class="cart-footer">
-            <div class="total-row"><span>Total Amount:</span><span id="cart-total-display">Tk 0</span></div>
-            <a href="checkout.html" class="btn-checkout"><i class="fa-brands fa-whatsapp"></i> Proceed to Checkout</a>
-        </div>
-    </div>
-
-    <script>
-        let currentQuantity = 1;
-        const baseItemPrice = 350;
-        let cart = [];
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || false;
-        let discountActive = false; 
-
-        window.addEventListener('load', () => { hidePreloader(); });
-        setTimeout(hidePreloader, 2000);
-
-        function hidePreloader() {
-            const preloader = document.getElementById('preloader');
-            if (preloader && preloader.style.display !== 'none') {
-                preloader.style.opacity = '0';
-                setTimeout(() => { preloader.style.display = 'none'; openScratchPopup(); }, 400);
-            }
-            initSliderDots(); initScratchCard(); syncWishlistUI(); setupButtonRipples();
+<script>
+    function sendToWhatsApp() {
+        const name = document.getElementById('fullName').value;
+        const phone = document.getElementById('phoneNumber').value;
+        const payment = document.getElementById('paymentMethod').value;
+        
+        if(name === "" || phone === "") {
+            alert("Please fill in the required fields.");
+            return;
         }
 
-        function toggleTheme() {
-            const body = document.body;
-            if (body.getAttribute('data-theme') === 'moonlight') {
-                body.removeAttribute('data-theme');
-            } else {
-                body.setAttribute('data-theme', 'moonlight');
-            }
-        }
+        const message = `New Order Request:%0A- Name: ${name}%0A- Phone: ${phone}%0A- Payment: ${payment}`;
+        const url = `https://wa.me/8801606597522?text=${message}`;
+        window.open(url, '_blank');
+    }
+</script>
 
-        function setupButtonRipples() {
-            document.querySelectorAll('.btn-main').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    let x = e.clientX - e.target.getBoundingClientRect().left;
-                    let y = e.clientY - e.target.getBoundingClientRect().top;
-                    let r = document.createElement('span'); r.classList.add('ripple');
-                    r.style.left = x + 'px'; r.style.top = y + 'px'; this.appendChild(r);
-                    setTimeout(() => r.remove(), 400);
-                });
-            });
-        }
-
-        function closeAllPanels() { toggleCart(false); }
-
-        function openScratchPopup() { document.getElementById('scratch-popup').classList.add('open'); }
-        function closeScratchPopup() { document.getElementById('scratch-popup').classList.remove('open'); }
-        function initScratchCard() {
-            const canvas = document.getElementById('scratch-canvas'); if(!canvas) return;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#334155'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 13px Segoe UI'; ctx.textAlign = 'center';
-            ctx.fillText('SCRATCH PLATINUM CARD', canvas.width/2, canvas.height/2 + 5);
-            let isDrawing = false;
-            function scratch(e) {
-                if(!isDrawing) return; let r = canvas.getBoundingClientRect();
-                let x = (e.clientX || (e.touches && e.touches[0].clientX)) - r.left;
-                let y = (e.clientY || (e.touches && e.touches[0].clientY)) - r.top;
-                ctx.globalCompositeOperation = 'destination-out'; ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2); ctx.fill();
-                checkScratchPercentage();
-            }
-            canvas.addEventListener('mousedown', () => isDrawing = true); canvas.addEventListener('mousemove', scratch);
-            window.addEventListener('mouseup', () => isDrawing = false);
-            canvas.addEventListener('touchstart', () => isDrawing = true); canvas.addEventListener('touchmove', scratch);
-            window.addEventListener('touchend', () => isDrawing = false);
-        }
-        function checkScratchPercentage() {
-            if(discountActive) return; const canvas = document.getElementById('scratch-canvas');
-            const ctx = canvas.getContext('2d'), imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            let cleared = 0; for (let i = 0; i < imgData.data.length; i += 4) { if (imgData.data[i + 3] === 0) cleared++; }
-            if ((cleared / (canvas.width * canvas.height)) * 100 > 45) {
-                discountActive = true; canvas.style.opacity = '0';
-                setTimeout(() => { canvas.remove(); alert("🎉 10% Luxury Coupon Activated!"); }, 300);
-            }
-        }
-
-        let currentSlideIdx = 0; const slides = document.querySelectorAll('.slide-item');
-        function initSliderDots() {
-            const container = document.getElementById('slider-dots-container'); if(!container) return; container.innerHTML = '';
-            slides.forEach((_, idx) => {
-                let d = document.createElement('div'); d.className = `dot ${idx === 0 ? 'active' : ''}`;
-                d.onclick = () => { currentSlideIdx = idx; showSlide(idx); }; container.appendChild(d);
-            });
-        }
-        function showSlide(idx) {
-            slides.forEach(s => { s.classList.remove('active'); let v = s.querySelector('video'); if(v) v.pause(); });
-            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active')); slides[idx].classList.add('active');
-            if(document.querySelectorAll('.dot')[idx]) document.querySelectorAll('.dot')[idx].classList.add('active');
-        }
-        function moveSlide(step) {
-            currentSlideIdx += step; if (currentSlideIdx >= slides.length) currentSlideIdx = 0; if (currentSlideIdx < 0) currentSlideIdx = slides.length - 1;
-            showSlide(currentSlideIdx);
-        }
-
-        function updateQty(val) { currentQuantity += val; if(currentQuantity < 1) currentQuantity = 1; document.getElementById('qty-val').innerText = currentQuantity; document.getElementById('unit-price').innerText = baseItemPrice * currentQuantity; }
-        function toggleFavorite() { wishlist = !wishlist; localStorage.setItem('wishlist', JSON.stringify(wishlist)); syncWishlistUI(); }
-        function syncWishlistUI() {
-            let nIcon = document.getElementById('wish-icon'), dIcon = document.getElementById('detail-wish-icon');
-            if(wishlist) {
-                if(nIcon) { nIcon.className = "fa-solid fa-heart"; nIcon.style.color = "var(--heart-color)"; }
-                if(dIcon) dIcon.style.color = "var(--heart-color)";
-                document.getElementById('wish-badge').innerText = "1";
-            } else {
-                if(nIcon) { nIcon.className = "fa-regular fa-heart"; nIcon.style.color = "inherit"; }
-                if(dIcon) dIcon.style.color = "inherit";
-                document.getElementById('wish-badge').innerText = "0";
-            }
-        }
-        function toggleWishlistModal() { alert(wishlist ? "Saved Content: Tiger Cobra Guppy Pair" : "Your Wishlist is empty."); }
-        function toggleCart(open) { document.getElementById('cart-sidebar').classList.toggle('open', open); document.getElementById('global-overlay').classList.toggle('open', open); renderCartUI(); }
-        function addToCart() { cart = [{ name: "Tiger Cobra Guppy Pair", qty: currentQuantity, total: baseItemPrice * currentQuantity }]; document.getElementById('cart-badge').innerText = currentQuantity; toggleCart(true); }
-        function renderCartUI() {
-            const container = document.getElementById('cart-items-container'), totalDisplay = document.getElementById('cart-total-display');
-            if(!container) return; container.innerHTML = "";
-            if(cart.length === 0) { container.innerHTML = "<p style='color: var(--secondary-text); text-align:center; margin-top:40px;'>Cart is empty.</p>"; totalDisplay.innerText = "Tk 0"; return; }
-            cart.forEach(item => {
-                container.innerHTML = `<div class="cart-item-row"><div><h4>${item.name}</h4><small style="color: var(--accent)">Qty: ${item.qty}</small></div><div style="font-weight:700;">Tk ${item.total}</div></div>`;
-                totalDisplay.innerText = "Tk " + item.total;
-            });
-        }
-
-        function openFloatingChat() { window.open("https://wa.me/8801606597522?text=Hello%20Aquatic%20Paradise!", '_blank'); }
-        function sendReviewViaWhatsApp() { window.open("https://wa.me/8801606597522?text=Hello%20Paradise!%20Here%20is%20my%20Feedback:", '_blank'); }
-        function switchCategory(cat, btn) {
-            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
-            let pCard = document.getElementById('product-info'), pGallery = document.getElementById('product-gallery');
-            if(cat !== 'guppy' && cat !== 'all') { pCard.style.opacity = "0.2"; pGallery.style.opacity = "0.2"; alert("Out of Stock! Only Tiger Cobra Guppy is active."); } 
-            else { pCard.style.opacity = "1"; pGallery.style.opacity = "1"; }
-        }
-        function filterSearch() {
-            let query = document.getElementById('search-input').value.toLowerCase();
-            let visible = document.getElementById('item-title').innerText.toLowerCase().includes(query);
-            document.getElementById('product-info').style.display = visible ? "block" : "none";
-            document.getElementById('product-gallery').style.display = visible ? "block" : "none";
-        }
-    </script>
 </body>
 </html>
