@@ -5,9 +5,9 @@
     <title>Secure Checkout</title>
     <style>
         body { background: #05070f; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
-        .checkout-box { background: #0b111e; padding: 30px; border-radius: 16px; width: 100%; max-width: 400px; }
+        .checkout-box { background: #0b111e; padding: 30px; border-radius: 16px; width: 100%; max-width: 400px; border: 1px solid rgba(255,255,255,0.05); }
         .order-summary { background: rgba(56, 189, 248, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
-        input, select { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #333; background: #05070f; color: white; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #333; background: #05070f; color: white; box-sizing: border-box; }
         .btn-order { width: 100%; padding: 14px; background: #25D366; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
     </style>
 </head>
@@ -26,6 +26,7 @@
         </select>
         <button type="button" class="btn-order" onclick="sendToWhatsApp()">Order via WhatsApp</button>
     </form>
+    <a href="index.html" style="color: #94a3b8; display:block; text-align:center; margin-top:15px; font-size:14px;">← Back to shop</a>
 </div>
 
 <script>
@@ -46,6 +47,8 @@
         const phone = document.getElementById('phoneNumber').value;
         const payment = document.getElementById('paymentMethod').value;
         
+        if(!name || !phone) { alert("Please fill in your name and phone."); return; }
+
         const message = `Hello Aquatic Paradise, Checking out my cart (Chattogram):%0A%0A🛒 Details:%0A- ${data.product} (x${data.qty})%0A%0A💵 Grand Total: ${data.total} Tk%0A%0A👤 Customer Name: ${name}%0A📞 Phone: ${phone}%0A💳 Payment: ${payment}`;
         
         window.open(`https://wa.me/8801606597522?text=${message}`, '_blank');
