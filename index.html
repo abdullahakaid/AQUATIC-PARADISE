@@ -312,9 +312,9 @@
                 <div class="receipt-row"><span>Customer:</span><span id="rcpt-name" style="font-weight: bold; color: white;">Guest</span></div>
                 <div class="receipt-row"><span>Product:</span><span>Tiger Cobra Guppy Pair</span></div>
                 <div class="receipt-row"><span>Quantity:</span><span id="rcpt-qty">1 Pair</span></div>
-                <div class="receipt-row"><span>Subtotal:</span><span id="rcpt-subtotal">350 Tk</span></div>
-                <div class="receipt-row" id="rcpt-discount-row" style="display:none; color: #25D366;"><span>Discount (Promo):</span><span id="rcpt-discount">-35 Tk</span></div>
-                <div class="receipt-row receipt-total"><span>GRAND TOTAL:</span><span id="rcpt-total" style="color: var(--accent);">350 Tk</span></div>
+                <div class="receipt-row"><span>Subtotal:</span><span id="rcpt-subtotal">250 Tk</span></div>
+                <div class="receipt-row" id="rcpt-discount-row" style="display:none; color: #25D366;"><span>Discount (Promo):</span><span id="rcpt-discount">-25 Tk</span></div>
+                <div class="receipt-row receipt-total"><span>GRAND TOTAL:</span><span id="rcpt-total" style="color: var(--accent);">250 Tk</span></div>
             </div>
 
             <div style="display:flex; gap:12px;">
@@ -423,7 +423,7 @@
 
     <script>
         let currentQuantity = 1;
-        const baseItemPrice = 350;
+        const baseItemPrice = 250;
         let cart = [];
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || false;
         let checkoutType = 'direct'; 
@@ -581,7 +581,6 @@
             document.querySelectorAll('.dot').forEach(d => d.classList.remove('active')); slides[idx].classList.add('active');
             if(document.querySelectorAll('.dot')[idx]) document.querySelectorAll('.dot')[idx].classList.add('active');
             
-            // স্লাইড পরিবর্তনের সাথে সাথে ভিডিও ফোর্সমূলকভাবে প্লে করার ট্রিকার
             let activeVid = slides[idx].querySelector('video');
             if(activeVid) { activeVid.play().catch(e => {}); }
         }
